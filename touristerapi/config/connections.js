@@ -28,9 +28,11 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
+ /*
   localDiskDb: {
     adapter: 'sails-disk'
   },
+  */
 
   /***************************************************************************
   *                                                                          *
@@ -40,6 +42,7 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
+ /*
   someMysqlServer: {
     adapter: 'sails-mysql',
     host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
@@ -47,6 +50,7 @@ module.exports.connections = {
     password: 'YOUR_MYSQL_PASSWORD',
     database: 'YOUR_MYSQL_DB'
   },
+  */
 
   /***************************************************************************
   *                                                                          *
@@ -56,6 +60,7 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
+ /*
   someMongodbServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
@@ -64,6 +69,7 @@ module.exports.connections = {
     // password: 'password',
     // database: 'your_mongo_db_name_here'
   },
+  */
 
   /***************************************************************************
   *                                                                          *
@@ -76,12 +82,10 @@ module.exports.connections = {
   ***************************************************************************/
   somePostgresqlServer: {
     adapter: 'sails-postgresql',
-    host: '35.236.11.239',
-    user: 'verde2',
-    password: 'aguacate2',
-    database: 'tourister_api'
+    url: 'postgres://verde2:aguacate2@35.236.11.239:5432/tourister_api',
+    pool: false,
+    ssl: false,
   }
-
 
   /***************************************************************************
   *                                                                          *

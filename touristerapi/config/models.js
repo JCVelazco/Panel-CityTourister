@@ -11,6 +11,12 @@
 
 module.exports.models = {
 
+  attributes: {
+    id: { type: 'number', autoIncrement: true },
+    createdAt: { type: 'number', autoCreatedAt: true },
+    updatedAt: { type: 'number', autoUpdatedAt: true },
+  },
+
   /***************************************************************************
   *                                                                          *
   * Your app's default connection. i.e. the name of one of your app's        *
@@ -18,7 +24,8 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // connection: 'localDiskDb',
-  connection: 'somePostgresqlServe'
+  //connection: 'somePostgresqlServer',
+  datastore: 'somePostgresqlServer',
 
   /***************************************************************************
   *                                                                          *
