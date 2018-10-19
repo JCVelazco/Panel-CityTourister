@@ -63,4 +63,6 @@ module.exports.models = {
     default: 'JGmtNO6+UqxCiw6VyOj0Y+bvg70ATbew+jarGa3TpOo='
   },
 
+  migrate: 'alter',
+
 };
