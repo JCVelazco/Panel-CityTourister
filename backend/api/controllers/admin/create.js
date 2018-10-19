@@ -33,6 +33,8 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
+    sails.log("admin/add");
+
     var newAdmin = await Admin.create({
       email: inputs.email,
       password: inputs.password
