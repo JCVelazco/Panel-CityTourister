@@ -17,6 +17,7 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
+      unique: true,
     },
     password: {
       description: '',
@@ -48,13 +49,14 @@ module.exports = {
     var newUser = await User.create({
       name: inputs.name,
       email: inputs.email,
-      birthdate: inputs.birthdate,
       password: inputs.password,
-      postal_code: inputs.postal_code,
       phone_number: inputs.phone_number
     }).fetch();
 
-    return newUser;
+    if(!newUser) return exits.serverError({info: 'Internal server error'});
+
+    return exits.success({info: 'New user added',
+                          id: newUser.id});
 
   }
 
