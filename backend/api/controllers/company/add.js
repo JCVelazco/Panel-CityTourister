@@ -66,7 +66,7 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    sails.log("company/add");
+    sails.log.info("company/add");
 
     var newCompany = await Company.create({
       name: inputs.name,
@@ -78,10 +78,14 @@ module.exports = {
       iva: inputs.iva
     }).fetch();
 
-    if(!newCompany) return exits.serverError({info: 'Internal server error'});
+    if(!newCompany) return exits.serverError({
+      info: 'Internal server error'
+    });
 
-    return exits.success({info: 'New company added',
-                          id: newCompany.id});
+    return exits.success({
+      info: 'New company added',
+      id: newCompany.id
+    });
 
   }
 
