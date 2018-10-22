@@ -34,10 +34,12 @@ module.exports = {
 
   exits: {
     success: {
-      message: 'User found!'
+      statusCode: 200,
+      description: 'New user was added'
     },
-    notFound: {
-      message: 'User not found...'
+    serverError: {
+      statusCode: 500,
+      description: 'Admin could not be added'
     }
   },
 

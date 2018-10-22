@@ -22,42 +22,37 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      allowNull: false
     },
 
     full_name: {
       type: 'string',
       required: true,
-      allowNull: false
+      unique: true
     },
 
     phone_number: {
-      type: 'number',
-      required: false,
+      type: 'string',
       allowNull: true
     },
 
     address: {
       type: 'string',
-      required: true,
-      allowNull: false
+      allowNull: true
     },
 
     postal_code: {
-      type: 'number',
-      required: false, 
+      type: 'string',
       allowNull: true
     },
 
     rfc: {
       type: 'string',
       required: true,
-      allowNull: false
     },
 
     ieps: {
       type: 'number',
-      required: false
+      allowNull: true
     },
 
     iva: {
@@ -73,10 +68,11 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    /*
-    location_id: {
-      model: 'location'
-    }*/
+    
+    purchases: {
+      model: 'purchase',
+      via: 'company_id',
+    }
 
   },
 
