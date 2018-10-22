@@ -7,6 +7,10 @@
 
 module.exports = {
 
+  customToJSON: function(){
+    return _.omit(this, ['password']);
+  },
+
   attributes: {
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
@@ -24,7 +28,8 @@ module.exports = {
     },
     password: {
       type: 'string',
-      required: true
+      required: true,
+      encrypt: true
     },
     phone_number: {
       type: 'string',
@@ -34,7 +39,6 @@ module.exports = {
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗

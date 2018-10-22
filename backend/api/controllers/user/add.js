@@ -39,26 +39,34 @@ module.exports = {
     },
     serverError: {
       statusCode: 500,
-      description: 'Admin could not be added'
+      description: 'User could not be added'
     }
   },
 
 
   fn: async function (inputs, exits) {
 
-    sails.log("users/add");
+    sails.log.info("users/add");
 
     var newUser = await User.create({
       name: inputs.name,
       email: inputs.email,
       password: inputs.password,
       phone_number: inputs.phone_number
-    }).fetch();
+    })
+    .intercept('E_UNIQUE', ()=>{
+      return new Error('Email already in use');
+    })
+    .fetch();
 
-    if(!newUser) return exits.serverError({info: 'Internal server error'});
+    if(!newUser) return exits.serverError({
+      info: 'Internal server error'
+    });
 
-    return exits.success({info: 'New user added',
-                          id: newUser.id});
+    return exits.success({
+      info: 'New user added',
+      id: newUser.id
+    });
 
   }
 

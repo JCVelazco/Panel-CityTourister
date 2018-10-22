@@ -41,7 +41,11 @@ module.exports = {
     var newAdmin = await Admin.create({
       email: inputs.email,
       password: inputs.password
-    }).fetch();
+    })
+    .intercept('E_UNIQUE', ()=>{
+      return new Error('Email already in use');
+    })
+    .fetch();
 
     if(!newAdmin) return exits.serverError({
       info: 'Internal server error'
