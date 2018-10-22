@@ -18,20 +18,10 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    birthdate: {
-      description: '',
-      type: 'string',
-      allowNull: true
-    },
     password: {
       description: '',
       type: 'string',
       required: true
-    },
-    postal_code: {
-      description: '',
-      type: 'string',
-      allowNull: true
     },
     phone_number: {
       description: '',

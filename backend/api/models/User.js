@@ -13,12 +13,6 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-
-    id: {
-      type: 'number',
-      columnName: 'user_id',
-      autoIncrement: true
-    },
     name: {
       type: 'string',
       required: true,
@@ -28,18 +22,9 @@ module.exports = {
       required: true,
       unique: true
     },
-    birthdate: {
-      type: 'string',
-      allowNull: true
-    },
     password: {
       type: 'string',
-      required: true,
-      encrypt: true
-    },
-    postal_code: {
-      type: 'string',
-      allowNull: true
+      required: true
     },
     phone_number: {
       type: 'string',
