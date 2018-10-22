@@ -39,7 +39,7 @@ module.exports = {
     },
     serverError: {
       statusCode: 500,
-      description: 'Admin could not be added'
+      description: 'User could not be added'
     }
   },
 
@@ -54,7 +54,9 @@ module.exports = {
       password: inputs.password,
       phone_number: inputs.phone_number
     })
-    .intercept()
+    .intercept('E_UNIQUE', ()=>{
+      return new Error('Email already in use');
+    })
     .fetch();
 
     if(!newUser) return exits.serverError({
