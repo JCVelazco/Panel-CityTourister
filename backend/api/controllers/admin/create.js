@@ -11,13 +11,13 @@ module.exports = {
     email: {
       description: '',
       type: 'string',
-      required: true
+      required: true,
+      unique: true,
     },
     password: {
       description: '',
       type: 'string',
       required: true,
-      unique: true,
     }
   },
 
