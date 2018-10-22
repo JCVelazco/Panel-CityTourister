@@ -23,24 +23,33 @@ module.exports = {
 
   exits: {
     success: {
-      message: 'User found!'
+      statusCode: 200,
+      description: 'New admin was added'
     },
-    notFound: {
-      message: 'User not found...'
+    serverError: {
+      statusCode: 500,
+      description: 'Admin could not be added'
     }
   },
 
 
   fn: async function (inputs, exits) {
 
-    sails.log("admin/add");
+    sails.log.info("admin/create");
 
     var newAdmin = await Admin.create({
       email: inputs.email,
       password: inputs.password
     }).fetch();
 
-    return newAdmin;
+    if(!newAdmin) return exits.serverError({
+      info: 'Internal server error'
+    });
+
+    return exits.success({
+      info: 'New adming added',
+      id: newAdmin.id
+    });
 
   }
 

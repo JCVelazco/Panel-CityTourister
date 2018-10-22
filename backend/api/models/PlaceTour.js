@@ -15,7 +15,8 @@ module.exports = {
     
     id: {
       type: 'number',
-      columnName: 'place_tour_id'
+      columnName: 'place_tour_id',
+      autoIncrement: true
     },
 
 

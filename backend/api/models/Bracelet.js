@@ -15,7 +15,8 @@ module.exports = {
 
     id: {
       type: 'number',
-      columnName: 'bracelet_id'
+      columnName: 'bracelet_id',
+      autoIncrement: true
     },
 
     active_at: {

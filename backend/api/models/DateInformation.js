@@ -12,6 +12,7 @@ module.exports = {
     id: {
       type: 'number',
       columnName: 'date_information_id',
+      autoIncrement: true
     },
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

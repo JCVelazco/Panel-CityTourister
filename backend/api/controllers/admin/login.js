@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Login',
+  friendlyName: 'AdminLogin',
 
 
-  description: 'Login admin.',
+  description: 'Admin login',
 
 
   inputs: {
@@ -23,31 +23,41 @@ module.exports = {
 
   exits: {
     success: {
-      message: 'User found!'
+      statusCode: 200,
+      description: 'Admin was found'
     },
     notFound: {
-      message: 'User not found...'
+      statusCode: 500,
+      description: 'Admin not found...'
     },
     incorrectPassword: {
-      message: 'Wrong password...'
+      statusCode: 500,
+      description: 'Wrong password...'
     }
   },
 
 
   fn: async function (inputs, exits) {
 
-    sails.log("admin/login");
+    sails.log.info("admin/login");
 
     var admin = await Admin.findOne({
       email: inputs.email
     }).decrypt();
 
-    if(!admin) return exits.notFound();
+    if(!admin) return exits.notFound({
+      info: 'User was not found'
+    });
 
     if(inputs.password == admin.password)
-      return exits.success({id: admin.id});
+      return exits.success({
+        info: 'Login success',
+        id: admin.id
+      });
     
-    return exits.incorrectPassword.message;
+    return exits.incorrectPassword({
+      info: 'Incorrect password...'
+    });
 
   }
 

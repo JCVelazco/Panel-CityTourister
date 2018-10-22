@@ -11,7 +11,8 @@ module.exports = {
 
     id: {
       type: 'number',
-      columnName: 'bus_id'
+      columnName: 'bus_id',
+      autoIncrement: true
     },
 
     availability: {

@@ -12,7 +12,7 @@ module.exports = {
     id: {
       type: 'number',
       columnName: 'stop_id',
-      required: true,
+      autoIncrement: true
     },
 
     stop_name: {
