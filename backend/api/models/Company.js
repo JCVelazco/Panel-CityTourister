@@ -70,7 +70,7 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     
     purchases: {
-      model: 'purchase',
+      collection: 'purchase',
       via: 'company_id',
     }
 

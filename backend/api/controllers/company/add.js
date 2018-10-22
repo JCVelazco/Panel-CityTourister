@@ -80,7 +80,7 @@ module.exports = {
 
     if(!newCompany) return exits.serverError({info: 'Internal server error'});
 
-    return eits.success({info: 'New company added',
+    return exits.success({info: 'New company added',
                           id: newCompany.id});
 
   }
