@@ -16,7 +16,8 @@ module.exports = {
     password: {
       description: '',
       type: 'string',
-      required: true
+      required: true,
+      unique: true,
     }
   },
 
@@ -47,7 +48,7 @@ module.exports = {
     });
 
     return exits.success({
-      info: 'New adming added',
+      info: 'New admin added',
       id: newAdmin.id
     });
 

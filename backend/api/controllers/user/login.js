@@ -46,7 +46,7 @@ module.exports = {
     }).decrypt();
 
     if(!user) return exits.notFound({
-      info: 'User not found'
+      info: 'User was not found'
     });
 
     if(inputs.password == user.password)
