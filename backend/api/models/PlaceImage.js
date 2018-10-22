@@ -1,5 +1,5 @@
 /**
- * Ticket.js
+ * PlaceImage.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -15,14 +15,10 @@ module.exports = {
 
     id: {
       type: 'number',
-      autoIncrement: true,
-      columnName: 'price_id'
+      columnName: 'place_image_id'
     },
 
-    name: {
-      type: 'string',
-    },
-    
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -31,7 +27,11 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
+/*
+    place_id: {
+      model: place
+    }
+*/
   },
 
 };

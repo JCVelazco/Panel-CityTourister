@@ -1,5 +1,5 @@
 /**
- * Ticket.js
+ * Bus.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -9,20 +9,21 @@ module.exports = {
 
   attributes: {
 
+    id: {
+      type: 'number',
+      columnName: 'bus_id'
+    },
+
+    availability: {
+      type: 'number',
+      required: true,
+    },
+
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    id: {
-      type: 'number',
-      autoIncrement: true,
-      columnName: 'price_id'
-    },
 
-    name: {
-      type: 'string',
-    },
-    
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -31,6 +32,14 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    /*
+    tour_id: {
+      model: tour
+    },
+
+    mural_id: {
+      model: mural
+    }*/
 
   },
 

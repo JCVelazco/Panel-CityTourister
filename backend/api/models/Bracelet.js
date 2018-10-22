@@ -1,5 +1,5 @@
 /**
- * Ticket.js
+ * Bracelet.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -15,14 +15,19 @@ module.exports = {
 
     id: {
       type: 'number',
-      autoIncrement: true,
-      columnName: 'price_id'
+      columnName: 'bracelet_id'
     },
 
-    name: {
-      type: 'string',
+    active_at: {
+      type: 'number',
+      required: true
     },
-    
+
+    status: {
+      type: 'number',
+      required: true
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -31,6 +36,13 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    /*ticket_id: {
+      model: ticket,
+    },
+
+    tour_id: {
+      modle: tour,
+    },*/
 
   },
 
