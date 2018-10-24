@@ -49,11 +49,13 @@ module.exports = {
       info: 'User was not found'
     });
 
-    if(inputs.password == user.password)
+    if(inputs.password == user.password){
+      sails.session.userId = admin.id;
       return exits.success({
         info: 'Login success',
         id: user.id
       });
+    }
     
     return exits.incorrectPassword({
       info: 'Incorrect password...'
