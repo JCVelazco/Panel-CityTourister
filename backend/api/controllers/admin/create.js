@@ -43,6 +43,7 @@ module.exports = {
       password: inputs.password
     })
     .intercept('E_UNIQUE', ()=>{
+      sails.log.error('Email already in use');
       return new Error('Email already in use');
     })
     .fetch();
