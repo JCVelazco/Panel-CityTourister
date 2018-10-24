@@ -17,6 +17,11 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+    id: {
+      type: 'number',
+      autoIncrement: true,
+      columnName: 'user_id'
+    },
     name: {
       type: 'string',
       required: true,
