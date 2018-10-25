@@ -35,7 +35,7 @@ module.exports = {
         type: 'string',
         required: true,
         allowNull: false
-      }
+      },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -45,6 +45,28 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    
+    prices: {
+      collection: 'price',
+      via: 'tour_id',
+    },
+    bracelets: {
+      collection: 'bracelet',
+      via: 'tour_id'
+    },
+    buses: {
+      collection: 'bus',
+      via: 'tout_id'
+    },
+    dateInformations: {
+      collection: 'dateinformation',
+      via: 'tours'
+    },
+    placeTours: {
+      collection: 'placetour',
+      via: 'tour_id'
+    }
+
 
   },
 

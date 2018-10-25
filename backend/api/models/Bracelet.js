@@ -37,13 +37,14 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    /*ticket_id: {
-      model: ticket,
+    /*manual 1-1*/
+    ticket_id: {
+      model: 'ticket'
     },
-
     tour_id: {
-      modle: tour,
-    },*/
+      model: 'tour',
+      required: true
+    }
 
   },
 

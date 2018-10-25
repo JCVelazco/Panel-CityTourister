@@ -28,14 +28,16 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    /*
-    date_id: {
-      model: dateinterval
+    tours: {
+      collection: 'tour',
+      via: 'dateInformations'
     },
-
+    date_id: {
+      model: 'dateinterval'
+    },
     hour_id: {
-      model: hour
-    }*/
+      model: 'hourinterval'
+    }
 
   },
 

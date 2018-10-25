@@ -32,16 +32,17 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    /*
+    ticket_type_id: {
+      model: 'tickettype',
+      required: true
+    },
     tour_id: {
       model: 'tour',
       required: true
     },
-
-    ticket_type_id: {
-      model: 'tickettype',
-      required: true
-    }*/
+    ticket_id: {
+      model: 'ticket',
+    }
   
   },
 

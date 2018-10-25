@@ -46,6 +46,10 @@ module.exports = {
       model: 'company',
       required: true
     },
+    tickets: {
+      collection: 'ticket',
+      via: 'purchase_id'
+    }
 
   },
 

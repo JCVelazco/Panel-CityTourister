@@ -37,19 +37,30 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-/*
-    location: {
-      model: location
-    },
-
     place_type_id: {
-      model: placetye
+      model: 'placetypes',
+      required: true
+    },
+    /*manual 1-1*/
+    location_id: {
+      model: 'location',
+      required: true
+    },
+    /*manual 1-1*/
+    narrative_id: {
+      model: 'narrative',
+      required: true,
     },
 
-    narrative_id: {
-      model: narrative
+    imagesOfPlaces: {
+      collection: 'imageofplace',
+      via: 'places'
+    },
+
+    placeTours: {
+      collection: 'placetour',
+      via: 'place_id'
     }
-*/
   },
 
 };
