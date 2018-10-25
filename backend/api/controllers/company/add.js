@@ -37,12 +37,12 @@ module.exports = {
     rfc: {
       description: '',
       type: 'string',
-      required: true
+      allowNull: true
     },
     ieps: {
       description: '',
       type: 'number',
-      allowNull: true,
+      required: true,
     },
     iva: {
       description: '',
@@ -72,6 +72,7 @@ module.exports = {
       name: inputs.name,
       full_name: inputs.full_name,
       phone_number: inputs.phone_number,
+      postal_code: inputs.postal_code,
       address: inputs.address,
       rfc:  inputs.rfc,
       ieps: inputs.ieps,

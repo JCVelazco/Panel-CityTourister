@@ -15,14 +15,14 @@ module.exports = {
 
     latitude: {
       type: 'number',
-      required: false,
-      allowNull: true
+      required: true,
+      allowNull: false,
     },
 
     longitude: {
       type: 'number',
-      required: false,
-      allowNull: true
+      required: true,
+      allowNull: false
     },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

@@ -50,7 +50,7 @@ module.exports = {
     });
 
     if(inputs.password == user.password){
-      sails.session.userId = admin.id;
+      sails.session.userId = user.id;
       return exits.success({
         info: 'Login success',
         id: user.id

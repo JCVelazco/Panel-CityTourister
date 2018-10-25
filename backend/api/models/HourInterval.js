@@ -45,7 +45,7 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     dateInformations: {
-      collection: 'dateinformations',
+      collection: 'dateinformation',
       via: 'hour_id'
     }
 
