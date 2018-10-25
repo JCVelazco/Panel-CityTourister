@@ -15,17 +15,15 @@ module.exports = {
 
     latitude: {
       type: 'number',
-      required: false,
-      allowNull: true
+      required: true,
+      allowNull: false,
     },
 
     longitude: {
       type: 'number',
-      required: false,
-      allowNull: true
-    }
-
-
+      required: true,
+      allowNull: false
+    },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -34,7 +32,11 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
+    /*manual 1-1*/
+    place_id: {
+      model: 'place',
+      unique: true
+    },
   },
 
 };

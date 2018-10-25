@@ -47,12 +47,12 @@ module.exports = {
 
     rfc: {
       type: 'string',
-      required: true,
+      allowNull: true,
     },
 
     ieps: {
       type: 'number',
-      allowNull: true
+      required: true
     },
 
     iva: {

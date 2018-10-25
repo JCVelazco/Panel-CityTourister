@@ -33,14 +33,15 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    /*
-    tour_id: {
-      model: tour
-    },
-
-    mural_id: {
-      model: mural
-    }*/
+    /*manual 1-1*/
+      mural_id: {
+        model: 'mural',
+        required: true
+      },
+      tour_id: {
+        model: 'tour',
+        required: true
+      }
 
   },
 

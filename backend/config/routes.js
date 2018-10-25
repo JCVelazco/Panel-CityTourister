@@ -50,6 +50,8 @@ module.exports.routes = {
   'post /user/login' : 'user/login',
   'post /user/add' : 'user/add',
 
+  'post /company/add' : 'company/add',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
