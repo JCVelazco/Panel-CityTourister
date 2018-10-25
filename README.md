@@ -1,2 +1,2 @@
 # Semestrei
-Proyecto del Semestre i, en dicho repositorio se dividirá en tres main branches las cuales serán: iOS, Android, Panel.
+Proyecto del Semestre i, en dicho repositorio se trabajara la parte de la implementación de la API.
