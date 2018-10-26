@@ -34,11 +34,11 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     ticket_type_id: {
       model: 'tickettype',
-      required: true
+      required: true,
     },
     tour_id: {
       model: 'tour',
-      required: true
+      required: true,
     },
     ticket_id: {
       model: 'ticket',

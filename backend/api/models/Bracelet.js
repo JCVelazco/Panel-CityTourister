@@ -23,7 +23,7 @@ module.exports = {
       type: 'number',
       required: true
     },
-
+    //1 or 0 active/inactive
     status: {
       type: 'number',
       required: true
@@ -37,15 +37,15 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    /*manual 1-1*/
+    
     ticket_id: {
-      model: 'ticket'
+      model: 'ticket',
+      unique: true
     },
     tour_id: {
       model: 'tour',
-      required: true
+      required: true,
     }
-
   },
 
 };

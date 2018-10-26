@@ -41,15 +41,15 @@ module.exports = {
       model: 'placetypes',
       required: true
     },
-    /*manual 1-1*/
+    
     location_id: {
-      model: 'location',
-      required: true
+      collection: 'location',
+      via: 'place_id'
     },
-    /*manual 1-1*/
+    
     narrative_id: {
-      model: 'narrative',
-      required: true,
+      collection: 'narrative',
+      via: 'place_id',
     },
 
     imagesOfPlaces: {

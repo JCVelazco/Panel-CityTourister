@@ -16,7 +16,7 @@ module.exports = {
     id: {
       type: 'number',
       autoIncrement: true,
-      columnName: 'price_id'
+      columnName: 'ticket_id'
     },
 
     name: {
@@ -39,9 +39,9 @@ module.exports = {
       collection: 'price',
       via: 'ticket_id',
     },
-    /*manual 1-1*/
     bracelet_id: {
-      model: 'bracelet'
+      collection: 'bracelet',
+      via: 'ticket_id'
     }
 
   },
