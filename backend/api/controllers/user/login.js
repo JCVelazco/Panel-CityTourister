@@ -58,7 +58,7 @@ module.exports = {
     }
     
     return exits.incorrectPassword({
-      info: 'Incorrect password...'
+      info: 'Incorrect password'
     });
 
   }
