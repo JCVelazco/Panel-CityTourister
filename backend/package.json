@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git://github.coom/JCVelazco/backend.git"
   },
-  "author": "jc",
+  "authors": "jc and jesus",
   "license": "",
   "engines": {
     "node": ">=10.12"

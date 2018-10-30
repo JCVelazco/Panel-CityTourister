@@ -18,12 +18,7 @@ before(function(done) {
             datastore: 'postgresTesting',
             migrate: 'drop'
         },
-        /*model: {
-            datastore: 'testing',
-            migrate: 'drop'
-        },*/
-        
-        
+
     }, function(err) {
         if (err) { return done(err); }
         
