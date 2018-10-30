@@ -21,7 +21,7 @@ module.exports = {
 
     priceAmount: {
       type: 'number',
-      autoIncrement: true
+      required: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
