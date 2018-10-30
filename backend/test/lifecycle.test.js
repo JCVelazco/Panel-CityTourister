@@ -14,7 +14,15 @@ before(function(done) {
         // and disable all logs except errors and warnings:
         hooks: { grunt: false },
         log: { level: 'warn' },
-        // model: { datastore: 'postgresTesting', migrate: 'drop'}
+        models: {
+            datastore: 'postgresTesting',
+            migrate: 'drop'
+        },
+        /*model: {
+            datastore: 'testing',
+            migrate: 'drop'
+        },*/
+        
         
     }, function(err) {
         if (err) { return done(err); }
