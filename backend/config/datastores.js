@@ -53,5 +53,10 @@ module.exports.datastores = {
 
   },
 
+  postgresTesting: {
+    adapter: 'sails-postgresql',
+    url: 'postgres://verde1:aguacate1@35.236.11.239:5432/testing-db',
+  }
+
 
 };
