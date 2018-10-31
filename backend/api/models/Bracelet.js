@@ -20,7 +20,7 @@ module.exports = {
     },
 
     active_at: {
-      type: 'number',
+      type: 'string',
       required: true
     },
     //1 or 0 active/inactive
