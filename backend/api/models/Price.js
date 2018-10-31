@@ -45,7 +45,7 @@ module.exports = {
       via: 'price_id'
     }
   
-  },
+  },g
 
 };
 
