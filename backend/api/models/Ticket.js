@@ -35,9 +35,8 @@ module.exports = {
       model: 'purchase',
       required: true
     },
-    prices: {
-      collection: 'price',
-      via: 'ticket_id',
+    price_id: {
+      model: 'price'
     },
     bracelet_id: {
       collection: 'bracelet',

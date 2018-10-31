@@ -38,7 +38,7 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     place_type_id: {
-      model: 'placetypes',
+      model: 'placetype',
       required: true
     },
     

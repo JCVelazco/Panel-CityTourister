@@ -40,8 +40,9 @@ module.exports = {
       model: 'tour',
       required: true,
     },
-    ticket_id: {
-      model: 'ticket',
+    tickets: {
+      collection: 'ticket',
+      via: 'price_id'
     }
   
   },

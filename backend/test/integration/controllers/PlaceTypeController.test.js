@@ -1,12 +1,12 @@
 var supertest = require('supertest');
 
-describe('TicketTypeController', function() {
+describe('PlaceTypeController', function() {
   
   describe('#add()', function(){
-    it('should return a 200, of add tickettype success', function (done){
+    it('should return a 200, of add placetype success', function (done){
       supertest(sails.hooks.http.app)
-      .post('/tickettype')
-      .send({ name: 'TicketType Test'})
+      .post('/placetype')
+      .send({ name: 'Test Ticket Place'})
       .expect(200).end(function(err, res){
         if(err) throw err;
         done();
@@ -16,10 +16,10 @@ describe('TicketTypeController', function() {
   
   
   describe('#patch()', function() {
-    it('should return a 200, of patch tickettype success', function (done) {
+    it('should return a 200, of patch placetype success', function (done) {
       supertest(sails.hooks.http.app)
-      .patch('/tickettype/1')
-      .send({ name: 'Ticket Test Patch'})
+      .patch('/placetype/1')
+      .send({ name: 'Test Ticket Place2'})
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
@@ -28,10 +28,10 @@ describe('TicketTypeController', function() {
   });
   
   describe('#put()', function() {
-    it('should return a 200, of put tickettype success', function (done) {
+    it('should return a 200, of put placetype success', function (done) {
       supertest(sails.hooks.http.app)
-      .put('/tickettype/1')
-      .send({name: 'Puebla Test'})
+      .put('/placetype/1')
+      .send({ name: 'Test Ticket Place'})
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
@@ -40,9 +40,9 @@ describe('TicketTypeController', function() {
   });
   
   describe('#get()', function() {
-    it('should return a 200, of get tickettype success', function (done) {
+    it('should return a 200, of get placetype success', function (done) {
       supertest(sails.hooks.http.app)
-      .get('/tickettype/1')
+      .get('/placetype/1')
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
@@ -51,9 +51,9 @@ describe('TicketTypeController', function() {
   });
   
   describe('#delete()', function() {
-    it('should return a 200, of delete tickettype success', function (done) {
+    it('should return a 200, of delete placetype success', function (done) {
       supertest(sails.hooks.http.app)
-      .delete('/tickettype/1')
+      .delete('/placetype/1')
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
