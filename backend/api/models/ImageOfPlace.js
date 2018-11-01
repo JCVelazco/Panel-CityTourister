@@ -21,8 +21,7 @@ module.exports = {
 
     image_url: {
       type: 'string',
-      unique: true,
-      required: true
+      unique: true
     },
 
     description: {
