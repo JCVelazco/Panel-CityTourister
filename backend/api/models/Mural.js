@@ -35,6 +35,11 @@ module.exports = {
       required: true
     },
 
+    imageMural: {
+      type: 'string',
+      allowNull: true
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

@@ -28,6 +28,10 @@ module.exports = {
       type: 'number',
       required: true
     },
+    folio: {
+      type: 'string',
+      required: true
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
