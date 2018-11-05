@@ -52,6 +52,8 @@ module.exports.routes = {
 
   'post /company/add' : 'company/add',
 
+  'post /image/upload' : 'images/upload',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
