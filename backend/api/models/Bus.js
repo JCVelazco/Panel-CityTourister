@@ -16,7 +16,7 @@ module.exports = {
     },
 
     availability: {
-      type: 'number',
+      type: 'boolean',
       required: true,
     },
 
