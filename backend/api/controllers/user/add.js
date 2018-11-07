@@ -12,7 +12,6 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
-      isString: true,
       maxLength: 50,
       minLength: 3
     },
