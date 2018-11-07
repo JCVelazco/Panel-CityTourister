@@ -54,7 +54,7 @@ module.exports = {
     
     sails.log.info("mural/add");
         
-    var newMural = await mural.create({
+    var newMural = await Mural.create({
       title: inputs.title,
       author_name: inputs.author_name,
       description: inputs.description,

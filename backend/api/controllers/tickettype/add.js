@@ -33,7 +33,7 @@ module.exports = {
     
     sails.log.info("tickettype/add");
         
-    var newTicketT = await tickettype.create({
+    var newTicketT = await Tickettype.create({
       name: inputs.name,
     })
     .fetch();

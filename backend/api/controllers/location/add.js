@@ -37,7 +37,7 @@ module.exports = {
     
     sails.log.info("location/add");
     
-    var newLocation = await location.create({
+    var newLocation = await Location.create({
       latitude: inputs.latitude,
       longitude: inputs.longitude
     })
