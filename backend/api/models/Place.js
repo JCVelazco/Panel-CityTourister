@@ -18,11 +18,13 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
+      allowNull: false
     },
 
     description: {
       type: 'string',
-      required: true
+      required: true,
+      allowNull: false
     },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

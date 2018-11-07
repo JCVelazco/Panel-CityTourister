@@ -22,7 +22,8 @@ module.exports = {
     audio_url: {
       type: 'string',
       unique: true,
-      required: true
+      required: true,
+      allowNull: false
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

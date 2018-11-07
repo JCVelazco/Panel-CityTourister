@@ -20,6 +20,7 @@ module.exports = {
     email: {
       type: 'string',
       required: true,
+      allowNull: false,
       isEmail: true,
       unique: true
     },
@@ -27,7 +28,20 @@ module.exports = {
     password: {
       type: 'string',
       required: true,
-      encrypt: true
+      encrypt: true,
+      allowNull: false
+    },
+
+    username: {
+      type: 'string',
+      required: true,
+      allowNull: false
+    }, 
+
+    connection_time: {
+      type: 'string',
+      required: false,
+      allowNull: true
     }
 
 

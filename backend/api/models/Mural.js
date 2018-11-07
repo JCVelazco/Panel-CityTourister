@@ -27,12 +27,14 @@ module.exports = {
 
     author_name: {
       type: 'string',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     description: {
       type: 'string',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     imageMural: {

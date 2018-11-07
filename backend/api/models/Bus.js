@@ -18,11 +18,13 @@ module.exports = {
     availability: {
       type: 'boolean',
       required: true,
+      allowNull: false
     },
 
     numBus: {
       type: 'string',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

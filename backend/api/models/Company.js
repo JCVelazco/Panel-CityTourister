@@ -22,17 +22,19 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
+      allowNull: false
     },
 
     full_name: {
       type: 'string',
       required: true,
-      unique: true
+      unique: true,
+      allowNull: false
     },
 
     phone_number: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
     },
 
     address: {
@@ -52,12 +54,14 @@ module.exports = {
 
     ieps: {
       type: 'number',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     iva: {
       type: 'number',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

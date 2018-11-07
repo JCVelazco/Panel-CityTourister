@@ -21,7 +21,8 @@ module.exports = {
 
     priceAmount: {
       type: 'number',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

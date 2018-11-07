@@ -21,16 +21,19 @@ module.exports = {
 
     active_at: {
       type: 'string',
-      required: true
+      required: true,
+      allowNull: false
     },
     //1 or 0 active/inactive
     status: {
       type: 'number',
-      required: true
+      required: true,
+      allowNull: false
     },
     folio: {
       type: 'string',
-      required: true
+      required: true,
+      allowNull: false
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

@@ -21,7 +21,34 @@ module.exports = {
 
     name: {
       type: 'string',
+      required: true,
+      allowNull: false
     },
+
+    age: {
+      type: 'number',
+      required: true,
+      allowNull: false
+    },
+    date_tour: {
+      type: 'string',
+      required: true,
+      allowNull: false
+    },
+
+    qr_code: {
+      type: 'string',
+      required: true,
+      allowNull: false,
+      unique: true
+    },
+
+    sub_total: {
+      type: 'number',
+      required: true, 
+      allowNull: false
+    }
+
     
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

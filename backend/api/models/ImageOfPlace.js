@@ -21,11 +21,14 @@ module.exports = {
 
     image_url: {
       type: 'string',
-      unique: true
+      unique: true,
+      allowNull: false,
+      required: true
     },
 
     description: {
       type: 'string',
+      allowNull: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
