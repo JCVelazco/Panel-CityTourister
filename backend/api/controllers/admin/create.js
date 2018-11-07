@@ -1,12 +1,12 @@
 module.exports = {
-
-
+  
+  
   friendlyName: 'Create',
-
-
+  
+  
   description: 'Create admin.',
-
-
+  
+  
   inputs: {
     email: {
       description: '',
@@ -19,13 +19,18 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
-      maxLength: 14,
-      minLength: 6
+      custom: function(value) {
+        // • be a string
+        // • be at least 6 characters long
+        // • contain at least one number
+        // • contain at least one letter
+        return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
+      }
     },
     username: {
       description:'',
       type: 'string',
-      required: true
+      required: true,
     },
     connection_time: {
       description: '',
@@ -33,8 +38,8 @@ module.exports = {
       allowNull: true
     }
   },
-
-
+  
+  
   exits: {
     success: {
       statusCode: 200,
@@ -45,12 +50,12 @@ module.exports = {
       description: 'Admin could not be added'
     }
   },
-
-
+  
+  
   fn: async function (inputs, exits) {
-
+    
     sails.log.info("admin/create");
-
+    
     var newAdmin = await Admin.create({
       email: inputs.email,
       password: inputs.password,
@@ -63,17 +68,17 @@ module.exports = {
       });
     })
     .fetch();
-
+    
     if(!newAdmin) return exits.serverError({
       info: 'Internal server error'
     });
-
+    
     return exits.success({
       info: 'New admin added',
       id: newAdmin.id
     });
-
+    
   }
-
-
+  
+  
 };

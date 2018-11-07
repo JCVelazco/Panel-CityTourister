@@ -1,12 +1,12 @@
 module.exports = {
-
-
+  
+  
   friendlyName: 'Add',
-
-
+  
+  
   description: 'Add user.',
-
-
+  
+  
   inputs: {
     name: {
       description: '',
@@ -26,8 +26,13 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
-      minLength: 6,
-      maxLength: 14
+      custom: function(value) {
+        // • be a string
+        // • be at least 6 characters long
+        // • contain at least one number
+        // • contain at least one letter
+        return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
+      }
     },
     phone_number: {
       description: '',
@@ -37,8 +42,8 @@ module.exports = {
       maxLength: 10
     },
   },
-
-
+  
+  
   exits: {
     success: {
       statusCode: 200,
@@ -49,12 +54,12 @@ module.exports = {
       description: 'User could not be added'
     }
   },
-
-
+  
+  
   fn: async function (inputs, exits) {
-
+    
     sails.log.info("users/add");
-
+    
     var newUser = await User.create({
       name: inputs.name,
       email: inputs.email,
@@ -67,17 +72,17 @@ module.exports = {
       });
     })
     .fetch();
-
+    
     if(!newUser) return exits.serverError({
       info: 'Internal server error'
     });
-
+    
     return exits.success({
       info: 'New user added',
       id: newUser.id
     });
-
+    
   }
-
-
+  
+  
 };
