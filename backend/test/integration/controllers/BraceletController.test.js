@@ -6,7 +6,7 @@ describe('BraceletController', function() {
     it('should return a 200, of add bracelet success', function (done){
       supertest(sails.hooks.http.app)
       .post('/bracelet')
-      .send({ active_at: '05/05/2018', status: '0', tour_id:'1'})
+      .send({ active_at: '05/05/2018', status: '0', tour_id:'1', folio: '5555'})
       .expect(200).end(function(err, res){
         if(err) throw err;
         done();
@@ -31,7 +31,7 @@ describe('BraceletController', function() {
     it('should return a 200, of put bracelet success', function (done) {
       supertest(sails.hooks.http.app)
       .put('/bracelet/1')
-      .send({ active_at: '05/06/2018', status: '0', tour_id: '2'})
+      .send({ active_at: '05/06/2018', status: '0', tour_id: '2', folio: '5758'})
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
