@@ -16,6 +16,17 @@ module.exports = {
       minLength: 3, 
     },
   },
+
+  exits: {
+    success: {
+      statusCode: 200,
+      description: 'New tickettype was added'
+    },
+    serverError: {
+      statusCode: 500,
+      description: 'tikcetType could not be added'
+    }
+  },
   
   
   fn: async function (inputs, exits) {

@@ -36,6 +36,18 @@ module.exports = {
       isURL: true
     },
   },
+
+  exits: {
+    success: {
+      statusCode: 200,
+      description: 'New mural was added'
+    },
+    serverError: {
+      statusCode: 500,
+      description: 'Mural could not be added'
+    }
+  },
+  
   
   
   fn: async function (inputs, exits) {
