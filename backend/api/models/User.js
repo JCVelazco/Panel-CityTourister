@@ -25,18 +25,15 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      allowNull: false
     },
     email: {
       type: 'string',
       required: true,
-      allowNull: false,
       unique: true
     },
     password: {
       type: 'string',
       required: true,
-      allowNull: false,
       encrypt: true
     },
     phone_number: {

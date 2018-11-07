@@ -1,61 +1,69 @@
-/*module.exports = {
-
-
+module.exports = {
+  
+  
   friendlyName: 'Add',
-
-
-  description: 'Add user.',
-
-
+  
+  
+  description: 'Add company.',
+  
+  
   inputs: {
     name: {
       type: 'string',
       required: true,
+      maxLength: 30
     },
-
+    
     full_name: {
       type: 'string',
       required: true,
-      unique: true
+      unique: true,
+      minLength: 3,
+      maxLength: 50
     },
-
+    
     phone_number: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      maxLength: 10,
+      minLength: 10
     },
-
+    
     address: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      minLength: 5,
+      maxLength: 70
     },
-
+    
     postal_code: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      minLength: 5,
+      maxLength: 5
     },
-
+    
     rfc: {
       type: 'string',
       allowNull: true,
+      maxLength: 13,
+      minLength: 12
     },
-
+    
     ieps: {
       type: 'number',
-      required: true
+      required: true,
+      max: 1
     },
-
+    
     iva: {
       type: 'number',
-      required: true
+      required: true,
+      max: 1
     },
-
-    purchases: {
-      collection: 'purchase',
-      via: 'company_id',
-    }
   },
-
-
+  
+  
   exits: {
     success: {
       statusCode: 200,
@@ -66,34 +74,34 @@
       description: 'Company could not be added'
     }
   },
-
-
+  
+  
   fn: async function (inputs, exits) {
-
-    sails.log.info("company/");
-
-    var newUser = await User.create({
+    
+    sails.log.info("company/add");
+        
+    var newCompany = await Company.create({
       name: inputs.name,
-      email: inputs.email,
-      password: inputs.password,
-      phone_number: inputs.phone_number
-    })
-    .intercept('E_UNIQUE', ()=>{
-      return new Error('Email already in use');
+      full_name: inputs.full_name,
+      phone_number: inputs.phone_number,
+      address: inputs.address,
+      postal_code: inputs.postal_code,
+      rfc: inputs.rfc,
+      ieps: inputs.ieps,
+      iva: inputs.iva
     })
     .fetch();
-
-    if(!newUser) return exits.serverError({
+    
+    if(!newCompany) return exits.serverError({
       info: 'Internal server error'
     });
-
+    
     return exits.success({
-      info: 'New user added',
-      id: newUser.id
+      info: 'New company added',
+      id: newCompany.id
     });
-
+    
   }
-
-
+  
+  
 };
-*/

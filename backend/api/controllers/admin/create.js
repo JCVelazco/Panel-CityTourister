@@ -13,11 +13,14 @@ module.exports = {
       type: 'string',
       required: true,
       unique: true,
+      isEmail: true
     },
     password: {
       description: '',
       type: 'string',
       required: true,
+      maxLength: 14,
+      minLength: 6
     },
     username: {
       description:'',
@@ -55,8 +58,9 @@ module.exports = {
       connection_time: inputs.connection_time
     })
     .intercept('E_UNIQUE', ()=>{
-      sails.log.error('Email already in use');
-      return new Error('Email already in use');
+      return exits.serverError({
+        info: 'Email already in use'
+      });
     })
     .fetch();
 

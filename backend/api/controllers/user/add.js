@@ -12,22 +12,30 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
+      isString: true,
+      maxLength: 50,
+      minLength: 3
     },
     email: {
       description: '',
       type: 'string',
       required: true,
       unique: true,
+      isEmail: true
     },
     password: {
       description: '',
       type: 'string',
-      required: true
+      required: true,
+      minLength: 6,
+      maxLength: 14
     },
     phone_number: {
       description: '',
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      minLength: 10,
+      maxLength: 10
     },
   },
 
@@ -55,7 +63,9 @@ module.exports = {
       phone_number: inputs.phone_number
     })
     .intercept('E_UNIQUE', ()=>{
-      return new Error('Email already in use');
+      return exits.serverError({
+        info: 'Email already in use'
+      });
     })
     .fetch();
 
