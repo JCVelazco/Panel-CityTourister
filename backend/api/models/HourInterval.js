@@ -31,9 +31,9 @@ module.exports = {
     },
 
     frequency: {
-      type: 'string',
-      required: false,
-      allowNull: true
+      type: 'number',
+      required: true,
+      allowNull: false
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

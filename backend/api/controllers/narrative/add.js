@@ -16,6 +16,17 @@ module.exports = {
       isURL: true
     },
   },
+
+  exits: {
+    success: {
+      statusCode: 200,
+      description: 'New narrative was added'
+    },
+    serverError: {
+      statusCode: 500,
+      description: 'Narrative could not be added'
+    }
+  },
   
   
   fn: async function (inputs, exits) {
