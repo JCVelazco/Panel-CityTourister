@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
 
 
   friendlyName: 'Add',
@@ -70,7 +70,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    sails.log.info("users/add");
+    sails.log.info("company/");
 
     var newUser = await User.create({
       name: inputs.name,
@@ -96,3 +96,4 @@ module.exports = {
 
 
 };
+*/

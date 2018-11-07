@@ -47,7 +47,7 @@ module.exports = {
       type: 'number',
       required: true, 
       allowNull: false
-    }
+    },
 
     
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

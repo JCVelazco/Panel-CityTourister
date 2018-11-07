@@ -18,6 +18,16 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
+    },
+    username: {
+      description:'',
+      type: 'string',
+      required: true
+    },
+    connection_time: {
+      description: '',
+      type: 'string',
+      allowNull: true
     }
   },
 
@@ -40,7 +50,9 @@ module.exports = {
 
     var newAdmin = await Admin.create({
       email: inputs.email,
-      password: inputs.password
+      password: inputs.password,
+      username: inputs.username,
+      connection_time: inputs.connection_time
     })
     .intercept('E_UNIQUE', ()=>{
       sails.log.error('Email already in use');
