@@ -9,6 +9,10 @@ module.exports = {
 
   attributes: {
 
+
+    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
+    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
+    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     id: {
       type: 'number',
       columnName: 'bus_id',
@@ -27,10 +31,6 @@ module.exports = {
       allowNull: false
     },
 
-    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
-    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
-    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -43,7 +43,8 @@ module.exports = {
 
       mural_id: {
         model: 'mural',
-        unique: true
+        unique: true,
+        required: true
       },
       tour_id: {
         model: 'tour',

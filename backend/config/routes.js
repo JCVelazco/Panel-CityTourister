@@ -45,14 +45,26 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
   'post /admin/login' : 'admin/login',
-  'post /admin/create' : 'admin/create',
-
   'post /user/login' : 'user/login',
-  'post /user/add' : 'user/add',
-
-  'post /company/add' : 'company/add',
 
   'post /image/upload' : 'images/upload',
+
+  'post /admin/create' : 'admin/create',
+
+  'post /user/add' : 'user/add',
+  'post /company/add' : 'company/add',
+  'post /bus/add' : 'bus/add',
+  'post /dateinterval/add' : 'dateinterval/add',
+  'post /hourinterval/add' : 'hourinterval/add',
+  'post /imageofplace/add' : 'imageofplace/add',
+  'post /location/add' : 'location/add',
+  'post /mural/add' : 'mural/add',
+  'post /narrative/add' : 'narrative/add',
+  'post /placetype/add' : 'placetype/add',
+  'post /tickettype/add' : 'tickettype/add',
+  'post /tour/add' : 'tour/add',
+
+  
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
