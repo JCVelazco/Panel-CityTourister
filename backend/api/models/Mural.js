@@ -28,18 +28,23 @@ module.exports = {
     author_name: {
       type: 'string',
       required: true,
-      allowNull: false
+      allowNull: false,
+      minLength: 3,
+      maxLength: 50
     },
 
     description: {
       type: 'string',
       required: true,
-      allowNull: false
+      allowNull: false,
+      minLength: 10,
+      maxLength: 200
     },
 
     imageMural: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      isURL: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
