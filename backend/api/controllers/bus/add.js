@@ -49,25 +49,16 @@ module.exports = {
     sails.log.info("Bus/add");
     
     
-    var hasTrueMural = await Mural.findOne({where: {id: inputs.mural_id}, select: ['id']});
-    var hasTrueTour = await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']});
+   // var hasTrueMural = await Mural.findOne({where: {id: inputs.mural_id}, select: ['id']});
+    //var hasTrueTour = await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']});
     
-    if(hasTrueMural == null){
-      return exits.serverError({
-        info: 'Mural not found'
-      });
-    }
-    if(hasTrueTour == null){
-      return exits.serverError({
-        info: 'Tour not found'
-      });
-    }
+
     
     var newBus = await Bus.create({
       availability: inputs.availability,
       numBus: inputs.numBus,
-      mural_id: inputs.mural_id,
-      tour_id: inputs.tour_id,
+      mural_id: (await Mural.findOne({where: {id: inputs.mural_id}, select: ['id']}) == null)?exits.serverError({info: 'Mural not found'}):inputs.mural_id,
+      tour_id: (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) == null)?exits.serverError({info: 'Tour not found'}):inputs.tour_id,
     })
     .fetch();
     
@@ -82,6 +73,7 @@ module.exports = {
     
     
   }
+
   
   
 };

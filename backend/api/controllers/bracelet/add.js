@@ -51,6 +51,20 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("Bracelet/add");
+
+    var hasTrueTicket = await Ticket.findOne({where: {id: inputs.ticket_id}, select: ['id']});
+    var hasTrueTour = await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']});
+    
+    if(hasTrueTicket == null){
+      return exits.serverError({
+        info: 'Ticket not found'
+      });
+    }
+    if(hasTrueTour == null){
+      return exits.serverError({
+        info: 'Tour not found'
+      });
+    }
     
     var newBracelet = await Bracelet.create({
       active_at: inputs.active_at,
