@@ -33,7 +33,7 @@ module.exports = {
     
     sails.log.info("tickettype/add");
         
-    var newTicketT = await TickeType.create({
+    var newTicketT = await TicketType.create({
       name: inputs.name,
     })
     .fetch();
@@ -44,7 +44,7 @@ module.exports = {
     
     return exits.success({
       info: 'New tickettype added',
-      id: newTickeT.id
+      id: newTicketT.id
     });
     
   }
