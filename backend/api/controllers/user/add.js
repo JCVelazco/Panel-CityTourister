@@ -9,23 +9,21 @@ module.exports = {
   
   inputs: {
     name: {
-      description: '',
       type: 'string',
       required: true,
       maxLength: 50,
       minLength: 3
     },
     email: {
-      description: '',
       type: 'string',
       required: true,
       unique: true,
       isEmail: true
     },
     password: {
-      description: '',
       type: 'string',
       required: true,
+      encrypt: true
       /*custom: function(value) {
         // • be a string
         // • be at least 6 characters long
@@ -35,7 +33,6 @@ module.exports = {
       }*/
     },
     phone_number: {
-      description: '',
       type: 'string',
       allowNull: true,
       minLength: 10,

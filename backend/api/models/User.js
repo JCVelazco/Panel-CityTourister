@@ -25,11 +25,15 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
+      maxLength: 50,
+      minLength: 3,
+      
     },
     email: {
       type: 'string',
       required: true,
-      unique: true
+      unique: true,
+      isEmail: true
     },
     password: {
       type: 'string',
@@ -38,7 +42,9 @@ module.exports = {
     },
     phone_number: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      minLength: 10,
+      maxLength: 10
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
