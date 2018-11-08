@@ -11,15 +11,18 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      maxLength: 30
+      maxLength: 30,
+      allowNull: false
     },
     
     full_name: {
       type: 'string',
       required: true,
       unique: true,
+      allowNull:false,
       minLength: 3,
       maxLength: 50
+      
     },
     
     phone_number: {
@@ -53,12 +56,15 @@ module.exports = {
     ieps: {
       type: 'number',
       required: true,
+      allowNull:false,
       max: 1
+     
     },
     
     iva: {
       type: 'number',
       required: true,
+      allowNull: false,
       max: 1
     },
   },

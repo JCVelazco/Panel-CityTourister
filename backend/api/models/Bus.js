@@ -28,7 +28,8 @@ module.exports = {
     numBus: {
       type: 'string',
       required: true,
-      allowNull: false
+      allowNull: false,
+      minLength:3
     },
 
 
