@@ -39,7 +39,7 @@ module.exports = {
         required: true,
         allowNull: false,
         minLength: 10,
-      maxLength: 200
+       maxLength: 200
       },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -67,9 +67,9 @@ module.exports = {
       collection: 'dateinformation',
       via: 'tours'
     },
-    placeTours: {
-      collection: 'placetour',
-      via: 'tour_id'
+    places: {
+      collection: 'place',
+      via: 'tours'
     }
 
 

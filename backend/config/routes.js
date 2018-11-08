@@ -46,7 +46,6 @@ module.exports.routes = {
 
   'post /admin/login' : 'admin/login',
   'post /user/login' : 'user/login',
-  'post /image/upload' : 'images/upload',
   'post /admin/create' : 'admin/create',
   'post /user/add' : 'user/add',
   'post /company/add' : 'company/add',
@@ -55,22 +54,17 @@ module.exports.routes = {
   'post /hourinterval/add' : 'hourinterval/add',
   'post /imageofplace/add' : 'imageofplace/add',
   'post /location/add' : 'location/add',
-  'post /mural/add' : 'mural/add',
   'post /narrative/add' : 'narrative/add',
   'post /placetype/add' : 'placetype/add',
   'post /tickettype/add' : 'tickettype/add',
   'post /tour/add' : 'tour/add',
   'post /location/add' : 'location/add',
   'post /place/add' : 'place/add',
-  'post /placetour/add' : 'placetour/add',
   'post /dateinformation/add' : 'dateinformation/add',
   'post /price/add' : 'price/add',
   'post /bracelet/add' : 'bracelet/add',
   'post /ticket/add' : 'ticket/add',
   'post /purchase/add' : 'purchase/add'
-
-
-  
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

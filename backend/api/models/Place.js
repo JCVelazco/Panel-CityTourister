@@ -63,9 +63,9 @@ module.exports = {
       via: 'places',
     },
 
-    placeTours: {
-      collection: 'placetour',
-      via: 'place_id',
+    tours: {
+      collection: 'tour',
+      via: 'places',
     }
   },
 

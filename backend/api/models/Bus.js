@@ -42,11 +42,6 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-      mural_id: {
-        model: 'mural',
-        unique: true,
-        required: true
-      },
       tour_id: {
         model: 'tour',
         required: true
