@@ -23,7 +23,8 @@ module.exports = {
       type: 'string',
       unique: true,
       required: true,
-      allowNull: false
+      allowNull: false,
+      isURL: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
