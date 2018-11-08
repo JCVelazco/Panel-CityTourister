@@ -23,7 +23,9 @@ module.exports = {
       type: 'string',
       required: true,
       unique: true,
-      allowNull: false
+      allowNull: false,
+      maxLength: 50,
+      minLength: 5
     },
 
 
