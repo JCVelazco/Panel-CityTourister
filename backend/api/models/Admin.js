@@ -29,7 +29,14 @@ module.exports = {
       type: 'string',
       required: true,
       encrypt: true,
-      allowNull: false
+      allowNull: false,
+      custom: function(value) {
+        // • be a string
+        // • be at least 6 characters long
+        // • contain at least one number
+        // • contain at least one letter
+        return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
+      }
     },
 
     username: {

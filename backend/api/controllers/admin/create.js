@@ -9,16 +9,19 @@ module.exports = {
   
   inputs: {
     email: {
-      description: '',
+      
       type: 'string',
       required: true,
       unique: true,
-      isEmail: true
+      isEmail: true,
+      allowNull:false
     },
     password: {
-      description: '',
+      
       type: 'string',
       required: true,
+      encrypt:true,
+      allowNull:false,
       custom: function(value) {
         // • be a string
         // • be at least 6 characters long
@@ -28,13 +31,13 @@ module.exports = {
       }
     },
     username: {
-      description:'',
       type: 'string',
       required: true,
+      allowNull: false
     },
     connection_time: {
-      description: '',
       type: 'string',
+      required:false,
       allowNull: true
     }
   },
