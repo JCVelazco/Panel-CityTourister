@@ -44,7 +44,7 @@ module.exports = {
     
     sails.log.info("hourInterval/add");
         
-    var newHourInterval = await Hourinterval.create({
+    var newHourInterval = await HourInterval.create({
       start_time: inputs.start_time,
       end_time: inputs.end_time,
       frequency: inputs.frequency

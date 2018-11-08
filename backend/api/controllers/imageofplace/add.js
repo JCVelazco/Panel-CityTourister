@@ -39,7 +39,7 @@ module.exports = {
     
     sails.log.info("ImageOfPlace/add");
         
-    var newImageOfPlace = await Imageofplace.create({
+    var newImageOfPlace = await ImageOfPlace.create({
       image_url: inputs.image_url,
       description: inputs.description
     })

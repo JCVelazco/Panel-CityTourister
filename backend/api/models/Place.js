@@ -16,7 +16,8 @@ module.exports = {
     id: {
       type: 'number',
       columnName: 'place_id',
-      autoIncrement: true
+      autoIncrement: true,
+      unique: true
     },
 
     name: {
@@ -45,39 +46,26 @@ module.exports = {
     place_type_id: {
       model: 'placetype',
       required: true,
-      type:'number'
     },
     
     location_id: {
       collection: 'location',
       via: 'place_id',
-      type:'number',
-      required: true
-
     },
     
     narrative_id: {
       collection: 'narrative',
       via: 'place_id',
-      type: 'number',
-      required: false,
-      allowNull: true
     },
 
     imagesOfPlaces: {
       collection: 'imageofplace',
       via: 'places',
-      type: 'number',
-      required: false,
-      allowNull: true
     },
 
     placeTours: {
       collection: 'placetour',
       via: 'place_id',
-      type: 'number',
-      required: false,
-      allowNull: true
     }
   },
 

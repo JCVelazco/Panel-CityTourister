@@ -12,7 +12,8 @@ module.exports = {
       type: 'string',
       required: true,
       allowNull: false,
-      minLength: 3
+      minLength: 3,
+      unique: true
     },
 
     description: {

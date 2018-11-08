@@ -33,7 +33,7 @@ module.exports = {
     
     sails.log.info("placetype/add");
     
-    var newPlacetype = await Placetype.create({
+    var newPlacetype = await PlaceType.create({
       name: inputs.name
     })
     .fetch();

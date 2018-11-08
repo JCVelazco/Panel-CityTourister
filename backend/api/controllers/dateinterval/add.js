@@ -43,7 +43,7 @@ module.exports = {
     
     sails.log.info("Dateinterval/add");
         
-    var newDateinterval = await Dateinterval.create({
+    var newDateinterval = await DateInterval.create({
       start_date: inputs.start_date,
       end_date: inputs.end_date,
       service: inputs.service

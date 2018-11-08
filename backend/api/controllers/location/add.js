@@ -49,7 +49,7 @@ module.exports = {
     
     return exits.success({
       info: 'New location added',
-      id: newTickeT.id
+      id: newLocation.id
     });
     
   }
