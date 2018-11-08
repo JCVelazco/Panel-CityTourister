@@ -64,7 +64,9 @@ module.exports.routes = {
   'post /price/add' : 'price/add',
   'post /bracelet/add' : 'bracelet/add',
   'post /ticket/add' : 'ticket/add',
-  'post /purchase/add' : 'purchase/add'
+  'post /purchase/add' : 'purchase/add',
+
+  'PATCH /bus/edit/:id' : 'bus/edit',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
