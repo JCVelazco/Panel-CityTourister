@@ -11,8 +11,8 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      maxLength: 30,
-      allowNull: false
+      allowNull: false,
+      maxLength: 30
     },
     
     full_name: {

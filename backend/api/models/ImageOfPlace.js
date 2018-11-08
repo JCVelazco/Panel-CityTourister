@@ -23,12 +23,14 @@ module.exports = {
       type: 'string',
       unique: true,
       allowNull: false,
-      required: true
+      required: true,
+      isURL: true
     },
 
     description: {
       type: 'string',
-      allowNull: true
+      allowNull: true,
+      minLength: 10
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
