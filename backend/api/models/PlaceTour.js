@@ -29,10 +29,12 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
     place_id: {
-      model: 'place'
+      model: 'place',
+      required: true
     },
     tour_id: {
-      model: 'tour'
+      model: 'tour',
+      required: true
     }
 
   },
