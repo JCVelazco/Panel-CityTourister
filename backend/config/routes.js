@@ -46,11 +46,8 @@ module.exports.routes = {
 
   'post /admin/login' : 'admin/login',
   'post /user/login' : 'user/login',
-
   'post /image/upload' : 'images/upload',
-
   'post /admin/create' : 'admin/create',
-
   'post /user/add' : 'user/add',
   'post /company/add' : 'company/add',
   'post /bus/add' : 'bus/add',
