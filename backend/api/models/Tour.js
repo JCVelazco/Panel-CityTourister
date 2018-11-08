@@ -22,19 +22,24 @@ module.exports = {
       name: {
         type: 'string',
         required: true,
-        allowNull: false
+        allowNull: false,
+        minLength: 5,
+        maxLength: 20
       },
   
       image: {
         type: 'string', //check if ref isnt better
         required: true,
-        allowNull: false
+        allowNull: false,
+        isURL: true
       },
 
       description: {
         type: 'string',
         required: true,
-        allowNull: false
+        allowNull: false,
+        minLength: 10,
+      maxLength: 200
       },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

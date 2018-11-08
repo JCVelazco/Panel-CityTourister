@@ -22,7 +22,9 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      allowNull: false
+      allowNull: false,
+      maxLegth: 30,
+      minLength: 3, 
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
