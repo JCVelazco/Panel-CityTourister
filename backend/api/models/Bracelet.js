@@ -24,16 +24,18 @@ module.exports = {
       required: true,
       allowNull: false
     },
-    //1 or 0 active/inactive
+    
     status: {
-      type: 'number',
+      type: 'boolean',
       required: true,
       allowNull: false
     },
     folio: {
       type: 'string',
       required: true,
-      allowNull: false
+      allowNull: false,
+      encrypt: true,
+      unique: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

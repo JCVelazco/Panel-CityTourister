@@ -22,7 +22,8 @@ module.exports = {
       type: 'string',
       required: true,
       allowNull: false,
-      encrypt: true
+      encrypt: true,
+      unique: true
     },
     ticket_id: {
       type: 'number',

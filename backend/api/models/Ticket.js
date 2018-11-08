@@ -22,13 +22,16 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      allowNull: false
+      allowNull: false,
+      minLength: 3
     },
 
     age: {
       type: 'number',
       required: true,
-      allowNull: false
+      allowNull: false,
+      min: 0,
+      max: 120
     },
     date_tour: {
       type: 'string',
@@ -40,13 +43,15 @@ module.exports = {
       type: 'string',
       required: true,
       allowNull: false,
-      unique: true
+      unique: true,
+      encrypt: true
     },
 
     sub_total: {
       type: 'number',
       required: true, 
-      allowNull: false
+      allowNull: false,
+      min: 0
     },
 
     
@@ -60,14 +65,14 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     purchase_id: {
       model: 'purchase',
-      required: true
     },
     price_id: {
-      model: 'price'
+      model: 'price',
+      required: true
     },
     bracelet_id: {
       collection: 'bracelet',
-      via: 'ticket_id'
+      via: 'ticket_id',
     }
 
   },

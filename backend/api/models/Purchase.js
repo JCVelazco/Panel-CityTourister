@@ -21,13 +21,15 @@ module.exports = {
 
     sub_total: {
       type: 'number',
-      allowNull: true
+      required: true,
+      min: 0
     },
 
     total: {
       type: 'number',
       allowNull: false,
-      required: true
+      required: true,
+      min: 0
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -48,7 +50,7 @@ module.exports = {
     },
     tickets: {
       collection: 'ticket',
-      via: 'purchase_id'
+      via: 'purchase_id',
     }
 
   },
