@@ -26,13 +26,13 @@ module.exports = {
       description: '',
       type: 'string',
       required: true,
-      custom: function(value) {
+      /*custom: function(value) {
         // • be a string
         // • be at least 6 characters long
         // • contain at least one number
         // • contain at least one letter
         return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
-      }
+      }*/
     },
     phone_number: {
       description: '',
