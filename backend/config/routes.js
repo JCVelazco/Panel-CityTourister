@@ -65,7 +65,8 @@ module.exports.routes = {
   'post /tour/add' : 'tour/add',
   'post /location/add' : 'location/add',
   'post /place/add' : 'place/add',
-  'post /placetour/add' : 'placetour/add'
+  'post /placetour/add' : 'placetour/add',
+  'post /dateinformation/add' : 'dateinformation/add'
 
   
 

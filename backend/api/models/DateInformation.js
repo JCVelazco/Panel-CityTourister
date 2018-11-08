@@ -33,10 +33,12 @@ module.exports = {
       via: 'dateInformations'
     },
     date_id: {
-      model: 'dateinterval'
+      model: 'dateinterval',
+      required: true
     },
     hour_id: {
-      model: 'hourinterval'
+      model: 'hourinterval',
+      required: true
     }
 
   },
