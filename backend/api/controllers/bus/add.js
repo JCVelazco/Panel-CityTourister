@@ -42,13 +42,21 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("Bus/add");
+    //no required
+    var key_oftour;
+    if(inputs.tour_id || inputs.tour_id === 0){
+      key_oftour = (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) === undefined)?undefined:inputs.tour_id;
+      if(key_oftour === undefined){
+        return exits.serverError({
+          info: 'Tour not found'
+        });
+      }
+    }
     
     var newBus = await Bus.create({
       availability: inputs.availability,
       numBus: inputs.numBus,
-      //no required
-      tour_id: (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) == null)?
-      null:inputs.tour_id,
+      tour_id: key_oftour
     })
     .fetch();
     

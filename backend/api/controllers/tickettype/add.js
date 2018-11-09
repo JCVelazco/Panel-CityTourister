@@ -12,9 +12,16 @@ module.exports = {
       type: 'string',
       required: true,
       allowNull: false,
+      unique: true,
       maxLegth: 30,
       minLength: 3, 
     },
+    description: {
+      type: 'string',
+      required: false,
+      allowNull: true,
+      minLength: 5
+    }
   },
 
   exits: {

@@ -74,20 +74,20 @@ module.exports = {
       image: inputs.image,
       description: inputs.description,
       //no required
-      prices: (await Price.findOne({where: {id: inputs.prices}, select: ['id']}) == null)?
-      null:inputs.prices,
+      prices: (inputs.prices)?(await Price.find({where: {id: inputs.prices}, select: ['id']}) == null)?
+      exits.serverError({info: 'Price not found'}):inputs.prices:null,
       //no required
-      bracelets: (await Bracelet.findOne({where: {id: inputs.bracelets}, select: ['id']}) == null)?
-      null:inputs.bracelets,
+      bracelets: (inputs.bracelets)?(await Bracelet.find({where: {id: inputs.bracelets}, select: ['id']}) == null)?
+      exits.serverError({info: 'Bracelet not found'}):inputs.bracelets:null,
       //no required
-      buses: (await Bus.findOne({where: {id: inputs.buses}, select: ['id']}) == null)?
-      null:inputs.buses,
+      buses: (inputs.buses)?(await Bus.find({where: {id: inputs.buses}, select: ['id']}) == null)?
+      exits.serverError({info: 'Bus not found'}):inputs.buses:null,
       //required
-      dateinformations: (await DateInformation.findOne({where: {id: inputs.dateinformations}, select: ['id']}) == null)?
+      dateinformations: (await DateInformation.find({where: {id: inputs.dateinformations}, select: ['id']}) == null)?
       exits.serverError({info: 'Date Info not found'}):inputs.dateinformations,
       //no required
-      places: (await Place.findOne({where: {id: inputs.places}, select: ['id']}) == null)?
-      null:inputs.places,
+      places: (inputs.places)?(await Place.find({where: {id: inputs.places}, select: ['id']}) == null)?
+      exits.serverError({info: 'Place not found'}):inputs.places:null,
     })
     .fetch();
     

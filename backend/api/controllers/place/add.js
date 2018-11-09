@@ -72,20 +72,20 @@ module.exports = {
       name: inputs.name,
       description: inputs.description,
       //required
-      place_type_id: (await PlaceType.findOne({where: {id: inputs.place_type_id}, select: ['id']}) == null)?
+      place_type_id: (await PlaceType.find({where: {id: inputs.place_type_id}, select: ['id']}) == null)?
       exits.serverError({info: 'PlaceType not found'}):inputs.place_type_id,
       //required
-      location_id: (await Location.findOne({where: {id: inputs.location_id}, select: ['id']}) == null)?
+      location_id: (await Location.find({where: {id: inputs.location_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Location not found'}):inputs.location_id,
       //no required
-      narrative_id: (await Narrative.findOne({where: {id: inputs.narrative_id}, select: ['id']}) == null)?
-      null:inputs.narrative_id,
+      narrative_id: (inputs.narrative_id)?(await Narrative.find({where: {id: inputs.narrative_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Narrative not found'}):inputs.narrative_id:null,
       //no required
-      imagesOfPlaces: (await ImageOfPlace.findOne({where: {id: inputs.imagesOfPlaces}, select: ['id']}) == null)?
-      null:inputs.imagesOfPlaces,
+      imagesOfPlaces: (inputs.imagesOfPlaces)?(await ImageOfPlace.find({where: {id: inputs.imagesOfPlaces}, select: ['id']}) == null)?
+      exits.serverError({info: 'ImageOfPlace not found'}):inputs.imagesOfPlaces:null,
       //no required
-      tours: (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) == null)?
-      null:inputs.tours,
+      tours: (inputs.tours)?(await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) == null)?
+      exits.serverError({info: 'Tour not found'}):inputs.tours:null,
     })
     .fetch();
     

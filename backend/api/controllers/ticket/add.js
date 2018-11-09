@@ -80,13 +80,13 @@ module.exports = {
       qr_code: inputs.qr_code,
       sub_total: inputs.sub_total,
       //no required
-      purchase_id: (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) == null)?
-      null:inputs.purchase_id,
+      purchase_id: (inputs.purchase_id)?(await Purchase.find({where: {id: inputs.purchase_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Purchase not found'}):inputs.purchase_id:null,
       //required
-      price_id: (await Price.findOne({where: {id: inputs.price_id}, select: ['id']}) == null)?
+      price_id: (await Price.find({where: {id: inputs.price_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Price not found'}):inputs.price_id,
       //required
-      bracelet_id: (await Bracelet.findOne({where: {id: inputs.bracelet_id}, select: ['id']}) == null)?
+      bracelet_id: (await Bracelet.find({where: {id: inputs.bracelet_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Bracelet not found'}):inputs.bracelet_id,
 
     })
