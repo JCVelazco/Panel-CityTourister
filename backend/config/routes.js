@@ -68,6 +68,27 @@ module.exports.routes = {
 
   'PATCH /bus/edit/:id' : 'bus/edit',
 
+  //overwrtitting all the blueprints of post
+  'post /admin' : 'notfound',
+  'post /user' : 'notfound',
+  'post /company' : 'notfound',
+  'post /bus' : 'notfound',
+  'post /dateinterval' : 'notfound',
+  'post /hourinterval' : 'notfound',
+  'post /imageofplace' : 'notfound',
+  'post /location' : 'notfound',
+  'post /narrative' : 'notfound',
+  'post /placetype' : 'notfound',
+  'post /tickettype' : 'notfound',
+  'post /tour' : 'notfound',
+  'post /location' : 'notfound',
+  'post /place' : 'notfound',
+  'post /dateinformation' : 'notfound',
+  'post /price' : 'notfound',
+  'post /bracelet' : 'notfound',
+  'post /ticket' : 'notfound',
+  'post /purchase' : 'notfound',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
