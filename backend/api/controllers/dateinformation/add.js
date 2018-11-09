@@ -10,7 +10,7 @@ module.exports = {
   inputs: {
     tours: {
       type: 'number',
-      rquired: false
+      required: false
     },
     date_id: {
       type: 'number',
@@ -40,8 +40,10 @@ module.exports = {
         
     var newDateInfo = await DateInformation.create({
       tours: inputs.tours,
-      date_id : inputs.date_id,
-      hour_id: inputs.hour_id
+      date_id: (await DateInterval.findOne({where: {id: inputs.date_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'DateInterval not found'}):inputs.date_id,
+      hour_id: (await HourInterval.findOne({where: {id: inputs.hour_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'HourInterval not found'}):inputs.hour_id,
     })
     .fetch();
     

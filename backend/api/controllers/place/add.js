@@ -45,7 +45,7 @@ module.exports = {
       allowNull: true
     },
 
-    placeTours: {
+    tours: {
       type: 'number',
       required: false,
       allowNull: true
@@ -71,11 +71,16 @@ module.exports = {
     var newPlace = await Place.create({
       name: inputs.name,
       description: inputs.description,
-      place_type_id: inputs.place_type_id,
-      location_id: inputs.location_id,
-      narrative_id: inputs.narrative_id,
-      imagesOfPlaces: inputs.imagesOfPlaces,
-      placeTours: inputs.placeTours
+      place_type_id: (await PlaceType.findOne({where: {id: inputs.place_type_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'PlaceType not found'}):inputs.place_type_id,
+      location_id: (await Location.findOne({where: {id: inputs.location_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Location not found'}):inputs.location_id,
+      narrative_id: (await Narrative.findOne({where: {id: inputs.narrative_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Narrative not found'}):inputs.narrative_id,
+      imagesOfPlaces: (await ImageOfPlace.findOne({where: {id: inputs.imagesOfPlaces}, select: ['id']}) == null)?
+      exits.serverError({info: 'Image not found'}):inputs.imagesOfPlaces,
+      tours: (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) == null)?
+      exits.serverError({info: 'Tour not found'}):inputs.tours,
     })
     .fetch();
     

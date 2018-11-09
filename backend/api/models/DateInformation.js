@@ -30,7 +30,7 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     tours: {
       collection: 'tour',
-      via: 'dateInformations'
+      via: 'dateinformations'
     },
     date_id: {
       model: 'dateinterval',

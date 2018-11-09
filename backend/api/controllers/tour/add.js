@@ -30,6 +30,26 @@ module.exports = {
       minLength: 10,
       maxLength: 200
     },
+    prices: {
+      type: 'number',
+      required: false
+    },
+    bracelets: {
+      type: 'number',
+      required: false
+    },
+    buses: {
+      type: 'number',
+      required: false
+    },
+    dateinformations: {
+      type: 'number',
+      required: false
+    },
+    places: {
+      type: 'number',
+      required: false
+    }
   },
   
   
@@ -52,7 +72,12 @@ module.exports = {
     var newTour = await Tour.create({
       name: inputs.name,
       image: inputs.image,
-      description: inputs.description
+      description: inputs.description,
+      prices: inputs.prices,
+      bracelets: inputs.bracelets,
+      buses: inputs.buses,
+      dateinformations: inputs.dateinformations,
+      places: inputs.places
     })
     .fetch();
     

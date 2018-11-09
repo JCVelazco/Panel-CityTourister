@@ -34,7 +34,7 @@ module.exports = {
     sails.log.info("narrative/add");
         
     var newNarrative = await Narrative.create({
-      isURL: inputs.isURL
+      audio_url: inputs.audio_url
     })
     .fetch();
     

@@ -63,7 +63,7 @@ module.exports = {
       collection: 'bus',
       via: 'tour_id'
     },
-    dateInformations: {
+    dateinformations: {
       collection: 'dateinformation',
       via: 'tours'
     },
