@@ -28,6 +28,7 @@ module.exports = {
     ticket_id: {
       type: 'number',
       unique: true,
+      required: false
     },
     tour_id: {
       type: 'number',

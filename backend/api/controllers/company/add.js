@@ -29,7 +29,7 @@ module.exports = {
       type: 'string',
       allowNull: true,
       maxLength: 10,
-      minLength: 10
+      minLength: 10,
     },
     
     address: {
@@ -67,6 +67,7 @@ module.exports = {
       allowNull: false,
       max: 1
     },
+    
   },
   
   
