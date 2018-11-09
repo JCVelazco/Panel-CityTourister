@@ -53,9 +53,12 @@ module.exports = {
     var newPurchase = await Purchase.create({
       sub_total: inputs.sub_total,
       total: inputs.total,
-      user_id: inputs.user_id,
-      company_id: inputs.company_id,
-      tickets: inputs.tickets
+      user_id: (await User.findOne({where: {id: inputs.user_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'User not found'}):inputs.user_id,
+      company_id: (await Company.findOne({where: {id: inputs.company_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Company not found'}):inputs.company_id,
+      tickets: (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) == null)?
+      exits.serverError({info: 'Tickets not found'}):inputs.tickets,
     })
     .fetch();
     
