@@ -1,7 +1,7 @@
 module.exports = async (req, res) => {
   const busId = req.param('id');
 
-  let tourObj = await tourObj.findOne({id: req.body.tour_id});
+  let tourObj = await Tour.findOne({id: req.body.tour_id});
 
   if(!tourObj) return res.json({info: 'Tour not Found'});
 
