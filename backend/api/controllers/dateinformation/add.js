@@ -21,7 +21,7 @@ module.exports = {
       required: true
     }
   },
-
+  
   exits: {
     success: {
       statusCode: 200,
@@ -37,17 +37,43 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("DateInformation/add");
-        
+    
+    //no required
+    var key_oftour;
+    //if i recieve the field I check if its correct
+    if(inputs.tours){
+      key_oftour = (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) === undefined)?undefined:inputs.tours;
+      if(key_oftour === undefined){
+        return exits.serverError({
+          info: 'Tour not found'
+        });
+      }
+    }
+    
+    //required
+    var key_ofdate = (await DateInterval.findOne({where: {id: inputs.date_id}, select: ['id']}) === undefined)?undefined:inputs.date_id;
+    if(key_ofdate === undefined){
+      return exits.serverError({
+        info: 'Date not found'
+      });
+    }
+    
+    //required
+    var key_ofhour = (await HourInterval.findOne({where: {id: inputs.hour_id}, select: ['id']}) === undefined)?undefined:inputs.hour_id;
+    if(key_ofhour === undefined){
+      return exits.serverError({
+        info: 'Hour not found'
+      });
+    }
+    
+    
     var newDateInfo = await DateInformation.create({
       //no required
-      tours: (inputs.tours)?(await Tour.find({where: {id: inputs.tours}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tour not found'}):inputs.tours:null,
+      tours: key_oftour,
       //required
-      date_id: (await DateInterval.find({where: {id: inputs.date_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'DateInterval not found'}):inputs.date_id,
+      date_id: key_ofdate,
       //required
-      hour_id: (await HourInterval.find({where: {id: inputs.hour_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'HourInterval not found'}):inputs.hour_id,
+      hour_id: key_ofhour
     })
     .fetch();
     

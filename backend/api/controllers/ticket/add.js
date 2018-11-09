@@ -15,13 +15,6 @@ module.exports = {
       minLength: 3
     },
 
-    age: {
-      type: 'number',
-      required: true,
-      allowNull: false,
-      min: 0,
-      max: 120
-    },
     date_tour: {
       type: 'string',
       required: true,
@@ -75,7 +68,6 @@ module.exports = {
     
     var newTicket = await Ticket.create({
       name:  inputs.name,
-      age: inputs.age,
       date_tour: inputs.date_tour,
       qr_code: inputs.qr_code,
       sub_total: inputs.sub_total,

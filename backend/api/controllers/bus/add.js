@@ -42,9 +42,11 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("Bus/add");
+
     //no required
     var key_oftour;
-    if(inputs.tour_id || inputs.tour_id === 0){
+    //if i have recieve the field I check if its correct
+    if(inputs.tour_id){
       key_oftour = (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) === undefined)?undefined:inputs.tour_id;
       if(key_oftour === undefined){
         return exits.serverError({

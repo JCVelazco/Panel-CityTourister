@@ -51,32 +51,34 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("Bracelet/add");
-    //no required
-    var hasTrueTicket = await Ticket.findOne({where: {id: inputs.ticket_id}, select: ['id']});
-    //required
-    var hasTrueTour = await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']});
     
-    if(hasTrueTicket == null){
-      return exits.serverError({
-        info: 'Ticket not found'
-      });
-    }
-    if(hasTrueTour == null){
+    //required
+    var key_oftour = (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) === undefined)?undefined:inputs.tour_id;
+    if(key_oftour === undefined){
       return exits.serverError({
         info: 'Tour not found'
       });
     }
     
+    //no required
+    var key_ofticket;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_ofticket = (await Ticket.findOne({where: {id: inputs.ticket_id}, select: ['id']}) === undefined)?undefined:inputs.ticket_id;
+      if(key_ofticket === undefined){
+        return exits.serverError({
+          info: 'Ticket not found'
+        });
+      }
+    }
+    
+    
     var newBracelet = await Bracelet.create({
       active_at: inputs.active_at,
       status: inputs.status,
       folio: inputs.folio,
-      //no required
-      ticket_id: (await Ticket.findOne({where: {id: inputs.ticket_id}, select: ['id']}) == null)?
-      null:inputs.ticket_id,
-      //required
-      tour_id: (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tour not found'}):inputs.tour_id,
+      ticket_id: key_ofticket,
+      tour_id: key_oftour
     })
     .fetch();
     

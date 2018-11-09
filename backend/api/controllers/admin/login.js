@@ -9,12 +9,10 @@ module.exports = {
 
   inputs: {
     email: {
-      description: '',
       type: 'string',
       required: true
     },
     password: {
-      description: '',
       type: 'string',
       required: true
     }
