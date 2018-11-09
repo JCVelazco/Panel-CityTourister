@@ -26,7 +26,7 @@ module.exports = {
       required: false
     }
   },
-
+  
   exits: {
     success: {
       statusCode: 200,
@@ -43,17 +43,44 @@ module.exports = {
     
     sails.log.info("Price/add");
     
+    //required
+    var key_oftickettype = (await TicketType.findOne({where: {id: inputs.ticket_type_id}, select: ['id']}) === undefined)?undefined:inputs.ticket_type_id;
+    if(key_oftickettype === undefined){
+      return exits.serverError({
+        info: 'TticketType not found'
+      });
+    }
+    
+    //required
+    var key_oftour = (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) === undefined)?undefined:inputs.tour_id;
+    if(key_oftour === undefined){
+      return exits.serverError({
+        info: 'Tour not found'
+      });
+    }
+    
+    //no required
+    var key_ofticket;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
+      if(key_ofticket === undefined){
+        return exits.serverError({
+          info: 'Ticket not found'
+        });
+      }
+    }
+    
+    
+    
     var newPrice = await Price.create({
       priceAmount : inputs.priceAmount,
       //required
-      ticket_type_id: (await TicketType.find({where: {id: inputs.ticket_type_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'TicketType not found'}):inputs.ticket_type_id,
+      ticket_type_id: key_oftickettype,
       //required
-      tour_id: (await Tour.find({where: {id: inputs.tour_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tour not found'}):inputs.tour_id,
+      tour_id: key_oftour,
       //no required
-      tickets: (inputs.tickets)?(await Ticket.find({where: {id: inputs.tickets}, select: ['id']}) == null)?
-      exits.serverError({info: 'Ticket not found'}):inputs.tickets:null,
+      tickets: key_ofticket
     })
     .fetch();
     

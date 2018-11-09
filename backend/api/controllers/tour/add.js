@@ -15,14 +15,14 @@ module.exports = {
       minLength: 5,
       maxLength: 20
     },
-
+    
     image: {
       type: 'string', //check if ref isnt better
       required: true,
       allowNull: false,
       isURL: true
     },
-
+    
     description: {
       type: 'string',
       required: true,
@@ -68,26 +68,77 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("tour/add");
-        
+    
+    //no required
+    var key_ofprice;
+    //if i recieve the field I check if its correct
+    if(inputs.prices){
+      key_ofprice = (await Price.findOne({where: {id: inputs.prices}, select: ['id']}) === undefined)?undefined:inputs.prices;
+      if(key_ofprice === undefined){
+        return exits.serverError({
+          info: 'Price not found'
+        });
+      }
+    }
+    
+    //no required
+    var key_ofbracelet;
+    //if i recieve the field I check if its correct
+    if(inputs.prices){
+      key_ofbracelet = (await Bracelet.findOne({where: {id: inputs.bracelets}, select: ['id']}) === undefined)?undefined:inputs.bracelets;
+      if(key_ofbracelet === undefined){
+        return exits.serverError({
+          info: 'Bracelet not found'
+        });
+      }
+    }
+    
+    //no required
+    var key_ofbus;
+    //if i recieve the field I check if its correct
+    if(inputs.buses){
+      key_ofbus = (await Bus.findOne({where: {id: inputs.buses}, select: ['id']}) === undefined)?undefined:inputs.buses;
+      if(key_ofbus === undefined){
+        return exits.serverError({
+          info: 'Bus not found'
+        });
+      }
+    }
+    
+    //required
+    var key_ofdateinfo = (await DateInformation.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
+    if(key_ofdateinfo === undefined){
+      return exits.serverError({
+        info: 'DateInfo not found'
+      });
+    }
+    
+    //no required
+    var key_ofplace;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_ofplace = (await Place.findOne({where: {id: inputs.places}, select: ['id']}) === undefined)?undefined:inputs.places;
+      if(key_ofplace === undefined){
+        return exits.serverError({
+          info: 'Place not found'
+        });
+      }
+    }
+    
     var newTour = await Tour.create({
       name: inputs.name,
       image: inputs.image,
       description: inputs.description,
       //no required
-      prices: (inputs.prices)?(await Price.find({where: {id: inputs.prices}, select: ['id']}) == null)?
-      exits.serverError({info: 'Price not found'}):inputs.prices:null,
+      prices: key_ofprice,
       //no required
-      bracelets: (inputs.bracelets)?(await Bracelet.find({where: {id: inputs.bracelets}, select: ['id']}) == null)?
-      exits.serverError({info: 'Bracelet not found'}):inputs.bracelets:null,
+      bracelets: key_ofbracelet,
       //no required
-      buses: (inputs.buses)?(await Bus.find({where: {id: inputs.buses}, select: ['id']}) == null)?
-      exits.serverError({info: 'Bus not found'}):inputs.buses:null,
+      buses: key_ofbus,
       //required
-      dateinformations: (await DateInformation.find({where: {id: inputs.dateinformations}, select: ['id']}) == null)?
-      exits.serverError({info: 'Date Info not found'}):inputs.dateinformations,
+      dateinformations: key_ofdateinfo,
       //no required
-      places: (inputs.places)?(await Place.find({where: {id: inputs.places}, select: ['id']}) == null)?
-      exits.serverError({info: 'Place not found'}):inputs.places:null,
+      places: key_ofplace
     })
     .fetch();
     

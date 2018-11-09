@@ -13,7 +13,7 @@ module.exports = {
       required: true,
       min: 0
     },
-
+    
     total: {
       type: 'number',
       allowNull: false,
@@ -51,18 +51,39 @@ module.exports = {
     
     sails.log.info("Purchase/add");
     
+    //required
+    var key_ofuser = (await User.findOne({where: {id: inputs.user_id}, select: ['id']}) === undefined)?undefined:inputs.user_id;
+    if(key_ofuser === undefined){
+      return exits.serverError({
+        info: 'User not found'
+      });
+    }
+    
+    //required
+    var key_ofcompany = (await Company.findOne({where: {id: inputs.company_id}, select: ['id']}) === undefined)?undefined:inputs.company_id;
+    if(key_ofcompany === undefined){
+      return exits.serverError({
+        info: 'Company not found'
+      });
+    }
+    
+    //required
+    var key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
+    if(key_ofuser === undefined){
+      return exits.serverError({
+        info: 'Ticket not found'
+      });
+    }
+    
     var newPurchase = await Purchase.create({
       sub_total: inputs.sub_total,
       total: inputs.total,
       //required
-      user_id: (await User.find({where: {id: inputs.user_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'User not found'}):inputs.user_id,
+      user_id: key_ofuser,
       //required
-      company_id: (await Company.find({where: {id: inputs.company_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Company not found'}):inputs.company_id,
+      company_id: key_ofcompany,
       //required
-      tickets: (await Ticket.find({where: {id: inputs.tickets}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tickets not found'}):inputs.tickets,
+      tickets: key_ofticket
     })
     .fetch();
     

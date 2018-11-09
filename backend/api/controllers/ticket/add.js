@@ -14,13 +14,13 @@ module.exports = {
       allowNull: false,
       minLength: 3
     },
-
+    
     date_tour: {
       type: 'string',
       required: true,
       allowNull: false
     },
-
+    
     qr_code: {
       type: 'string',
       required: true,
@@ -28,7 +28,7 @@ module.exports = {
       unique: true,
       encrypt: true
     },
-
+    
     sub_total: {
       type: 'number',
       required: true, 
@@ -66,21 +66,46 @@ module.exports = {
     
     sails.log.info("Ticket/add");
     
+    //no required
+    var key_ofpurchase;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_ofpurchase = (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) === undefined)?undefined:inputs.purchase_id;
+      if(key_ofpurchase === undefined){
+        return exits.serverError({
+          info: 'Purchase not found'
+        });
+      }
+    }
+    
+    //required
+    var key_ofprice = (await Price.findOne({where: {id: inputs.price_id}, select: ['id']}) === undefined)?undefined:inputs.price_id;
+    if(key_ofprice === undefined){
+      return exits.serverError({
+        info: 'Price not found'
+      });
+    }
+    
+    //required
+    var key_ofbracelet = (await Bracelet.findOne({where: {id: inputs.bracelet_id}, select: ['id']}) === undefined)?undefined:inputs.bracelet_id;
+    if(key_ofbracelet === undefined){
+      return exits.serverError({
+        info: 'Bracelet not found'
+      });
+    }
+    
     var newTicket = await Ticket.create({
       name:  inputs.name,
       date_tour: inputs.date_tour,
       qr_code: inputs.qr_code,
       sub_total: inputs.sub_total,
       //no required
-      purchase_id: (inputs.purchase_id)?(await Purchase.find({where: {id: inputs.purchase_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Purchase not found'}):inputs.purchase_id:null,
+      purchase_id: key_ofpurchase,
       //required
-      price_id: (await Price.find({where: {id: inputs.price_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Price not found'}):inputs.price_id,
+      price_id: key_ofprice,
       //required
-      bracelet_id: (await Bracelet.find({where: {id: inputs.bracelet_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Bracelet not found'}):inputs.bracelet_id,
-
+      bracelet_id: key_ofbracelet
+      
     })
     .fetch();
     

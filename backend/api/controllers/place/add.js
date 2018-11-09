@@ -15,14 +15,14 @@ module.exports = {
       minLength: 3,
       unique: true
     },
-
+    
     description: {
       type: 'string',
       required: true,
       allowNull: false,
       minLength: 5
     },
-
+    
     place_type_id: {
       type: 'number',
       required: true
@@ -38,13 +38,13 @@ module.exports = {
       required: false,
       allowNull: true
     },
-
+    
     imagesOfPlaces: {
       type: 'number',
       required: false,
       allowNull: true
     },
-
+    
     tours: {
       type: 'number',
       required: false,
@@ -68,24 +68,71 @@ module.exports = {
     
     sails.log.info("Place/add");
     
+    //required
+    var key_ofplacetype = (await PlaceType.findOne({where: {id: inputs.place_type_id}, select: ['id']}) === undefined)?undefined:inputs.place_type_id;
+    if(key_ofplacetype === undefined){
+      return exits.serverError({
+        info: 'PlaceType not found'
+      });
+    }
+    
+    //required
+    var key_oflocation = (await Location.findOne({where: {id: inputs.location_id}, select: ['id']}) === undefined)?undefined:inputs.location_id;
+    if(key_oflocation === undefined){
+      return exits.serverError({
+        info: 'Location not found'
+      });
+    }
+    
+    //no required
+    var key_ofnarrative;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_ofnarrative = (await Narrative.findOne({where: {id: inputs.narrative_id}, select: ['id']}) === undefined)?undefined:inputs.narrative_id;
+      if(key_ofnarrative === undefined){
+        return exits.serverError({
+          info: 'Narrative not found'
+        });
+      }
+    }
+    
+    //no required
+    var key_ofimages;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_ofimages = (await ImageOfPlace.findOne({where: {id: inputs.imagesOfPlaces}, select: ['id']}) === undefined)?undefined:inputs.imagesOfPlaces;
+      if(key_ofimages === undefined){
+        return exits.serverError({
+          info: 'Image not found'
+        });
+      }
+    }
+    
+    //no required
+    var key_oftour;
+    //if i recieve the field I check if its correct
+    if(inputs.ticket_id){
+      key_oftour = (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) === undefined)?undefined:inputs.tours;
+      if(key_oftour === undefined){
+        return exits.serverError({
+          info: 'Tour not found'
+        });
+      }
+    }
+    
     var newPlace = await Place.create({
       name: inputs.name,
       description: inputs.description,
       //required
-      place_type_id: (await PlaceType.find({where: {id: inputs.place_type_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'PlaceType not found'}):inputs.place_type_id,
+      place_type_id: key_ofplacetype,
       //required
-      location_id: (await Location.find({where: {id: inputs.location_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Location not found'}):inputs.location_id,
+      location_id: key_oflocation,
       //no required
-      narrative_id: (inputs.narrative_id)?(await Narrative.find({where: {id: inputs.narrative_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Narrative not found'}):inputs.narrative_id:null,
+      narrative_id: key_ofnarrative,
       //no required
-      imagesOfPlaces: (inputs.imagesOfPlaces)?(await ImageOfPlace.find({where: {id: inputs.imagesOfPlaces}, select: ['id']}) == null)?
-      exits.serverError({info: 'ImageOfPlace not found'}):inputs.imagesOfPlaces:null,
+      imagesOfPlaces: key_ofimages,
       //no required
-      tours: (inputs.tours)?(await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tour not found'}):inputs.tours:null,
+      tours: key_oftour,
     })
     .fetch();
     
