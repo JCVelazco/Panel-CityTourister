@@ -45,12 +45,15 @@ module.exports = {
     
     var newPrice = await Price.create({
       priceAmount : inputs.priceAmount,
+      //required
       ticket_type_id: (await TicketType.findOne({where: {id: inputs.ticket_type_id}, select: ['id']}) == null)?
       exits.serverError({info: 'TicketType not found'}):inputs.ticket_type_id,
+      //required
       tour_id: (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Tour not found'}):inputs.tour_id,
+      //no required
       tickets: (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tickets not found'}):inputs.tickets,
+      null:inputs.tickets,
     })
     .fetch();
     

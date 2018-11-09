@@ -43,7 +43,8 @@ module.exports = {
       min: 0
     },
     purchase_id: {
-      type: 'number'
+      type: 'number',
+      required: false
     },
     price_id: {
       type: 'number',
@@ -51,6 +52,7 @@ module.exports = {
     },
     bracelet_id: {
       type: 'number',
+      required: true
     }
   },
   
@@ -77,9 +79,15 @@ module.exports = {
       date_tour: inputs.date_tour,
       qr_code: inputs.qr_code,
       sub_total: inputs.sub_total,
-      purchase_id: inputs.purchase_id,
-      price_id: inputs.price_id,
-      bracelet_id: inputs.bracelet_id
+      //no required
+      purchase_id: (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) == null)?
+      null:inputs.purchase_id,
+      //required
+      price_id: (await Price.findOne({where: {id: inputs.price_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Price not found'}):inputs.price_id,
+      //required
+      bracelet_id: (await Bracelet.findOne({where: {id: inputs.bracelet_id}, select: ['id']}) == null)?
+      exits.serverError({info: 'Bracelet not found'}):inputs.bracelet_id,
 
     })
     .fetch();

@@ -44,7 +44,7 @@ module.exports = {
 
       tour_id: {
         model: 'tour',
-        required: true
+        required: false
       }
 
   },

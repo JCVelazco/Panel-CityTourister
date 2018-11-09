@@ -20,15 +20,10 @@ module.exports = {
       allowNull: false,
       minLength: 3
     },
-    
-    mural_id: {
-      type: 'number',
-      unique: true,
-      required: true,
-    },
+
     tour_id: {
       type: 'number',
-      required: true
+      required: false
     }
   },
   
@@ -51,8 +46,9 @@ module.exports = {
     var newBus = await Bus.create({
       availability: inputs.availability,
       numBus: inputs.numBus,
+      //no required
       tour_id: (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tour not found'}):inputs.tour_id,
+      null:inputs.tour_id,
     })
     .fetch();
     

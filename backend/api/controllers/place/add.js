@@ -71,16 +71,21 @@ module.exports = {
     var newPlace = await Place.create({
       name: inputs.name,
       description: inputs.description,
+      //required
       place_type_id: (await PlaceType.findOne({where: {id: inputs.place_type_id}, select: ['id']}) == null)?
       exits.serverError({info: 'PlaceType not found'}):inputs.place_type_id,
+      //required
       location_id: (await Location.findOne({where: {id: inputs.location_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Location not found'}):inputs.location_id,
+      //no required
       narrative_id: (await Narrative.findOne({where: {id: inputs.narrative_id}, select: ['id']}) == null)?
-      exits.serverError({info: 'Narrative not found'}):inputs.narrative_id,
+      null:inputs.narrative_id,
+      //no required
       imagesOfPlaces: (await ImageOfPlace.findOne({where: {id: inputs.imagesOfPlaces}, select: ['id']}) == null)?
-      exits.serverError({info: 'Image not found'}):inputs.imagesOfPlaces,
+      null:inputs.imagesOfPlaces,
+      //no required
       tours: (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) == null)?
-      exits.serverError({info: 'Tour not found'}):inputs.tours,
+      null:inputs.tours,
     })
     .fetch();
     

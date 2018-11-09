@@ -39,9 +39,13 @@ module.exports = {
     sails.log.info("DateInformation/add");
         
     var newDateInfo = await DateInformation.create({
-      tours: inputs.tours,
+      //no required
+      tours: (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) == null)?
+      null:inputs.tours,
+      //required
       date_id: (await DateInterval.findOne({where: {id: inputs.date_id}, select: ['id']}) == null)?
       exits.serverError({info: 'DateInterval not found'}):inputs.date_id,
+      //required
       hour_id: (await HourInterval.findOne({where: {id: inputs.hour_id}, select: ['id']}) == null)?
       exits.serverError({info: 'HourInterval not found'}):inputs.hour_id,
     })

@@ -70,8 +70,10 @@ module.exports = {
       active_at: inputs.active_at,
       status: inputs.status,
       folio: inputs.folio,
-      //do the program adds tickets from bracelet?
-      ticket_id: inputs.ticket_id,
+      //no required
+      ticket_id: (await Ticket.findOne({where: {id: inputs.ticket_id}, select: ['id']}) == null)?
+      null:inputs.ticket_id,
+      //required
       tour_id: (await Tour.findOne({where: {id: inputs.tour_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Tour not found'}):inputs.tour_id,
     })

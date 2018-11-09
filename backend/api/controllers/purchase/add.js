@@ -30,6 +30,7 @@ module.exports = {
     },
     tickets: {
       type: 'number',
+      required: true
     }
   },
   
@@ -53,10 +54,13 @@ module.exports = {
     var newPurchase = await Purchase.create({
       sub_total: inputs.sub_total,
       total: inputs.total,
+      //required
       user_id: (await User.findOne({where: {id: inputs.user_id}, select: ['id']}) == null)?
       exits.serverError({info: 'User not found'}):inputs.user_id,
+      //required
       company_id: (await Company.findOne({where: {id: inputs.company_id}, select: ['id']}) == null)?
       exits.serverError({info: 'Company not found'}):inputs.company_id,
+      //required
       tickets: (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) == null)?
       exits.serverError({info: 'Tickets not found'}):inputs.tickets,
     })
