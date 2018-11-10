@@ -44,8 +44,12 @@ module.exports.routes = {
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
+  /************* LOG IN ***************/
+
   'post /admin/login' : 'admin/login',
   'post /user/login' : 'user/login',
+
+  /************* ADD ***************/
 
   'post /admin/create' : 'admin/create',
   'post /user/add' : 'user/add',
@@ -67,28 +71,31 @@ module.exports.routes = {
   'post /ticket/add' : 'ticket/add',
   'post /purchase/add' : 'purchase/add',
 
-  'PATCH /bus/edit/:id' : 'bus/edit',
+  /************* EDIT ***************/
 
-  //overwrtitting all the blueprints of post
-  'post /admin' : 'responses/notFound',
-  'post /user' : 'responses/notFound',
-  'post /company' : 'responses/notFound',
-  'post /bus' : 'responses/notFound',
-  'post /dateinterval' : 'responses/notFound',
-  'post /hourinterval' : 'responses/notFound',
-  'post /imageofplace' : 'responses/notFound',
-  'post /location' : 'responses/notFound',
-  'post /narrative' : 'responses/notFound',
-  'post /placetype' : 'responses/notFound',
-  'post /tickettype' : 'responses/notFound',
-  'post /tour' : 'responses/notFound',
-  'post /location' : 'responses/notFound',
-  'post /place' : 'responses/notFound',
-  'post /dateinformation' : 'responses/notFound',
-  'post /price' : 'responses/notFound',
-  'post /bracelet' : 'responses/notFound',
-  'post /ticket' : 'responses/notFound',
-  'post /purchase' : 'responses/notFound',
+  'patch /bus/edit/:id' : 'bus/edit',
+
+  /************* NOT FOUND ***************/
+
+  'post /admin' : 'notfound',
+  'post /user' : 'notfound',
+  'post /company' : 'notfound',
+  'post /bus' : 'notfound',
+  'post /dateinterval' : 'notfound',
+  'post /hourinterval' : 'notfound',
+  'post /imageofplace' : 'notfound',
+  'post /location' : 'notfound',
+  'post /narrative' : 'notfound',
+  'post /placetype' : 'notfound',
+  'post /tickettype' : 'notfound',
+  'post /tour' : 'notfound',
+  'post /location' : 'notfound',
+  'post /place' : 'notfound',
+  'post /dateinformation' : 'notfound',
+  'post /price' : 'notfound',
+  'post /bracelet' : 'notfound',
+  'post /ticket' : 'notfound',
+  'post /purchase' : 'notfound',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
