@@ -1,15 +1,19 @@
 module.exports = async (req, res) => {
   const busId = req.param('id');
+  var bus;
+
+    bus = (await Bus.findOne({where: {id: busId}, select: ['id']}) === undefined)?undefined:busId;
+    if(bus === undefined){
+      return res.json({info: 'Bus not found'});
+    }
 
 
   var tourObj;
   //if i recieve the field I check if its correct
-  if(req.tour_id){
-    tourObj = (await Tour.findOne({where: {id: req.tour_id}, select: ['id']}) === undefined)?undefined:inputs.tour_id;
+  if(req.body.tour_id){
+    tourObj = (await Tour.findOne({where: {id: req.body.tour_id}, select: ['id']}) === undefined)?undefined:req.body.tour_id;
     if(tourObj === undefined){
-      return exits.serverError({
-        info: 'Tour not found'
-      });
+      return res.json({info: 'Tour not found'});
     }
   }
 
