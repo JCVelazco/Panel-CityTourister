@@ -97,7 +97,7 @@ module.exports = {
     var key_ofbus;
     //if i recieve the field I check if its correct
     if(inputs.buses){
-      key_ofbus = (await Bus.findOne({where: {id: inputs.buses}, select: ['id']}) === undefined)?undefined:inputs.buses;
+      key_ofbus = (await Bus.findOne({where: {id: inputs.buses}, select: ['id']}) == null)?undefined:inputs.buses;
       if(key_ofbus === undefined){
         return exits.serverError({
           info: 'Bus not found'
@@ -105,13 +105,17 @@ module.exports = {
       }
     }
     
-    //required
-    var key_ofdateinfo = (await DateInformation.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
-    if(key_ofdateinfo === undefined){
-      return exits.serverError({
-        info: 'DateInfo not found'
-      });
-    }
+        //no required
+        var key_ofdateinfo;
+        //if i recieve the field I check if its correct
+        if(inputs.dateinformations){
+          key_ofdateinfo = (await Bus.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
+          if(key_ofdateinfo === undefined){
+            return exits.serverError({
+              info: 'DateInfo not found'
+            });
+          }
+        }
     
     //no required
     var key_ofplace;
