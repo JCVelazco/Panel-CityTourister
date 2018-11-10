@@ -1,24 +1,25 @@
 module.exports = async (req, res) => {
   const busId = req.param('id');
+  let tour_id = req.body.tour_id;
 
+  let currentBus = await Bus.findOne({id: busId});
 
-  var tourObj;
-  //if i recieve the field I check if its correct
-  if(req.tour_id){
-    tourObj = (await Tour.findOne({where: {id: req.tour_id}, select: ['id']}) === undefined)?undefined:inputs.tour_id;
-    if(tourObj === undefined){
-      return exits.serverError({
-        info: 'Tour not found'
-      });
-    }
-  }
+  if(!currentBus) 
+    return res.json({info: 'Bus notFound'});
 
+  var tourObj = ' ';
+
+  if(tour_id)
+    tourObj = await Tour.findOne({id: tour_id});
+
+  if(!tourObj) 
+    return res.json({info: 'Tour notFound'});
 
   var updatedBus = await Bus.update({id: busId})
   .set({
     availability: req.body.availability,
     numBus: req.body.numBus,
-    tour_id: tourObj
+    tour_id: tourObj.id
   }).fetch();
 
   return res.json(updatedBus);
