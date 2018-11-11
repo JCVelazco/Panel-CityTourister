@@ -67,17 +67,20 @@ module.exports = {
     })
     .intercept('E_UNIQUE', ()=>{
       return exits.serverError({
-        info: 'Email already in use'
+        info: 'Email already in use',
+        color: 'danger'
       });
     })
     .fetch();
     
     if(!newAdmin) return exits.serverError({
-      info: 'Internal server error'
+      info: 'Internal server error',
+      color: 'warning'
     });
     
     return exits.success({
-      info: 'New admin added',
+      info: 'Éxito',
+      color: 'success',
       id: newAdmin.id
     });
     

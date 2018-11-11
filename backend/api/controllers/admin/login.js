@@ -44,19 +44,22 @@ module.exports = {
     }).decrypt();
 
     if(!admin) return exits.notFound({
-      info: 'User was not found'
+      info: 'User was not found',
+      color: 'danger'
     });
 
     if(inputs.password == admin.password){
       sails.session.userId = admin.id;
       return exits.success({
-        info: 'Login success',
+        info: 'Login exitoso',
+        color: 'success',
         id: admin.id
       });
     }
     
     return exits.incorrectPassword({
-      info: 'Incorrect password.'
+      info: 'Incorrect password',
+      color: 'warning'
     });
 
   }
