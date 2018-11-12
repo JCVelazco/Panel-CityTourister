@@ -2,7 +2,7 @@
 module.exports = async (req, res) => {
   const ImageOfPlaceId = req.param('id');
   
-  let currentImageOfPlace = await ImageOfPlace.findOne({id: ImageOfPlace});
+  let currentImageOfPlace = await ImageOfPlace.findOne({id: ImageOfPlaceId});
   
   if(!currentImageOfPlace) 
   return res.json({info: 'ImageOfPlace notFound'});

@@ -17,7 +17,7 @@ module.exports = {
     },
     
     image: {
-      type: 'string', //check if ref isnt better
+      type: 'string', 
       required: true,
       allowNull: false,
       isURL: true

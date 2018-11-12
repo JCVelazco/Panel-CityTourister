@@ -47,7 +47,7 @@ module.exports = {
     var key_oftickettype = (await TicketType.findOne({where: {id: inputs.ticket_type_id}, select: ['id']}) === undefined)?undefined:inputs.ticket_type_id;
     if(key_oftickettype === undefined){
       return exits.serverError({
-        info: 'TticketType not found'
+        info: 'TicketType not found'
       });
     }
     

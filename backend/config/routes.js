@@ -73,7 +73,20 @@ module.exports.routes = {
 
   /************* EDIT ***************/
 
-  'patch /bus/edit/:id' : 'bus/edit',
+  'put /bus/edit/:id' : 'bus/edit',
+  'put /admin/edit/:id' : 'admin/edit',
+  'put /user/edit/:id' : 'user/edit',
+  'put /bracelet/edit/:id' : 'bracelet/edit',
+  'put /company/edit/:id' : 'company/edit',
+  'put /dateinformation/edit/:id' : 'dateinformation/edit',
+  'put /dateinterval/edit/:id' : 'dateinterval/edit',
+  'put /hourinterval/edit/:id' : 'hourinterval/edit',
+  'put /imageofplace/edit/:id' : 'imageofplace/edit',
+  'put /location/edit/:id' : 'location/edit',
+  'put /placetype/edit/:id' : 'placetype/edit',
+  'put /price/edit/:id' : 'price/edit',
+  'put /tickettype/edit/:id' : 'tickettype/edit',
+
 
   /************* NOT FOUND ***************/
 

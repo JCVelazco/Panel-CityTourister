@@ -1,7 +1,7 @@
 module.exports = async (req, res) => {
   const adminId = req.param('id');
 
-  let currentAdmin = await admin.findOne({id: adminId});
+  let currentAdmin = await Admin.findOne({id: adminId});
 
   if(!currentAdmin) 
     return res.json({info: 'Admin notFound'});
