@@ -85,14 +85,6 @@ module.exports = {
         info: 'Price not found'
       });
     }
-    /*
-    //required
-    var key_ofbracelet = (await Bracelet.findOne({where: {id: inputs.bracelet_id}, select: ['id']}) === undefined)?undefined:inputs.bracelet_id;
-    if(key_ofbracelet === undefined){
-      return exits.serverError({
-        info: 'Bracelet not found'
-      });
-    }*/
     
     //required
     var key_oftour = (await Tour.findOne({where: {id: inputs.tour_associated}, select: ['id']}) === undefined)?undefined:inputs.tour_associated;
