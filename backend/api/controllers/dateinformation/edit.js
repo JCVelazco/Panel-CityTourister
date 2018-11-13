@@ -29,7 +29,12 @@ module.exports = async (req, res) => {
     tours: req.body.tours,
     date_id: dateObj.id,
     hour_id: hourObj.id
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedDateInformation);
 }

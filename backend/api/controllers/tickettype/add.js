@@ -45,6 +45,10 @@ module.exports = {
       name: inputs.name,
       description: inputs.description,
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newTicketT) return exits.serverError({

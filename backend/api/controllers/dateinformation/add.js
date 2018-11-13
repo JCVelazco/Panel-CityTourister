@@ -75,6 +75,10 @@ module.exports = {
       //required
       hour_id: key_ofhour
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newDateInfo) return exits.serverError({

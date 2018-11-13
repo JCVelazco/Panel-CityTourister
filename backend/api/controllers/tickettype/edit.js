@@ -12,7 +12,12 @@ module.exports = async (req, res) => {
   .set({
     name: req.body.name,
     description: req.body.description,
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedTicketType);
 }

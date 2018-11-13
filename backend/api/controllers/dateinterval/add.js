@@ -48,6 +48,10 @@ module.exports = {
       end_date: inputs.end_date,
       service: inputs.service
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newDateinterval) return exits.serverError({

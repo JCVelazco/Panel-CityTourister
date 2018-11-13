@@ -11,8 +11,12 @@ module.exports = async (req, res) => {
   var updatedImageOfPlace = await ImageOfPlace.update({id: ImageOfPlaceId})
   .set({
     image_url: req.body.image_url,
-    description: req.body.description
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedImageOfPlace);
 }

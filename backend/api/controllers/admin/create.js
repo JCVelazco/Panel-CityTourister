@@ -71,6 +71,10 @@ module.exports = {
         color: 'danger'
       });
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newAdmin) return exits.serverError({

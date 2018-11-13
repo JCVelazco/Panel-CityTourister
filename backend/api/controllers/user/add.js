@@ -63,6 +63,10 @@ module.exports = {
       password: inputs.password,
       phone_number: inputs.phone_number
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .intercept('E_UNIQUE', ()=>{
       return exits.serverError({
         info: 'Email already in use'

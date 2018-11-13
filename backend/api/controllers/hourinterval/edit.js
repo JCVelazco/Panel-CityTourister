@@ -12,7 +12,12 @@ module.exports = async (req, res) => {
     start_time: req.body.start_time,
     end_time: req.body.end_time,
     frequency: req.body.frequency
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedHourInterval);
 }

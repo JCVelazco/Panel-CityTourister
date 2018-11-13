@@ -82,6 +82,10 @@ module.exports = {
       //no required
       tickets: key_ofticket
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newPrice) return exits.serverError({

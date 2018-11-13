@@ -17,7 +17,12 @@ module.exports = async (req, res) => {
     rfc: req.body.rfc,
     ieps: req.body.ieps,
     iva: req.body.iva
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
 
   return res.json(updatedCompany);
 }

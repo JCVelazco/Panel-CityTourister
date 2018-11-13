@@ -22,21 +22,25 @@ module.exports = {
       allowNull: false,
       minLength: 5
     },
+
+    latitude: {
+      type: 'number',
+      required: true
+    },
+
+    longitude: {
+      type: 'number',
+      required: true
+    },
+
+    narrative_url: {
+      type: 'string',
+      allowNull: true
+    },
     
     place_type_id: {
       type: 'number',
       required: true
-    },
-    
-    location_id: {
-      type: 'number',
-      required: true
-    },
-    
-    narrative_id: {
-      type: 'number',
-      required: false,
-      allowNull: true
     },
     
     imagesOfPlaces: {
@@ -76,25 +80,7 @@ module.exports = {
       });
     }
     
-    //required
-    var key_oflocation = (await Location.findOne({where: {id: inputs.location_id}, select: ['id']}) === undefined)?undefined:inputs.location_id;
-    if(key_oflocation === undefined){
-      return exits.serverError({
-        info: 'Location not found'
-      });
-    }
     
-    //no required
-    var key_ofnarrative;
-    //if i recieve the field I check if its correct
-    if(inputs.ticket_id){
-      key_ofnarrative = (await Narrative.findOne({where: {id: inputs.narrative_id}, select: ['id']}) === undefined)?undefined:inputs.narrative_id;
-      if(key_ofnarrative === undefined){
-        return exits.serverError({
-          info: 'Narrative not found'
-        });
-      }
-    }
     
     //no required
     var key_ofimages;
@@ -123,12 +109,11 @@ module.exports = {
     var newPlace = await Place.create({
       name: inputs.name,
       description: inputs.description,
+      longitude: inputs.longitude,
+      latitude: inputs.latitude,
+      narrative_url: inputs.narrative_url,
       //required
       place_type_id: key_ofplacetype,
-      //required
-      location_id: key_oflocation,
-      //no required
-      narrative_id: key_ofnarrative,
       //no required
       imagesOfPlaces: key_ofimages,
       //no required

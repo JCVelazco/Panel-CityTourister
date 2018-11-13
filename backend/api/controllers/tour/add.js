@@ -34,7 +34,7 @@ module.exports = {
       type: 'number',
       required: false
     },
-    bracelets: {
+    tickets: {
       type: 'number',
       required: false
     },
@@ -82,13 +82,13 @@ module.exports = {
     }
     
     //no required
-    var key_ofbracelet;
+    var key_ofticket;
     //if i recieve the field I check if its correct
-    if(inputs.prices){
-      key_ofbracelet = (await Bracelet.findOne({where: {id: inputs.bracelets}, select: ['id']}) === undefined)?undefined:inputs.bracelets;
-      if(key_ofbracelet === undefined){
+    if(inputs.tickets){
+      key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
+      if(key_ofticket === undefined){
         return exits.serverError({
-          info: 'Bracelet not found'
+          info: 'Ticket not found'
         });
       }
     }
@@ -105,22 +105,22 @@ module.exports = {
       }
     }
     
-        //no required
-        var key_ofdateinfo;
-        //if i recieve the field I check if its correct
-        if(inputs.dateinformations){
-          key_ofdateinfo = (await Bus.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
-          if(key_ofdateinfo === undefined){
-            return exits.serverError({
-              info: 'DateInfo not found'
-            });
-          }
-        }
+    //no required
+    var key_ofdateinfo;
+    //if i recieve the field I check if its correct
+    if(inputs.dateinformations){
+      key_ofdateinfo = (await Bus.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
+      if(key_ofdateinfo === undefined){
+        return exits.serverError({
+          info: 'DateInfo not found'
+        });
+      }
+    }
     
     //no required
     var key_ofplace;
     //if i recieve the field I check if its correct
-    if(inputs.ticket_id){
+    if(inputs.places){
       key_ofplace = (await Place.findOne({where: {id: inputs.places}, select: ['id']}) === undefined)?undefined:inputs.places;
       if(key_ofplace === undefined){
         return exits.serverError({
@@ -136,7 +136,7 @@ module.exports = {
       //no required
       prices: key_ofprice,
       //no required
-      bracelets: key_ofbracelet,
+      tickets: key_ofticket,
       //no required
       buses: key_ofbus,
       //required
@@ -144,6 +144,10 @@ module.exports = {
       //no required
       places: key_ofplace
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newTour) return exits.serverError({

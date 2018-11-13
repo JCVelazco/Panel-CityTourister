@@ -15,12 +15,6 @@ module.exports = {
       required: true,
       isURL: true
     },
-
-    description: {
-      type: 'string',
-      allowNull: true,
-      minLength: 10
-    },
   },
 
   exits: {
@@ -41,8 +35,11 @@ module.exports = {
         
     var newImageOfPlace = await ImageOfPlace.create({
       image_url: inputs.image_url,
-      description: inputs.description
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newImageOfPlace) return exits.serverError({

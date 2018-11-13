@@ -11,7 +11,12 @@ module.exports = async (req, res) => {
   var updatedPlaceType = await PlaceType.update({id: PlaceTypeId})
   .set({
     name: req.body.name
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedPlaceType);
 }

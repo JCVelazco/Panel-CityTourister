@@ -97,6 +97,10 @@ module.exports = {
       ieps: inputs.ieps,
       iva: inputs.iva
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newCompany) return exits.serverError({

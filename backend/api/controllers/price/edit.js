@@ -40,7 +40,12 @@ module.exports = async (req, res) => {
     ticket_type_id: ticketTypeObj.id,
     tour_id: tourObj.id,
     tickets: ticketObj.id
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedBracelet);
 }

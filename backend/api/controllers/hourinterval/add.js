@@ -49,6 +49,10 @@ module.exports = {
       end_time: inputs.end_time,
       frequency: inputs.frequency
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newHourInterval) return exits.serverError({

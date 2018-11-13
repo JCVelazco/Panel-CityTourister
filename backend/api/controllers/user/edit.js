@@ -14,7 +14,12 @@ module.exports = async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     phone_number: req.body.phone_number
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedUser);
 }

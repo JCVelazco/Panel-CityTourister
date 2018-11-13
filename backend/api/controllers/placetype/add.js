@@ -36,6 +36,10 @@ module.exports = {
     var newPlacetype = await PlaceType.create({
       name: inputs.name
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newPlacetype) return exits.serverError({

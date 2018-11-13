@@ -43,7 +43,7 @@ module.exports = {
       type: 'number',
       required: true
     },
-    bracelet_id: {
+    tour_associated: {
       type: 'number',
       required: true
     }
@@ -85,12 +85,20 @@ module.exports = {
         info: 'Price not found'
       });
     }
-    
+    /*
     //required
     var key_ofbracelet = (await Bracelet.findOne({where: {id: inputs.bracelet_id}, select: ['id']}) === undefined)?undefined:inputs.bracelet_id;
     if(key_ofbracelet === undefined){
       return exits.serverError({
         info: 'Bracelet not found'
+      });
+    }*/
+    
+    //required
+    var key_oftour = (await Tour.findOne({where: {id: inputs.tour_associated}, select: ['id']}) === undefined)?undefined:inputs.tour_associated;
+    if(key_oftour === undefined){
+      return exits.serverError({
+        info: 'Tour not found'
       });
     }
     
@@ -104,9 +112,13 @@ module.exports = {
       //required
       price_id: key_ofprice,
       //required
-      bracelet_id: key_ofbracelet
+      tour_associated: key_oftour
       
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newTicket) return exits.serverError({

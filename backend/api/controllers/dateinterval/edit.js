@@ -12,7 +12,12 @@ module.exports = async (req, res) => {
     start_date: req.body.start_date,
     end_date: req.body.end_date,
     service: req.body.service
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
   
   return res.json(updatedDateInterval);
 }

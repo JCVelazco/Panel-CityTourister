@@ -13,7 +13,12 @@ module.exports = async (req, res) => {
     username: req.body.username,
     connection_time: req.body.connection_time,
     password: req.body.password,
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+   .fetch();
 
   return res.json(updatedAdmin);
 }

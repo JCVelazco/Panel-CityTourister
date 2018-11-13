@@ -20,7 +20,12 @@ module.exports = async (req, res) => {
     availability: req.body.availability,
     numBus: req.body.numBus,
     tour_id: tourObj.id
-  }).fetch();
+  })
+  .intercept((err)=>{
+    err.message = 'An error has ocurred: '+err.message;
+    return err;
+   })
+  .fetch();
 
   return res.json(updatedBus);
 }

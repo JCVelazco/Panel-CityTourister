@@ -1,4 +1,5 @@
-module.exports = async (req, res) => {
+
+/*module.exports = async (req, res) => {
   const braceletId = req.param('id');
   let tour_id = req.body.tour_id;
   let ticket_id = req.body.ticket_id;
@@ -36,3 +37,4 @@ module.exports = async (req, res) => {
 
   return res.json(updatedBracelet);
 }
+*/
