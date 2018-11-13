@@ -39,10 +39,10 @@ module.exports = async (req, res) => {
   var updatedPlace = await Place.update({id: PlaceId})
   .set({
     name: req.name,
-    description: req.description,
-    longitude: req.longitude,
-    latitude: req.latitude,
-    narrative_url: req.narrative_url,
+    description: req.body.description,
+    longitude: req.body.longitude,
+    latitude: req.body.latitude,
+    narrative_url: req.body.narrative_url,
     place_type_id: placeTypeObj.id,
     imagesOfPlaces: imageObj.id,
     tours: tourObj.id,

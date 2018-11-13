@@ -37,8 +37,8 @@ module.exports = async (req, res) => {
   
   var updatedPurchase = await Purchase.update({id: PurchaseId})
   .set({
-    sub_total: req.sub_total,
-    total: req.total,
+    sub_total: req.body.sub_total,
+    total: req.body.total,
     user_id: userObj.id,
     company_id: companyObj.id,
     tickets: ticketObj.id

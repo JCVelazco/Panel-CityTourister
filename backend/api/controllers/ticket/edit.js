@@ -29,10 +29,10 @@ module.exports = async (req, res) => {
   
   var updatedTicket = await Ticket.update({id: TicketId})
   .set({
-    name:  req.name,
-    date_tour: req.date_tour,
-    qr_code: req.qr_code,
-    sub_total: req.sub_total,
+    name:  req.body.name,
+    date_tour: req.body.date_tour,
+    qr_code: req.body.qr_code,
+    sub_total: req.body.sub_total,
 
     purchase_id: purchaseObj.id,
     price_id: priceObj.id,
