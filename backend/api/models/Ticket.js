@@ -26,13 +26,6 @@ module.exports = {
       minLength: 3
     },
 
-    age: {
-      type: 'number',
-      required: true,
-      allowNull: false,
-      min: 0,
-      max: 120
-    },
     date_tour: {
       type: 'string',
       required: true,

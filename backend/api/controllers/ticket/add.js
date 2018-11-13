@@ -69,7 +69,7 @@ module.exports = {
     //no required
     var key_ofpurchase;
     //if i recieve the field I check if its correct
-    if(inputs.ticket_id){
+    if(inputs.purchase_id){
       key_ofpurchase = (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) === undefined)?undefined:inputs.purchase_id;
       if(key_ofpurchase === undefined){
         return exits.serverError({
