@@ -119,6 +119,10 @@ module.exports = {
       //no required
       tours: key_oftour,
     })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+     })
     .fetch();
     
     if(!newPlace) return exits.serverError({

@@ -74,6 +74,7 @@ module.exports.routes = {
   /************* EDIT ***************/
 
   'put /bus/edit/:id' : 'bus/edit',
+  'put /place/edit/:id' : 'place/edit',
   'put /admin/edit/:id' : 'admin/edit',
   'put /user/edit/:id' : 'user/edit',
   'put /bracelet/edit/:id' : 'bracelet/edit',
