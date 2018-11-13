@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
   if(!ticketTypeObj) 
   return res.json({info: 'TicketType notFound'});
   
-  var updatedBracelet = await Bracelet.update({id: braceletId})
+  var updatedPrice = await Price.update({id: PriceId})
   .set({
     priceAmount : req.body.priceAmount,
     ticket_type_id: ticketTypeObj.id,
@@ -47,5 +47,5 @@ module.exports = async (req, res) => {
    })
   .fetch();
   
-  return res.json(updatedBracelet);
+  return res.json(updatedPrice);
 }
