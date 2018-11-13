@@ -70,10 +70,15 @@ module.exports = {
       model: 'price',
       required: true
     },
+    tour_associated: {
+      model: 'tour',
+      required: true
+    }
+    /*
     bracelet_id: {
       collection: 'bracelet',
       via: 'ticket_id',
-    }
+    }*/
 
   },
 

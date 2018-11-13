@@ -55,9 +55,13 @@ module.exports = {
       collection: 'price',
       via: 'tour_id',
     },
-    bracelets: {
+    /*bracelets: {
       collection: 'bracelet',
       via: 'tour_id'
+    },*/
+    tickets: {
+      collection: 'ticket',
+      via: 'tour_associated'
     },
     buses: {
       collection: 'bus',

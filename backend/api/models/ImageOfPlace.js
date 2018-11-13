@@ -27,12 +27,6 @@ module.exports = {
       isURL: true
     },
 
-    description: {
-      type: 'string',
-      allowNull: true,
-      minLength: 10
-    },
-
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

@@ -34,6 +34,21 @@ module.exports = {
       minLength: 5
     },
 
+    latitude: {
+      type: 'number',
+      required: true
+    },
+
+    longitude: {
+      type: 'number',
+      required: true
+    },
+
+    narrative_url:{
+      type: 'string',
+      allowNull: true
+    },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -46,16 +61,6 @@ module.exports = {
     place_type_id: {
       model: 'placetype',
       required: true,
-    },
-    
-    location_id: {
-      collection: 'location',
-      via: 'place_id',
-    },
-    
-    narrative_id: {
-      collection: 'narrative',
-      via: 'place_id',
     },
 
     imagesOfPlaces: {
