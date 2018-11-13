@@ -60,7 +60,6 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     place_type_id: {
       model: 'placetype',
-      required: true,
     },
 
     imagesOfPlaces: {

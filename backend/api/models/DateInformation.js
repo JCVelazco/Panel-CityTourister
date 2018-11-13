@@ -34,11 +34,9 @@ module.exports = {
     },
     date_id: {
       model: 'dateinterval',
-      required: true
     },
     hour_id: {
       model: 'hourinterval',
-      required: true
     }
 
   },

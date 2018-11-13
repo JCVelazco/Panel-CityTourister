@@ -42,11 +42,9 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     user_id: {
       model: 'user',
-      required: true
     },
     company_id: {
       model: 'company',
-      required: true
     },
     tickets: {
       collection: 'ticket',

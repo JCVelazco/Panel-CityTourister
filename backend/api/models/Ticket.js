@@ -61,11 +61,9 @@ module.exports = {
     },
     price_id: {
       model: 'price',
-      required: true
     },
     tour_associated: {
       model: 'tour',
-      required: true
     }
     /*
     bracelet_id: {
