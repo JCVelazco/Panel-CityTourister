@@ -44,8 +44,8 @@ module.exports = {
     phone_number: {
       type: 'string',
       allowNull: true,
-      minLength: 10,
-      maxLength: 10
+      minLength: 5,
+      maxLength: 15
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
