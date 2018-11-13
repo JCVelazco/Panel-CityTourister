@@ -40,14 +40,7 @@ module.exports = {
       encrypt: true
     },
 
-    sub_total: {
-      type: 'number',
-      required: true, 
-      allowNull: false,
-      min: 0
-    },
 
-    
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -61,9 +54,6 @@ module.exports = {
     },
     price_id: {
       model: 'price',
-    },
-    tour_associated: {
-      model: 'tour',
     }
     /*
     bracelet_id: {

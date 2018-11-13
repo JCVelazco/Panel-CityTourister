@@ -20,14 +20,6 @@ module.exports = async (req, res) => {
   if(!priceObj) 
   return res.json({info: 'Price notFound'});
 
-  var ticketObj = ' ';
-
-  if(tickets)
-  ticketObj = await Ticket.findOne({id: tickets});
-  
-  if(!ticketObj) 
-  return res.json({info: 'Ticket notFound'});
-
   var busObj = ' ';
 
   if(buses)
@@ -62,7 +54,6 @@ module.exports = async (req, res) => {
     description: req.body.description,
 
     prices: priceObj.id,
-    tickets: ticketObj.id,
     buses: busObj.id,
     dateinformations: dateinfoObj.id,
     places: placeObj.id

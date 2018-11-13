@@ -27,14 +27,9 @@ module.exports = {
       type: 'string',
       required: true,
       allowNull: false,
-      minLength: 10,
-      maxLength: 200
+      minLength: 10
     },
     prices: {
-      type: 'number',
-      required: false
-    },
-    tickets: {
       type: 'number',
       required: false
     },
@@ -81,17 +76,6 @@ module.exports = {
       }
     }
     
-    //no required
-    var key_ofticket;
-    //if i recieve the field I check if its correct
-    if(inputs.tickets){
-      key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
-      if(key_ofticket === undefined){
-        return exits.serverError({
-          info: 'Ticket not found'
-        });
-      }
-    }
     
     //no required
     var key_ofbus;
@@ -135,8 +119,6 @@ module.exports = {
       description: inputs.description,
       //no required
       prices: key_ofprice,
-      //no required
-      tickets: key_ofticket,
       //no required
       buses: key_ofbus,
       //required

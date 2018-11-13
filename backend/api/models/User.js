@@ -38,7 +38,8 @@ module.exports = {
     password: {
       type: 'string',
       required: true,
-      encrypt: true
+      encrypt: true,
+      minLength: 6
     },
     phone_number: {
       type: 'string',

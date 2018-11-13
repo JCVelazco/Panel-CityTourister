@@ -18,13 +18,14 @@ module.exports = async (req, res) => {
   if(!purchaseObj) 
   return res.json({info: 'Purchase notFound'});
 
-  var tourObj = ' ';
+ 
+  var priceObj = ' ';
 
-  if(tour_associated)
-  tourObj = await Price.findOne({id: tour_associated});
+  if(price_id)
+  priceObj = await Price.findOne({id: price_id});
   
-  if(!tourObj) 
-  return res.json({info: 'Tour notFound'});
+  if(!priceObj) 
+  return res.json({info: 'Price notFound'});
  
   
   var updatedTicket = await Ticket.update({id: TicketId})
@@ -32,11 +33,9 @@ module.exports = async (req, res) => {
     name:  req.body.name,
     date_tour: req.body.date_tour,
     qr_code: req.body.qr_code,
-    sub_total: req.body.sub_total,
 
     purchase_id: purchaseObj.id,
     price_id: priceObj.id,
-    tour_associated: tourObj.id
   })
   .intercept((err)=>{
     err.message = 'An error has ocurred: '+err.message;

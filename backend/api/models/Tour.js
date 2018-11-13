@@ -39,7 +39,6 @@ module.exports = {
         required: true,
         allowNull: false,
         minLength: 10,
-       maxLength: 200
       },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -59,10 +58,6 @@ module.exports = {
       collection: 'bracelet',
       via: 'tour_id'
     },*/
-    tickets: {
-      collection: 'ticket',
-      via: 'tour_associated'
-    },
     buses: {
       collection: 'bus',
       via: 'tour_id'

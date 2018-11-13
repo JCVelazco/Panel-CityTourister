@@ -28,13 +28,6 @@ module.exports = {
       unique: true,
       encrypt: true
     },
-    
-    sub_total: {
-      type: 'number',
-      required: true, 
-      allowNull: false,
-      min: 0
-    },
     purchase_id: {
       type: 'number',
       required: false
@@ -43,10 +36,6 @@ module.exports = {
       type: 'number',
       required: true
     },
-    tour_associated: {
-      type: 'number',
-      required: true
-    }
   },
   
   
@@ -86,25 +75,15 @@ module.exports = {
       });
     }
     
-    //required
-    var key_oftour = (await Tour.findOne({where: {id: inputs.tour_associated}, select: ['id']}) === undefined)?undefined:inputs.tour_associated;
-    if(key_oftour === undefined){
-      return exits.serverError({
-        info: 'Tour not found'
-      });
-    }
     
     var newTicket = await Ticket.create({
       name:  inputs.name,
       date_tour: inputs.date_tour,
       qr_code: inputs.qr_code,
-      sub_total: inputs.sub_total,
       //no required
       purchase_id: key_ofpurchase,
       //required
       price_id: key_ofprice,
-      //required
-      tour_associated: key_oftour
       
     })
     .intercept((err)=>{
