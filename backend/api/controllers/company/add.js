@@ -28,8 +28,8 @@ module.exports = {
     phone_number: {
       type: 'string',
       allowNull: true,
-      maxLength: 10,
-      minLength: 10,
+      maxLength: 5,
+      minLength: 15,
     },
     
     address: {
@@ -49,15 +49,15 @@ module.exports = {
     rfc: {
       type: 'string',
       allowNull: true,
-      maxLength: 13,
-      minLength: 12
+      maxLength: 20,
+      minLength: 10
     },
     
     ieps: {
       type: 'number',
       required: true,
       allowNull:false,
-      max: 1
+      max: 100
      
     },
     
@@ -65,7 +65,7 @@ module.exports = {
       type: 'number',
       required: true,
       allowNull: false,
-      max: 1
+      max: 100
     },
     
   },

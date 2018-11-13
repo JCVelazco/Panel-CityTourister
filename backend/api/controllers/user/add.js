@@ -23,7 +23,8 @@ module.exports = {
     password: {
       type: 'string',
       required: true,
-      encrypt: true
+      encrypt: true,
+      minLength: 6
       /*custom: function(value) {
         // • be a string
         // • be at least 6 characters long
@@ -35,8 +36,8 @@ module.exports = {
     phone_number: {
       type: 'string',
       allowNull: true,
-      minLength: 10,
-      maxLength: 10
+      minLength: 5,
+      maxLength: 15
     },
   },
   
