@@ -85,7 +85,7 @@ module.exports = {
     //no required
     var key_ofimages;
     //if i recieve the field I check if its correct
-    if(inputs.ticket_id){
+    if(inputs.imagesOfPlaces){
       key_ofimages = (await ImageOfPlace.findOne({where: {id: inputs.imagesOfPlaces}, select: ['id']}) === undefined)?undefined:inputs.imagesOfPlaces;
       if(key_ofimages === undefined){
         return exits.serverError({
@@ -97,7 +97,7 @@ module.exports = {
     //no required
     var key_oftour;
     //if i recieve the field I check if its correct
-    if(inputs.ticket_id){
+    if(inputs.tours){
       key_oftour = (await Tour.findOne({where: {id: inputs.tours}, select: ['id']}) === undefined)?undefined:inputs.tours;
       if(key_oftour === undefined){
         return exits.serverError({

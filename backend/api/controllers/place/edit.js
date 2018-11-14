@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
   var tourObj = ' ';
   
   if(tours)
-  tourObj = await Tours.findOne({id: tours});
+  tourObj = await Tour.findOne({id: tours});
   
   if(!tourObj) 
   return res.json({info: 'Tour notFound'});

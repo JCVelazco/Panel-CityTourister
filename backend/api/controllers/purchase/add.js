@@ -69,7 +69,7 @@ module.exports = {
     
     //required
     var key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
-    if(key_ofuser === undefined){
+    if(key_ofticket === undefined){
       return exits.serverError({
         info: 'Ticket not found'
       });
