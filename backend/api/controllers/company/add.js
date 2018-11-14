@@ -97,6 +97,12 @@ module.exports = {
       ieps: inputs.ieps,
       iva: inputs.iva
     })
+    .intercept('E_UNIQUE', ()=>{
+      return exits.serverError({
+        info: 'Full name already in use',
+        color: 'danger'
+      });
+    })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
       return err;

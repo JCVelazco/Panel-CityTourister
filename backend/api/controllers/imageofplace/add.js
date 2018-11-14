@@ -36,6 +36,12 @@ module.exports = {
     var newImageOfPlace = await ImageOfPlace.create({
       image_url: inputs.image_url,
     })
+    .intercept('E_UNIQUE', ()=>{
+      return exits.serverError({
+        info: 'Url already in use',
+        color: 'danger'
+      });
+    })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
       return err;
