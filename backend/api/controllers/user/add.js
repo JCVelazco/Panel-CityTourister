@@ -65,7 +65,7 @@ module.exports = {
       phone_number: inputs.phone_number
     })
     .intercept('E_UNIQUE', ()=>{
-      return exits.success({
+      return exits.serverError({
         info: 'Email already in use'
       });
     })
