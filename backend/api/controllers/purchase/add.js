@@ -37,7 +37,7 @@ module.exports = {
     },
     tickets: {
       type: 'number',
-      required: true
+      required: false
     },
     tour_associated: {
       type: 'number',

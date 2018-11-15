@@ -1,10 +1,10 @@
 module.exports = async (req, res) => {
   const TourId = req.param('id');
   let prices = req.body.prices;
-  let tickets = req.body.tickets;
   let buses = req.body.buses;
   let dateinformations = req.body.dateinformations;
   let places = req.body.places;
+  let purchases = req.body.purchases;
   
   
   let currentTour = await Tour.findOne({id: TourId});
@@ -19,14 +19,6 @@ module.exports = async (req, res) => {
   
   if(!priceObj) 
   return res.json({info: 'Price notFound'});
-
-  var ticketObj = ' ';
-
-  if(tickets)
-  ticketObj = await Ticket.findOne({id: tickets});
-  
-  if(!ticketObj) 
-  return res.json({info: 'Ticket notFound'});
 
   var busObj = ' ';
 
@@ -51,6 +43,14 @@ module.exports = async (req, res) => {
   
   if(!placeObj) 
   return res.json({info: 'Place notFound'});
+
+  var purchaseObj = ' ';
+
+  if(purchases)
+  purchaseObj = await Place.findOne({id: purchases});
+  
+  if(!purchaseObj) 
+  return res.json({info: 'Purchase notFound'});
   
   
  
@@ -61,10 +61,10 @@ module.exports = async (req, res) => {
     image: req.body.image,
     description: req.body.description,
 
-    tickets: ticketObj.id,
-    prices: priceObj.id,
-    buses: busObj.id,
-    dateinformations: dateinfoObj.id,
+    purchases: await Tour.addToCollection(TourId, 'purchases', purchaseObj.id),
+    prices: await Tour.addToCollection(TourId, 'prices', priceObj.id),
+    buses: await Tour.addToCollection(TourId, 'buses', busObj.id),
+    dateinformations: await Tour.addToCollection(TourId, 'dateinformations', dateinfoObj.id),
     places: await Tour.addToCollection(TourId, 'places', placeObj.id)
   })
   .intercept((err)=>{

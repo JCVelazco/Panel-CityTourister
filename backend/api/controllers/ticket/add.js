@@ -24,7 +24,7 @@ module.exports = {
     },
     purchase_id: {
       type: 'number',
-      required: false
+      required: true
     },
     price_id: {
       type: 'number',
