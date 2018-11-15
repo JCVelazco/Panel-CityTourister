@@ -58,7 +58,7 @@ module.exports = {
       via: 'purchase_id',
     },
     tour_associated: {
-      mode: 'tour'
+      model: 'tour'
     }
 
   },

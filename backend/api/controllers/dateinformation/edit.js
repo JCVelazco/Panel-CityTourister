@@ -2,6 +2,7 @@ module.exports = async (req, res) => {
   const DateInformationId = req.param('id');
   let hour_id = req.body.hour_id;
   let date_id = req.body.date_id;
+  let tours = req.body.tours;
   
   let currentDateInformation = await DateInformation.findOne({id: DateInformationId});
   
@@ -23,10 +24,18 @@ module.exports = async (req, res) => {
   
   if(!dateObj) 
   return res.json({info: 'DateInterval notFound'});
+
+  var tourObj = ' ';
+  
+  if(tours)
+  tourObj = await Tour.findOne({id: tours});
+  
+  if(!tourObj) 
+  return res.json({info: 'Tour notFound'});
   
   var updatedDateInformation = await DateInformation.update({id: DateInformationId})
   .set({
-    tours: req.body.tours,
+    tours: tourObj.id,
     date_id: dateObj.id,
     hour_id: hourObj.id
   })

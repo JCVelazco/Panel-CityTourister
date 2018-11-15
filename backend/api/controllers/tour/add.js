@@ -93,7 +93,7 @@ module.exports = {
     var key_ofdateinfo;
     //if i recieve the field I check if its correct
     if(inputs.dateinformations){
-      key_ofdateinfo = (await Bus.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
+      key_ofdateinfo = (await DateInformation.findOne({where: {id: inputs.dateinformations}, select: ['id']}) === undefined)?undefined:inputs.dateinformations;
       if(key_ofdateinfo === undefined){
         return exits.serverError({
           info: 'DateInfo not found'
