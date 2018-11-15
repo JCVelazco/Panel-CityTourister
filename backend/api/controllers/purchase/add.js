@@ -20,6 +20,13 @@ module.exports = {
       required: true,
       min: 0
     },
+    
+    date_tour: {
+      type: 'string',
+      required: true,
+      allowNull: false
+    },
+
     user_id: {
       type: 'number',
       required: true
@@ -82,6 +89,7 @@ module.exports = {
     
     var newPurchase = await Purchase.create({
       sub_total: inputs.sub_total,
+      date_tour: inputs.date_tour,
       total: inputs.total,
       //required
       user_id: key_ofuser,

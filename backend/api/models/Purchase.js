@@ -32,6 +32,13 @@ module.exports = {
       min: 0
     },
 
+    
+    date_tour: {
+      type: 'string',
+      required: true,
+      allowNull: false
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

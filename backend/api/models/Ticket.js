@@ -26,12 +26,6 @@ module.exports = {
       minLength: 3
     },
 
-    date_tour: {
-      type: 'string',
-      required: true,
-      allowNull: false
-    },
-
     qr_code: {
       type: 'string',
       required: true,

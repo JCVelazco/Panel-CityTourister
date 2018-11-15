@@ -2,7 +2,6 @@ module.exports = async (req, res) => {
   const TicketId = req.param('id');
   let purchase_id = req.body.purchase_id;
   let price_id = req.body.price_id;
-  let tour_associated = req.body.tour_associated;
   
   
   let currentTicket = await Ticket.findOne({id: TicketId});
@@ -31,7 +30,6 @@ module.exports = async (req, res) => {
   var updatedTicket = await Ticket.update({id: TicketId})
   .set({
     name:  req.body.name,
-    date_tour: req.body.date_tour,
     qr_code: req.body.qr_code,
 
     purchase_id: purchaseObj.id,

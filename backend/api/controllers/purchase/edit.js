@@ -39,6 +39,7 @@ module.exports = async (req, res) => {
   .set({
     sub_total: req.body.sub_total,
     total: req.body.total,
+    date_tour: req.body.date_tour,
     user_id: userObj.id,
     company_id: companyObj.id,
     tickets: ticketObj.id

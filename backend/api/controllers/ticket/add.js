@@ -15,12 +15,6 @@ module.exports = {
       minLength: 3
     },
     
-    date_tour: {
-      type: 'string',
-      required: true,
-      allowNull: false
-    },
-    
     qr_code: {
       type: 'string',
       required: true,
@@ -76,7 +70,6 @@ module.exports = {
     
     var newTicket = await Ticket.create({
       name:  inputs.name,
-      date_tour: inputs.date_tour,
       qr_code: inputs.qr_code,
       //required
       purchase_id: key_ofpurchase,
