@@ -69,7 +69,12 @@ module.exports = {
     places: {
       collection: 'place',
       via: 'tours'
+    },
+    purchases: {
+      collection: 'purchase',
+      via: 'tour_associated'
     }
+
 
 
   },

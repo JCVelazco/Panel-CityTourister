@@ -38,6 +38,10 @@ module.exports = {
     tickets: {
       type: 'number',
       required: true
+    },
+    tour_associated: {
+      type: 'number',
+      required: true
     }
   },
   
@@ -85,6 +89,15 @@ module.exports = {
         });
       }
     }
+
+        //required
+        var key_oftour = (await Tour.findOne({where: {id: inputs.tour_associated}, select: ['id']}) === undefined)?undefined:inputs.tour_associated;
+        if(key_ofcompany === undefined){
+          return exits.serverError({
+            info: 'Tour not found'
+          });
+        }
+        
     
     
     var newPurchase = await Purchase.create({
@@ -96,7 +109,9 @@ module.exports = {
       //required
       company_id: key_ofcompany,
       //required
-      tickets: key_ofticket
+      tickets: key_ofticket,
+      //required
+      tour_associated: key_oftour
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
