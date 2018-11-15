@@ -67,13 +67,18 @@ module.exports = {
       });
     }
     
-    //required
-    var key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
-    if(key_ofticket === undefined){
-      return exits.serverError({
-        info: 'Ticket not found'
-      });
+    //no required
+    var key_ofticket;
+    
+    if(inputs.tickets){
+      key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
+      if(key_ofticket === undefined){
+        return exits.serverError({
+          info: 'Ticket not found'
+        });
+      }
     }
+    
     
     var newPurchase = await Purchase.create({
       sub_total: inputs.sub_total,
@@ -88,7 +93,7 @@ module.exports = {
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
       return err;
-     })
+    })
     .fetch();
     
     if(!newPurchase) return exits.serverError({

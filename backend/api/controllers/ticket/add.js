@@ -55,17 +55,15 @@ module.exports = {
     
     sails.log.info("Ticket/add");
     
-    //no required
-    var key_ofpurchase;
-    //if i recieve the field I check if its correct
-    if(inputs.purchase_id){
-      key_ofpurchase = (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) === undefined)?undefined:inputs.purchase_id;
-      if(key_ofpurchase === undefined){
-        return exits.serverError({
-          info: 'Purchase not found'
-        });
-      }
+    //required
+    
+    var key_ofpurchase = (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) === undefined)?undefined:inputs.purchase_id;
+    if(key_ofpurchase === undefined){
+      return exits.serverError({
+        info: 'Purchase not found'
+      });
     }
+    
     
     //required
     var key_ofprice = (await Price.findOne({where: {id: inputs.price_id}, select: ['id']}) === undefined)?undefined:inputs.price_id;
@@ -80,7 +78,7 @@ module.exports = {
       name:  inputs.name,
       date_tour: inputs.date_tour,
       qr_code: inputs.qr_code,
-      //no required
+      //required
       purchase_id: key_ofpurchase,
       //required
       price_id: key_ofprice,
@@ -89,7 +87,7 @@ module.exports = {
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
       return err;
-     })
+    })
     .fetch();
     
     if(!newTicket) return exits.serverError({
