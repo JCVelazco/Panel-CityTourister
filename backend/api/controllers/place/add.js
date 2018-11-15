@@ -48,12 +48,13 @@ module.exports = {
       required: false,
       allowNull: true
     },
-    
+    /*
     tours: {
       type: 'number',
       required: false,
       allowNull: true
     }
+    */
   },
   
   exits: {
@@ -93,7 +94,7 @@ module.exports = {
         });
       }
     }
-    
+    /*
     //no required
     var key_oftour;
     //if i recieve the field I check if its correct
@@ -104,7 +105,7 @@ module.exports = {
           info: 'Tour not found'
         });
       }
-    }
+    }*/
     
     var newPlace = await Place.create({
       name: inputs.name,
@@ -117,7 +118,7 @@ module.exports = {
       //no required
       imagesOfPlaces: key_ofimages,
       //no required
-      tours: key_oftour,
+      //tours: key_oftour,
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;

@@ -2,7 +2,7 @@ module.exports = async (req, res) => {
   const PlaceId = req.param('id');
   let place_type_id = req.body.place_type_id;
   let imagesOfPlaces = req.body.imagesOfPlaces;
-  let tours = req.body.tours;
+ // let tours = req.body.tours;
   
   
   let currentPlace = await Place.findOne({id: PlaceId});
@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
   if(!imageObj) 
   return res.json({info: 'Image notFound'});
 
-  
+ 
   var tourObj = ' ';
   
   if(tours)
@@ -35,6 +35,7 @@ module.exports = async (req, res) => {
   
   if(!tourObj) 
   return res.json({info: 'Tour notFound'});
+  
   
   var updatedPlace = await Place.update({id: PlaceId})
   .set({
@@ -45,7 +46,7 @@ module.exports = async (req, res) => {
     narrative_url: req.body.narrative_url,
     place_type_id: placeTypeObj.id,
     imagesOfPlaces: imageObj.id,
-    tours: tourObj.id,
+    tours: await Place.addToCollection(PlaceId, 'tours', tourObj.id)
   })
   .intercept((err)=>{
     err.message = 'An error has ocurred: '+err.message;

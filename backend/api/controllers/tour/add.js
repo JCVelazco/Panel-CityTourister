@@ -41,10 +41,12 @@ module.exports = {
       type: 'number',
       required: false
     },
+    /*
     places: {
       type: 'number',
       required: false
     }
+    */
   },
   
   
@@ -100,7 +102,7 @@ module.exports = {
         });
       }
     }
-    
+    /*
     //no required
     var key_ofplace;
     //if i recieve the field I check if its correct
@@ -111,7 +113,7 @@ module.exports = {
           info: 'Place not found'
         });
       }
-    }
+    }*/
     
     var newTour = await Tour.create({
       name: inputs.name,
@@ -124,7 +126,7 @@ module.exports = {
       //required
       dateinformations: key_ofdateinfo,
       //no required
-      places: key_ofplace
+      //places: key_ofplace
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;

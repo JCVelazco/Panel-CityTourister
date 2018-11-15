@@ -65,7 +65,7 @@ module.exports = async (req, res) => {
     prices: priceObj.id,
     buses: busObj.id,
     dateinformations: dateinfoObj.id,
-    places: placeObj.id
+    places: await Tour.addToCollection(TourId, 'places', placeObj.id)
   })
   .intercept((err)=>{
     err.message = 'An error has ocurred: '+err.message;
