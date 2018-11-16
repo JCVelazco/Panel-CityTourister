@@ -120,6 +120,9 @@ module.exports.routes = {
   'put /ticket/:id' : 'notfound',
   'put /purchase/:id' : 'notfound',
 
+  //remove Tour
+  'put /tour/:id/remove' : 'tour/remove/generic'
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
