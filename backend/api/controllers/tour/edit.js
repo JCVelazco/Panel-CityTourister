@@ -61,11 +61,11 @@ module.exports = async (req, res) => {
     image: req.body.image,
     description: req.body.description,
 
-    purchases: await Tour.addToCollection(TourId, 'purchases', purchaseObj.id),
-    prices: await Tour.addToCollection(TourId, 'prices', priceObj.id),
-    buses: await Tour.addToCollection(TourId, 'buses', busObj.id),
-    dateinformations: await Tour.addToCollection(TourId, 'dateinformations', dateinfoObj.id),
-    places: await Tour.addToCollection(TourId, 'places', placeObj.id)
+    purchases: (purchases)?await Tour.addToCollection(TourId, 'purchases', purchaseObj.id):undefined,
+    prices: (prices)?await Tour.addToCollection(TourId, 'prices', priceObj.id):undefined,
+    buses: (buses)?await Tour.addToCollection(TourId, 'buses', busObj.id):undefined,
+    dateinformations: (dateinformations)?await Tour.addToCollection(TourId, 'dateinformations', dateinfoObj.id):undefined,
+    places: (places)?await Tour.addToCollection(TourId, 'places', placeObj.id):undefined
   })
   .intercept((err)=>{
     err.message = 'An error has ocurred: '+err.message;
