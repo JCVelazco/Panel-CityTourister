@@ -57,9 +57,7 @@ module.exports = {
       collection: 'ticket',
       via: 'purchase_id',
     },
-    tour_associated: {
-      model: 'tour'
-    }
+
 
   },
 

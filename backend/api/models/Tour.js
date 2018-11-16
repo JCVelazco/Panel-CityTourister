@@ -70,10 +70,6 @@ module.exports = {
       collection: 'place',
       via: 'tours'
     },
-    purchases: {
-      collection: 'purchase',
-      via: 'tour_associated'
-    }
 
 
 
