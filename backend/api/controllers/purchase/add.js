@@ -39,10 +39,7 @@ module.exports = {
       type: 'number',
       required: false
     },
-    tour_associated: {
-      type: 'number',
-      required: true
-    }
+
   },
   
   
@@ -90,13 +87,6 @@ module.exports = {
       }
     }
 
-        //required
-        var key_oftour = (await Tour.findOne({where: {id: inputs.tour_associated}, select: ['id']}) === undefined)?undefined:inputs.tour_associated;
-        if(key_ofcompany === undefined){
-          return exits.serverError({
-            info: 'Tour not found'
-          });
-        }
         
     
     
@@ -110,8 +100,6 @@ module.exports = {
       company_id: key_ofcompany,
       //required
       tickets: key_ofticket,
-      //required
-      tour_associated: key_oftour
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
