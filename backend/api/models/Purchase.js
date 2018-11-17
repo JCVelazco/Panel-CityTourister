@@ -21,15 +21,16 @@ module.exports = {
 
     sub_total: {
       type: 'number',
-      required: true,
-      min: 0
+      required: false,
+      min: 0,
+      defaultsTo: 0
     },
 
     total: {
       type: 'number',
-      allowNull: false,
-      required: true,
-      min: 0
+      required: false,
+      min: 0,
+      defaultsTo: 0
     },
 
     

@@ -49,33 +49,21 @@ module.exports = {
     
     sails.log.info("Ticket/add");
     
-    //required
-    
-    var key_ofpurchase = (await Purchase.findOne({where: {id: inputs.purchase_id}, select: ['id']}) === undefined)?undefined:inputs.purchase_id;
-    if(key_ofpurchase === undefined){
-      return exits.serverError({
-        info: 'Purchase not found'
-      });
-    }
-    
-    
-    //required
-    var key_ofprice = (await Price.findOne({where: {id: inputs.price_id}, select: ['id']}) === undefined)?undefined:inputs.price_id;
-    if(key_ofprice === undefined){
-      return exits.serverError({
-        info: 'Price not found'
-      });
-    }
+    let purchase, price;
+
+    purchase = await sails.helpers.findPurchaseById(inputs.purchase_id);
+    price = await sails.helpers.findPriceById(inputs.price_id);
+
+    if(!purchase) return exits.serverError({info: 'Purchase not found'});
+
+    if(!price) return exits.serverError({info: 'Price not found'});
     
     
     var newTicket = await Ticket.create({
       name:  inputs.name,
       qr_code: inputs.qr_code,
-      //required
-      purchase_id: key_ofpurchase,
-      //required
-      price_id: key_ofprice,
-      
+      purchase_id: purchase.id,
+      price_id: price.id,
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
@@ -85,6 +73,17 @@ module.exports = {
     
     if(!newTicket) return exits.serverError({
       info: 'Internal server error'
+    });
+
+    let company = await sails.helpers.findCompanyById(purchase.company_id);
+
+    let purchaseSubTotalSum = purchase.sub_total + price.priceAmount;
+    let purchaseTotal = purchaseSubTotalSum*company.iva;// CHECAR EL PRECIO TOTAL 
+
+    await Purchase.update({id: purchase.id})
+    .set({
+      sub_total: purchaseSubTotalSum,
+      total: purchaseTotal
     });
     
     return exits.success({

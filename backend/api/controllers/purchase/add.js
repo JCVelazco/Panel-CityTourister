@@ -7,20 +7,7 @@ module.exports = {
   description: 'Add Purchase.',
   
   
-  inputs: {   
-    sub_total: {
-      type: 'number',
-      required: true,
-      min: 0
-    },
-    
-    total: {
-      type: 'number',
-      allowNull: false,
-      required: true,
-      min: 0
-    },
-    
+  inputs: {
     date_tour: {
       type: 'string',
       required: true,
@@ -58,48 +45,33 @@ module.exports = {
   fn: async function (inputs, exits) {
     
     sails.log.info("Purchase/add");
-    
-    //required
-    var key_ofuser = (await User.findOne({where: {id: inputs.user_id}, select: ['id']}) === undefined)?undefined:inputs.user_id;
-    if(key_ofuser === undefined){
+
+    let ticket, user, company;
+
+    user = await sails.helpers.findUserById(inputs.user_id);
+    company = await sails.helpers.findCompanyById(inputs.company_id);
+    ticket = [];
+
+    if(!user)
       return exits.serverError({
         info: 'User not found'
       });
-    }
     
-    //required
-    var key_ofcompany = (await Company.findOne({where: {id: inputs.company_id}, select: ['id']}) === undefined)?undefined:inputs.company_id;
-    if(key_ofcompany === undefined){
+    if(!company)
       return exits.serverError({
         info: 'Company not found'
       });
-    }
     
-    //no required
-    var key_ofticket;
-    
-    if(inputs.tickets){
-      key_ofticket = (await Ticket.findOne({where: {id: inputs.tickets}, select: ['id']}) === undefined)?undefined:inputs.tickets;
-      if(key_ofticket === undefined){
-        return exits.serverError({
-          info: 'Ticket not found'
-        });
-      }
-    }
+    if(inputs.tickets)
+      ticket = await Ticket.findOne({id: tickets});
 
-        
-    
-    
+    if(!ticket) return exits.serverError({info: 'Ticket not found'});
+
     var newPurchase = await Purchase.create({
-      sub_total: inputs.sub_total,
       date_tour: inputs.date_tour,
-      total: inputs.total,
-      //required
-      user_id: key_ofuser,
-      //required
-      company_id: key_ofcompany,
-      //required
-      tickets: key_ofticket,
+      user_id: user.id,
+      company_id: company.id,
+      tickets: ticket,
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
