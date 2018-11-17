@@ -17,6 +17,10 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  //'*': ['hasToken'],
+
+  'admin/login': true,
+  'user/login': true,
+  'user/add': true,
 
 };

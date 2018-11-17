@@ -1,3 +1,5 @@
+var passport = require('passport');
+
 module.exports = {
 
 
@@ -39,21 +41,21 @@ module.exports = {
 
     sails.log.info("admin/login");
 
-    var admin = await Admin.findOne({
-      email: inputs.email
-    }).decrypt();
+    var admin = await Admin.findOne({email: inputs.email}).decrypt();
 
     if(!admin) return exits.notFound({
       info: 'User was not found',
       color: 'danger'
     });
+    
+    let token = await sails.helpers.generateToken(admin.email);
 
     if(inputs.password == admin.password){
-      sails.session.userId = admin.id;
       return exits.success({
         info: 'Login exitoso',
         color: 'success',
-        id: admin.id
+        id: admin.id,
+        token: token
       });
     }
     
