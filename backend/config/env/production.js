@@ -48,7 +48,7 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-postgresql',
-      url: 'postgres://verde1:aguacate1@35.236.11.239:5432/tourister_api',
+      url: 'postgres://verde1:aguacate1@35.235.116.158:5432/api_tourister',
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set
       //  ||   sensitive credentials like `url` using an environment variable.
@@ -252,8 +252,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     onlyAllowOrigins: [
-      'https://ertourister.appspot.com',
-      'http://ertourister.appspot.com',
+      'https://er-citytourister.appspot.com',
+      'http://er-citytourister.appspot.com',
     ],
 
 
