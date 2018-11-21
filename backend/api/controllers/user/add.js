@@ -79,7 +79,7 @@ module.exports = {
       info: 'Internal server error'
     });
 
-    let token = await sails.helpers.generateToken(admin.email);
+    let token = await sails.helpers.generateToken(newUser.email);
     
     return exits.success({
       info: 'New user added',
