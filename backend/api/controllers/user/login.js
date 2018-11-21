@@ -49,11 +49,14 @@ module.exports = {
       info: 'User was not found'
     });
 
+    let token = await sails.helpers.generateToken(admin.email);
+
     if(inputs.password == user.password){
       sails.session.userId = user.id;
       return exits.success({
         info: 'Login success',
-        id: user.id
+        id: user.id,
+        token: token
       });
     }
     

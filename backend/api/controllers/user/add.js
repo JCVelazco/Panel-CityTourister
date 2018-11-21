@@ -78,10 +78,13 @@ module.exports = {
     if(!newUser) return exits.serverError({
       info: 'Internal server error'
     });
+
+    let token = await sails.helpers.generateToken(admin.email);
     
     return exits.success({
       info: 'New user added',
-      id: newUser.id
+      id: newUser.id,
+      token: token
     });
     
   }

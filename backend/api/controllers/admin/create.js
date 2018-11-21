@@ -81,11 +81,14 @@ module.exports = {
       info: 'Internal server error',
       color: 'warning'
     });
+
+    let token = await sails.helpers.generateToken(admin.email);
     
     return exits.success({
       info: 'Éxito',
       color: 'success',
-      id: newAdmin.id
+      id: newAdmin.id,
+      token: token
     });
     
   }
