@@ -85,6 +85,10 @@ module.exports.routes = {
   'put /ticket/edit/:id' : 'ticket/edit',
   'put /purchase/edit/:id' : 'purchase/edit',
 
+  /************* GET by Id ***************/
+
+  'get /purchase/:id': 'purchase/findone',
+
 
   /************* NOT FOUND ***************/
 
@@ -120,7 +124,8 @@ module.exports.routes = {
   'put /ticket/:id' : 'notfound',
   'put /purchase/:id' : 'notfound',
 
-  //remove Tour
+  /************* remove Tour ***************/
+
   'put /tour/:id/remove' : 'tour/remove/generic'
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗

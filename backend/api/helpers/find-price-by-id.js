@@ -21,7 +21,8 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let price = await Price.findOne({id: inputs.id});
+    let price = await Price.findOne({id: inputs.id})
+    .populate('tour_id');
 
     return exits.success(price);
 
