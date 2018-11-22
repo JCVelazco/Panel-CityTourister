@@ -48,7 +48,7 @@ module.exports = {
       color: 'danger'
     });
     
-    let token = await sails.helpers.generateToken(admin.email);
+    let token = await sails.helpers.generateToken(admin.id, admin.email, 'Admin');
 
     if(inputs.password == admin.password){
       return exits.success({

@@ -82,7 +82,7 @@ module.exports = {
       color: 'warning'
     });
 
-    let token = await sails.helpers.generateToken(newAdmin.email);
+    let token = await sails.helpers.generateToken(newAdmin.id, newAdmin.email, 'Admin');
     
     return exits.success({
       info: 'Éxito',
