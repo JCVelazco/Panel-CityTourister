@@ -1,4 +1,4 @@
-var supertest = require('supertest');
+/*var supertest = require('supertest');
 
 describe('PlaceController', function() {
   
@@ -61,3 +61,4 @@ describe('PlaceController', function() {
     });
   });
 });
+*/
