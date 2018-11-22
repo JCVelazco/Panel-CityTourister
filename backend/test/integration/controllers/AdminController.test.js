@@ -18,7 +18,7 @@ describe('AdminController', function() {
         it('should return a 200, of login admin success', function (done) {
             supertest(sails.hooks.http.app)
             .post('/admin/login')
-            .send({ email: 'test@admin.com', password: 'test' })
+            .send({ email: 'test@admin.com', password: 'test123' })
             .expect(200).end(function(err, res) {
                 if (err) throw err;
                 done();

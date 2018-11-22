@@ -1,4 +1,4 @@
-var supertest = require('supertest');
+/*var supertest = require('supertest');
 
 describe('PurchaseController', function() {
   
@@ -61,3 +61,4 @@ describe('PurchaseController', function() {
     });
   });
 });
+*/
