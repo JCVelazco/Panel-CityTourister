@@ -16,6 +16,7 @@ module.exports = function (req, res, next) {
             object = await sails.helpers.findAdminById(decoded.id);
 
         if(decoded.email == object.email) next();
+        
         else return res.notFound();
     })
 };
