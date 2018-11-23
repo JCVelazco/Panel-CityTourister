@@ -1,30 +1,17 @@
 var supertest = require('supertest');
-var loginTest = require("./AdminController.test");
 
 
 describe('BusController', function() {
   
+  
   describe('#add()', function(){
     it('should return a 200, of add bus success', function (done){
       supertest(sails.hooks.http.app)
-      .post('/bus')
-      .set({'auth':loginTest.token})
+      .post('/bus/add')
+      .set({'auth': sails.session.token})
       .send({ availability: 'true',  numBus: 'BusNumber5'})
       .expect(200).end(function(err, res){
         if(err) throw err;
-        done();
-      })
-    })
-  })
-  /*
-  
-  describe('#patch()', function() {
-    it('should return a 200, of patch bus success', function (done) {
-      supertest(sails.hooks.http.app)
-      .patch('/bus/1')
-      .send({ tour_id: '2'})
-      .expect(200).end(function(err, res) {
-        if (err) throw err;
         done();
       });
     });
@@ -33,8 +20,9 @@ describe('BusController', function() {
   describe('#put()', function() {
     it('should return a 200, of put bus success', function (done) {
       supertest(sails.hooks.http.app)
-      .put('/bus/1')
-      .send({availability: '0', tour_id: '1', numBus: 'BusNumber4'})
+      .put('/bus/edit/1')
+      .set({'auth': sails.session.token})
+      .send({availability: 'false', numBus: 'BusNumber4'})
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
@@ -46,6 +34,7 @@ describe('BusController', function() {
     it('should return a 200, of get bus success', function (done) {
       supertest(sails.hooks.http.app)
       .get('/bus/1')
+      .set({'auth': sails.session.token})
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
@@ -57,11 +46,12 @@ describe('BusController', function() {
     it('should return a 200, of delete bus success', function (done) {
       supertest(sails.hooks.http.app)
       .delete('/bus/1')
+      .set({'auth': sails.session.token})
       .expect(200).end(function(err, res) {
         if (err) throw err;
         done();
       });
     });
   });
-  */
+  
 });

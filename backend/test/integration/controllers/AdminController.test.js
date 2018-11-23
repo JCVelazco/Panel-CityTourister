@@ -1,11 +1,8 @@
 var supertest = require('supertest');
-module.exports = {
-token: '',
-
-testAdmin:
 
 describe('AdminController', function() {
-
+    
+    
     describe('#create()', function() {
         it('should return a 200, of create admin success', function (done){
             supertest(sails.hooks.http.app)
@@ -25,7 +22,7 @@ describe('AdminController', function() {
             .send({ email: 'test@admin.com', password: 'test123' })
             .expect(200).end(function(err, res) {
                 if (err) throw err;
-                token = res.body.token;
+                sails.session.token = res.body.token
                 done();
             });
         });
@@ -35,7 +32,7 @@ describe('AdminController', function() {
         it('should return a 200, of put admin success', function (done) {
             supertest(sails.hooks.http.app)
             .put('/admin/edit/1')
-            .set({'auth':token})
+            .set({'auth':sails.session.token})
             .send({ email: 'test@admin.com', password: 'test1234'})
             .expect(200).end(function(err, res) {
                 if (err) throw err;
@@ -43,32 +40,31 @@ describe('AdminController', function() {
             });
         });
     });
-
+    
     describe('#get()', function() {
         it('should return a 200, of get admin success', function (done) {
             supertest(sails.hooks.http.app)
             .get('/admin/1')
-            .set({'auth':token})
+            .set({'auth':sails.session.token})
             .expect(200).end(function(err, res) {
                 if (err) throw err;
                 done();
             });
         });
     });
+    /*
     
-
     describe('#delete()', function() {
         it('should return a 200, of delete admin success', function (done) {
             supertest(sails.hooks.http.app)
             .delete('/admin/1')
-            .set({'auth':token})
+            .set({'auth':sails.session.token})
             .expect(200).end(function(err, res) {
                 if (err) throw err;
                 done();
             });
         });
-    });
+    });*/
     
 })
 
-};
