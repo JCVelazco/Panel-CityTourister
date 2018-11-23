@@ -150,7 +150,8 @@ module.exports = {
     ***************************************************************************/
     cors: {
       allowOrigins: [
-        'https://citytourister.github.io','http://localhost:4200'
+        'https://citytourister.github.io',
+        'http://localhost:4200'
       ]
     },
 
