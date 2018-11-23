@@ -1,5 +1,8 @@
 var supertest = require('supertest');
-var token;
+module.exports = {
+token: '',
+
+testAdmin:
 
 describe('AdminController', function() {
 
@@ -27,21 +30,7 @@ describe('AdminController', function() {
             });
         });
     });
-/*
-    describe('#patch()', function() {
-        it('should return a 200, of patch admin success', function (done) {
-            supertest(sails.hooks.http.app)
-            .patch('/admin/1')
-            .set({'auth':token})
-            .send({ email: 'testpatch@admin.com'})
-            .expect(200).end(function(err, res) {
-                if (err) throw err;
-                done();
-            });
-        });
-    });
-*/
-
+    
     describe('#put()', function() {
         it('should return a 200, of put admin success', function (done) {
             supertest(sails.hooks.http.app)
@@ -80,5 +69,6 @@ describe('AdminController', function() {
         });
     });
     
-});
+})
 
+};

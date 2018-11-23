@@ -75,8 +75,7 @@ module.exports = {
       info: 'Internal server error'
     });
 
-    let company = await sails.helpers.findCompanyById(purchase.company_id);
-
+    let company = await sails.helpers.findCompanyById(purchase.company_id.id);
     let purchaseSubTotalSum = purchase.sub_total + price.priceAmount;
     let purchaseTotal = purchaseSubTotalSum*company.iva;// CHECAR EL PRECIO TOTAL 
 
@@ -84,7 +83,13 @@ module.exports = {
     .set({
       sub_total: purchaseSubTotalSum,
       total: purchaseTotal
-    });
+    })
+    .intercept((err)=>{
+      err.message = 'An error has ocurred: '+err.message;
+      return err;
+    })
+    .fetch();
+
     
     return exits.success({
       info: 'New Ticket added',
