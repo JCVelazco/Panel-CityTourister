@@ -26,12 +26,14 @@ module.exports = {
       statusCode: 200,
       description: 'User was found'
     },
+    //it should have a 500 response code...
     notFound: {
-      statusCode: 500,
+      statusCode: 200,
       description: 'User not found...'
     },
+    //it should have a 500 response code...
     incorrectPassword: {
-      statusCode: 500,
+      statusCode: 200,
       description: 'Wrong password...'
     }
   },

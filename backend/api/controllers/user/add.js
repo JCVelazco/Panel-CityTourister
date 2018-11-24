@@ -40,8 +40,9 @@ module.exports = {
       statusCode: 200,
       description: 'New user was added'
     },
+        //it should have a 500 response code...
     serverError: {
-      statusCode: 500,
+      statusCode: 200,
       description: 'User could not be added'
     }
   },
@@ -58,7 +59,7 @@ module.exports = {
       phone_number: inputs.phone_number
     })
     .intercept('E_UNIQUE', ()=>{
-      return exits.success({
+      return exits.serverError({
         info: 'Email already in use'
       });
     })
