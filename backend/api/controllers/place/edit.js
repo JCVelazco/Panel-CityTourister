@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
   
   var updatedPlace = await Place.update({id: PlaceId})
   .set({
-    name: req.name,
+    name: req.body.name,
     description: req.body.description,
     longitude: req.body.longitude,
     latitude: req.body.latitude,
