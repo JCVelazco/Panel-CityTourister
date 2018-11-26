@@ -92,41 +92,21 @@ module.exports.routes = {
 
   /************* NOT FOUND ***************/
 
-  'post /admin' : 'notfound',
-  'post /user' : 'notfound',
-  'post /company' : 'notfound',
-  'post /bus' : 'notfound',
-  'post /dateinterval' : 'notfound',
-  'post /hourinterval' : 'notfound',
-  'post /imageofplace' : 'notfound',
-  'post /placetype' : 'notfound',
-  'post /tickettype' : 'notfound',
-  'post /tour' : 'notfound',
-  'post /place' : 'notfound',
-  'post /dateinformation' : 'notfound',
-  'post /price' : 'notfound',
-  'post /ticket' : 'notfound',
-  'post /purchase' : 'notfound',
+  'post /:model' : 'notfound',
 
-  'put /bus/:id' : 'notfound',
-  'put /place/:id' : 'notfound',
-  'put /admin/:id' : 'notfound',
-  'put /user/:id' : 'notfound',
-  'put /company/:id' : 'notfound',
-  'put /dateinformation/:id' : 'notfound',
-  'put /dateinterval/:id' : 'notfound',
-  'put /hourinterval/:id' : 'notfound',
-  'put /imageofplace/:id' : 'notfound',
-  'put /placetype/:id' : 'notfound',
-  'put /price/:id' : 'notfound',
-  'put /tour/:id' : 'notfound',
-  'put /tickettype/:id' : 'notfound',
-  'put /ticket/:id' : 'notfound',
-  'put /purchase/:id' : 'notfound',
+  'put /:model/:id' : 'notfound',
+
+  'patch /:model/:id' : 'notfound',
+
+  'delete /purchase/:id' : 'notfound',
 
   /************* remove Tour ***************/
 
-  'put /tour/:id/remove' : 'tour/remove/generic'
+  'put /tour/:id/remove' : 'tour/remove/generic',
+
+  /**************** delete *****************/
+
+  'delete /dateinformation/:id' : 'dateinformation/delete',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

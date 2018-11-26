@@ -28,8 +28,8 @@ module.exports = {
     phone_number: {
       type: 'string',
       allowNull: true,
-      maxLength: 5,
-      minLength: 15,
+      maxLength: 15,
+      minLength: 5,
     },
     
     address: {
