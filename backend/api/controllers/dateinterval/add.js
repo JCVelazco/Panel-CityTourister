@@ -9,13 +9,13 @@ module.exports = {
   
   inputs: {
     start_date: {
-      type: 'string',
+      type: 'number',
       required: true,
       allowNull: false
     },
 
     end_date: {
-      type: 'string',
+      type: 'number',
       required: true,
       allowNull: false
     },

@@ -19,13 +19,13 @@ module.exports = {
     },
 
     start_time: {
-      type: 'string',
+      type: 'number',
       required: true,
       allowNull: false
     },
     
     end_time: {
-      type: 'string',
+      type: 'number',
       required: true,
       allowNull: false
     },

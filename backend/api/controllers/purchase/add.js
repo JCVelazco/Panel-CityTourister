@@ -9,7 +9,7 @@ module.exports = {
   
   inputs: {
     date_tour: {
-      type: 'string',
+      type: 'number',
       required: true,
       allowNull: false
     },
