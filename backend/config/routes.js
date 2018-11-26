@@ -100,6 +100,11 @@ module.exports.routes = {
 
   'delete /purchase/:id' : 'notfound',
 
+  'delete /user/:id' : 'notfound',
+
+  'delete /company/:id' : 'notfound',
+
+
   /************* remove Tour ***************/
 
   'put /tour/:id/remove' : 'tour/remove/generic',
