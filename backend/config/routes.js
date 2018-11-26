@@ -100,10 +100,6 @@ module.exports.routes = {
 
   'delete /purchase/:id' : 'notfound',
 
-  'delete /user/:id' : 'notfound',
-
-  'delete /company/:id' : 'notfound',
-
 
   /************* remove Tour ***************/
 
@@ -112,6 +108,8 @@ module.exports.routes = {
   /**************** delete *****************/
 
   'delete /dateinformation/:id' : 'dateinformation/delete',
+  //'delete /user/:id' : 'user/delete',
+  //'delete /company/:id' : 'user/delete',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
