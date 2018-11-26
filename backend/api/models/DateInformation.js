@@ -28,15 +28,18 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+    //in the future we should change the name
     tours: {
-      collection: 'tour',
-      via: 'dateinformations'
+      model: 'tour'
     },
     date_id: {
       model: 'dateinterval',
+      unique: true
     },
     hour_id: {
       model: 'hourinterval',
+      unique: true
     }
 
   },
