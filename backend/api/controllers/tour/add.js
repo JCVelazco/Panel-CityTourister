@@ -77,7 +77,7 @@ module.exports = {
   priceObj = await Price.findOne({id: prices});
   
   if(!priceObj) 
-  return res.json({info: 'Price notFound'});
+  return exits.serverError({info: 'Price notFound'});
 
   var busObj = ' ';
 
@@ -85,7 +85,7 @@ module.exports = {
   busObj = await Bus.findOne({id: buses});
   
   if(!busObj) 
-  return res.json({info: 'Bus notFound'});
+  return exits.serverError({info: 'Bus notFound'});
 
   var dateinfoObj = ' ';
 
@@ -93,22 +93,28 @@ module.exports = {
   dateinfoObj = await DateInformation.findOne({id: dateinformations});
   
   if(!dateinfoObj) 
-  return res.json({info: 'DateInfo notFound'});
+  return exits.serverError({info: 'DateInfo notFound'});
 
+  /*
   var placeObj = ' ';
 
   if(places)
   placeObj = await Place.findOne({id: places});
+
   
   if(!placeObj) 
-  return res.json({info: 'Place notFound'});
-    
+  return exits.serverError({info: 'Place notFound'});
+    */
    
     
     var newTour = await Tour.create({
       name: inputs.name,
       image: inputs.image,
       description: inputs.description,
+      prices: priceObj.id,
+      buses: busObj.id,
+      dateinformations: dateinfoObj.id,
+      //places: placeObj.id
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
@@ -116,18 +122,7 @@ module.exports = {
     })
     .fetch();
     
-    newTour = await Tour.update({id: newTour.id})
-    .set({
-      prices: (prices)?await Tour.addToCollection(newTour.id, 'prices', priceObj.id):undefined,
-      buses: (buses)?await Tour.addToCollection(newTour.id, 'buses', busObj.id):undefined,
-      dateinformations: (dateinformations)?await Tour.addToCollection(newTour.id, 'dateinformations', dateinfoObj.id):undefined,
-      places: (places)?await Tour.addToCollection(newTour.id, 'places', placeObj.id):undefined
-    })
-    .intercept((err)=>{
-      err.message = 'An error has ocurred: '+err.message;
-      return err;
-    })
-    .fetch();
+  
     
     if(!newTour) return exits.serverError({
       info: 'Internal server error'
