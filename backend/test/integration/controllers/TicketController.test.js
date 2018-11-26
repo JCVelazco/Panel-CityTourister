@@ -393,16 +393,4 @@ describe('TicketController', function() {
       });
     });
   });
-
-  describe('#delete()', function() {
-    it('should return a 200, of delete purchase success', function (done) {
-      supertest(sails.hooks.http.app)
-      .delete('/purchase/1')
-      .set({'auth': sails.session.token})
-      .expect(200).end(function(err, res) {
-        if (err) throw err;
-        done();
-      });
-    });
-  });
 });

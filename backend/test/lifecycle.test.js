@@ -1,4 +1,5 @@
 var sails = require('sails');
+var istanbul = require('istanbul');
 
 // Before running any tests...
 before(function(done) {

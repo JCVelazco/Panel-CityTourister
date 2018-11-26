@@ -1,4 +1,5 @@
 var supertest = require('supertest');
+var istanbul = require('istanbul');
 
 describe('AdminController', function() {
     
