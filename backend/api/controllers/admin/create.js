@@ -72,8 +72,10 @@ module.exports = {
       });
     })
     .intercept((err)=>{
-      err.message = 'An error has ocurred: '+err.message;
-      return err;
+      return exits.serverError({
+        info: 'An Error has ocurred',
+        color: 'warning'
+      });
      })
     .fetch();
     
@@ -85,7 +87,7 @@ module.exports = {
     let token = await sails.helpers.generateToken(newAdmin.id, newAdmin.email, 'Admin');
     
     return exits.success({
-      info: 'Éxito',
+      info: 'Éxito, Admin Creado',
       color: 'success',
       id: newAdmin.id,
       token: token

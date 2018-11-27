@@ -5,18 +5,17 @@ module.exports = async (req, res) => {
     let currentCompany = await Company.findOne({id: companyId}).populate('purchases');
   
     if(!currentCompany) 
-      return res.json({info: 'Company notFound'});
+      return res.json({info: 'Company notFound', color: 'danger'});
 
     if(currentCompany.purchases.length != 0){
-        return res.json({info: 'Company has purchases, cannot be deleted'});
+        return res.json({info: 'Company has purchases, cannot be deleted', color: 'danger'});
     }
 
     var deletedCompany = await Company.destroy({id: companyId})
     .intercept((err)=>{
-      err.message = 'An error has ocurred: '+err.message;
-      return err;
+        return res.json({info: 'An error has ocurred', color: 'warning'});
      })
     .fetch();
   
-    return res.json(deletedCompany);
+    return res.json(deletedCompany, {info: 'Company deleted', color: 'success'});
   }

@@ -103,6 +103,8 @@ module.exports.routes = {
   'delete /purchase/:id' : 'notfound',
 
   'delete /user/:id' : 'notfound',
+  
+  'delete /ticket/:id' : 'notfound',
 
 
 
@@ -117,6 +119,7 @@ module.exports.routes = {
   'delete /tickettype/:id' : 'tickettype/delete',
   'delete /price/:id' : 'price/delete',
   'delete /placetype/:id' : 'placetype/delete',
+  'delete /tour/:id' : 'tour/delete',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

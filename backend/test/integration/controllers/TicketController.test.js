@@ -336,10 +336,34 @@ describe('TicketController', function() {
     });
   });
 
-  describe('#delete()', function() {
-    it('should return a 200, of delete ticket success', function (done) {
+  describe('#nodelete()', function() {
+    it('should return a 404, of no delete ticket success', function (done) {
       supertest(sails.hooks.http.app)
       .delete('/ticket/1')
+      .set({'auth': sails.session.token})
+      .expect(404).end(function(err, res) {
+        if (err) throw err;
+        done();
+      });
+    });
+  });
+
+  describe('#nodelete()', function() {
+    it('should return a 404, of no delete purchase success', function (done) {
+      supertest(sails.hooks.http.app)
+      .delete('/purchase/1')
+      .set({'auth': sails.session.token})
+      .expect(404).end(function(err, res) {
+        if (err) throw err;
+        done();
+      });
+    });
+  });
+
+  describe('#delete()', function() {
+    it('should return a 200, of no delete of tour because is in a price (the tour will be there)', function (done) {
+      supertest(sails.hooks.http.app)
+      .delete('/tour/1')
       .set({'auth': sails.session.token})
       .expect(200).end(function(err, res) {
         if (err) throw err;
@@ -396,12 +420,12 @@ describe('TicketController', function() {
     });
   });
 
-  describe('#delete()', function() {
-    it('should return a 200, of delete user success', function (done) {
+  describe('#nodelete()', function() {
+    it('should return a 404, of no delete user success', function (done) {
       supertest(sails.hooks.http.app)
       .delete('/user/1')
       .set({'auth': sails.session.token})
-      .expect(200).end(function(err, res) {
+      .expect(404).end(function(err, res) {
         if (err) throw err;
         done();
       });

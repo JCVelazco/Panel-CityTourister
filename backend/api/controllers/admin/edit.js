@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
   let currentAdmin = await Admin.findOne({id: adminId});
 
   if(!currentAdmin) 
-    return res.json({info: 'Admin notFound'});
+    return res.json({info: 'Admin notFound', color: 'danger'});
 
 
   var updatedAdmin = await Admin.update({id: adminId})
@@ -15,10 +15,9 @@ module.exports = async (req, res) => {
     password: req.body.password,
   })
   .intercept((err)=>{
-    err.message = 'An error has ocurred: '+err.message;
-    return err;
+    return res.json({info: 'An error has ocurred', color: 'warning'});
    })
    .fetch();
 
-  return res.json(updatedAdmin);
+  return res.json(updatedAdmin, {info: 'Admin updated', color:'success'});
 }

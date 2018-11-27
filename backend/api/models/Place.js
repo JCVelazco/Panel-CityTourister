@@ -63,8 +63,7 @@ module.exports = {
     },
 
     imagesOfPlaces: {
-      collection: 'imageofplace',
-      via: 'places',
+      model: 'imageofplace',
     },
 
     tours: {
