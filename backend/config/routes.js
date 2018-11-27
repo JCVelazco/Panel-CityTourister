@@ -57,7 +57,6 @@ module.exports.routes = {
   'post /bus/add' : 'bus/add',
   'post /dateinterval/add' : 'dateinterval/add',
   'post /hourinterval/add' : 'hourinterval/add',
-  'post /imageofplace/add' : 'imageofplace/add',
   'post /placetype/add' : 'placetype/add',
   'post /tickettype/add' : 'tickettype/add',
   'post /tour/add' : 'tour/add',
@@ -77,7 +76,6 @@ module.exports.routes = {
   'put /dateinformation/edit/:id' : 'dateinformation/edit',
   'put /dateinterval/edit/:id' : 'dateinterval/edit',
   'put /hourinterval/edit/:id' : 'hourinterval/edit',
-  'put /imageofplace/edit/:id' : 'imageofplace/edit',
   'put /placetype/edit/:id' : 'placetype/edit',
   'put /price/edit/:id' : 'price/edit',
   'put /tour/edit/:id' : 'tour/edit',
@@ -103,7 +101,7 @@ module.exports.routes = {
   'delete /purchase/:id' : 'notfound',
 
   'delete /user/:id' : 'notfound',
-  
+
   'delete /ticket/:id' : 'notfound',
 
 

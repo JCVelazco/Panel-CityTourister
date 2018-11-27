@@ -49,6 +49,11 @@ module.exports = {
       allowNull: true
     },
 
+    image_url: {
+      type: 'string',
+      allowNull: true
+    },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -60,10 +65,6 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     place_type_id: {
       model: 'placetype',
-    },
-
-    imagesOfPlaces: {
-      model: 'imageofplace',
     },
 
     tours: {

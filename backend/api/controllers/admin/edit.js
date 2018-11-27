@@ -19,5 +19,5 @@ module.exports = async (req, res) => {
    })
    .fetch();
 
-  return res.json(updatedAdmin, {info: 'Admin updated', color:'success'});
+  return res.json({info: 'Admin updated', color:'success'});
 }
