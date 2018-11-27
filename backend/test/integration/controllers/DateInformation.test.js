@@ -150,4 +150,28 @@ describe('DeleteHourDateIntervals', function() {
       });
     });
   });
+
+  describe('#get()', function() {
+    it('should return a 404 of not found', function (done) {
+      supertest(sails.hooks.http.app)
+      .get('/hourinterval/1')
+      .set({'auth': sails.session.token})
+      .expect(404).end(function(err, res) {
+        if (err) throw err;
+        done();
+      });
+    });
+  });
+
+  describe('#get()', function() {
+    it('should return a 404 of notfound', function (done) {
+      supertest(sails.hooks.http.app)
+      .get('/dateinterval/1')
+      .set({'auth': sails.session.token})
+      .expect(404).end(function(err, res) {
+        if (err) throw err;
+        done();
+      });
+    });
+  });
 });

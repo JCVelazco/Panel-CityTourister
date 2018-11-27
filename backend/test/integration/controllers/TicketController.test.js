@@ -234,6 +234,20 @@ describe('UserController', function() {
       });
     });
   });
+
+  describe('#login()', function() {
+    it('should return a 200, of login user success', function (done) {
+      supertest(sails.hooks.http.app)
+      .post('/user/login')
+      .set({'auth': sails.session.token})
+      .send({email: 'put@email.com', password: '123abc' })
+      .expect(200).end(function(err, res) {
+        if (err) throw err;
+        done();
+      });
+    });
+  });
+
   
 });
 
