@@ -19,8 +19,8 @@ module.exports = async (req, res) => {
 
     var company =  await Company.findOne({id: currentPurchase.company_id});
 
-    sumOfTickets = sumOfTickets + (sumOfTickets*company.iva);
-    return res.json(sumOfTickets);
+    var sumOfTicketsIva = sumOfTickets + (sumOfTickets*company.iva);
+    return res.json({total: sumOfTicketsIva, subtotal: sumOfTickets});
     
     
 
