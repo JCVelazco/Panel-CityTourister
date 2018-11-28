@@ -193,6 +193,7 @@ describe('UserController', function() {
       .send({ name: 'Test Prueba', email: 'test@email.com', password: 'test123'})
       .expect(200).end(function(err, res){
         if(err) throw err;
+        done();
       })
     })
   })
