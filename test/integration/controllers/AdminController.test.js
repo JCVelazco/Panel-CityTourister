@@ -11,7 +11,7 @@ describe('AdminController', function() {
             .send({ email: 'test@admin.com', username: 'JCarlos',password: 'test123'})
             .expect(200).end(function(err, res){
                 if(err) throw err;
-                sails.session.token = res.body.token
+                sails.session.token = res.body.token;
                 done();
             })
         })
