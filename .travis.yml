@@ -1,3 +1,6 @@
 language: node_js
-script:
-- istanbul cover -x "**/responses/**" -x "**/policies/**" node_modules/mocha/bin/_mocha test/lifecycle.test.js test/integration/**/*.test.js && istanbul report html
+node_js:
+  - "iojs"
+  - "10.13.0"
+install:
+  - npm install
