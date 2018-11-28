@@ -11,24 +11,12 @@ describe('AdminController', function() {
             .send({ email: 'test@admin.com', username: 'JCarlos',password: 'test123'})
             .expect(200).end(function(err, res){
                 if(err) throw err;
+                sails.session.token = res.body.token
                 done();
             })
         })
     });
-    
-    describe('#login()', function() {
-        it('should return a 200, of login admin success', function (done) {
-            supertest(sails.hooks.http.app)
-            .post('/admin/login')
-            .send({ email: 'test@admin.com', password: 'test123' })
-            .expect(200).end(function(err, res) {
-                if (err) throw err;
-                sails.session.token = res.body.token
-                done();
-            });
-        });
-    });
-    
+
     describe('#put()', function() {
         it('should return a 200, of put admin success', function (done) {
             supertest(sails.hooks.http.app)
@@ -41,6 +29,19 @@ describe('AdminController', function() {
             });
         });
     });
+    
+    describe('#login()', function() {
+        it('should return a 200, of login admin success', function (done) {
+            supertest(sails.hooks.http.app)
+            .post('/admin/login')
+            .send({ email: 'test@admin.com', password: 'test1234' })
+            .expect(200).end(function(err, res) {
+                if (err) throw err;
+                done();
+            });
+        });
+    });
+
     
     describe('#get()', function() {
         it('should return a 200, of get admin success', function (done) {
@@ -58,7 +59,6 @@ describe('AdminController', function() {
         it('should return a 500, of inccorect password', function (done) {
             supertest(sails.hooks.http.app)
             .post('/admin/login')
-            .set({'auth':sails.session.token})
             .send({ email: 'test@admin.com', password: '12'})
             .expect(500).end(function(err, res) {
                 if (err) throw err;
@@ -71,7 +71,6 @@ describe('AdminController', function() {
         it('should return a 500, of inccorect email', function (done) {
             supertest(sails.hooks.http.app)
             .post('/admin/login')
-            .set({'auth':sails.session.token})
             .send({ email: 'test@admin.coma', password: 'test1234'})
             .expect(500).end(function(err, res) {
                 if (err) throw err;
@@ -84,7 +83,6 @@ describe('AdminController', function() {
         it('should return a 500, of no valid email', function (done) {
             supertest(sails.hooks.http.app)
             .post('/admin/create')
-            .set({'auth':sails.session.token})
             .send({ email: 'testemail', password: 'test123458'})
             .expect(400).end(function(err, res) {
                 if (err) throw err;
@@ -93,17 +91,6 @@ describe('AdminController', function() {
         });
     });
 
-    describe('#bad_create()', function() {
-        it('should return a 500, of email already in use', function (done){
-            supertest(sails.hooks.http.app)
-            .post('/admin/create')
-            .send({ email: 'test@admin.com', username: 'JCarlos',password: 'test456'})
-            .expect(500).end(function(err, res){
-                if(err) throw err;
-                done();
-            })
-        })
-    });
 
     describe('#bad_create()', function() {
         it('should return a 400, of small password', function (done){

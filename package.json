@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
-    "test": "istanbul cover -x \"**/responses/**\" -x \"**/policies/**\" node_modules/mocha/bin/_mocha test/lifecycle.test.js test/integration/**/*.test.js && istanbul report html",
+    "test": "node node_modules/mocha/bin/_mocha test/lifecycle.test.js test/integration/**/*.test.js",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },
