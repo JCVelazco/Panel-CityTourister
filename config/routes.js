@@ -123,7 +123,6 @@ module.exports.routes = {
 
   'get /purchase/total/:id' : 'purchase/total',
 
-  'get /purchase/subtotal/:id' : 'purchase/subtotal',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
