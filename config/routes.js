@@ -121,7 +121,7 @@ module.exports.routes = {
 
   /****************extras****************** */
 
-  'post /purchase/total/:id' : 'purchase/total',
+  'get /purchase/total/:id' : 'purchase/total',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
