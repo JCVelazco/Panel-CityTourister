@@ -119,6 +119,10 @@ module.exports.routes = {
   'delete /placetype/:id' : 'placetype/delete',
   'delete /tour/:id' : 'tour/delete',
 
+  /****************extras****************** */
+
+  'post /purchase/total/:id' : 'purchase/total',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
