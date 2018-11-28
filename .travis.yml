@@ -5,3 +5,4 @@ node_js:
 install:
   - npm install sails -g
   - npm install sails-postgresql --save
+  - npm run test
