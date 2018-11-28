@@ -3,4 +3,5 @@ node_js:
   - "iojs"
   - "10.13.0"
 install:
-  - npm install
+  - npm install sails -g
+  - npm install sails-postgresql --save
