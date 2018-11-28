@@ -44,8 +44,8 @@ module.exports = async (req, res) => {
     longitude: req.body.longitude,
     latitude: req.body.latitude,
     narrative_url: req.body.narrative_url,
+    image_url: req.body.image_url,
     place_type_id: placeTypeObj.id,
-    imagesOfPlaces: (imagesOfPlaces)?await Place.addToCollection(PlaceId, 'imagesOfPlaces', imageObj.id):undefined,
     tours: (tours)?await Place.addToCollection(PlaceId, 'tours', tourObj.id):undefined
   })
   .intercept((err)=>{

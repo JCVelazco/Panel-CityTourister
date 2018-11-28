@@ -37,17 +37,17 @@ module.exports = {
       type: 'string',
       allowNull: true
     },
+
+    image_url: {
+      type: 'string',
+      allowNull: true
+    },
     
     place_type_id: {
       type: 'number',
       required: true
     },
-    
-    imagesOfPlaces: {
-      type: 'number',
-      required: false,
-      allowNull: true
-    },
+
     /*
     tours: {
       type: 'number',
@@ -81,19 +81,6 @@ module.exports = {
       });
     }
     
-    
-    
-    //no required
-    var key_ofimages;
-    //if i recieve the field I check if its correct
-    if(inputs.imagesOfPlaces){
-      key_ofimages = (await ImageOfPlace.findOne({where: {id: inputs.imagesOfPlaces}, select: ['id']}) === undefined)?undefined:inputs.imagesOfPlaces;
-      if(key_ofimages === undefined){
-        return exits.serverError({
-          info: 'Image not found'
-        });
-      }
-    }
     /*
     //no required
     var key_oftour;
@@ -113,12 +100,9 @@ module.exports = {
       longitude: inputs.longitude,
       latitude: inputs.latitude,
       narrative_url: inputs.narrative_url,
+      image_url: inputs.image_url,
       //required
       place_type_id: key_ofplacetype,
-      //no required
-      imagesOfPlaces: key_ofimages,
-      //no required
-      //tours: key_oftour,
     })
     .intercept((err)=>{
       err.message = 'An error has ocurred: '+err.message;
