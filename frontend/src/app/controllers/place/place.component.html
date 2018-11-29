@@ -1,0 +1,82 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title text-dark">Lugares ({{places.length}})</h4>
+
+                      <button type="button" class="btn btn-success" (click)="openAddModal()" >
+                        Agregar
+                      </button>
+                    </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class="text-primary">
+                                <th>
+                                    Lugar
+                                </th>
+                                <th>
+                                    Descripción
+                                </th>
+                                <th>
+                                    Tipo de lugar
+                                </th>
+                                <th>
+                                    Mapa
+                                </th>
+                                <th>
+                                    Tours Asociado
+                                </th>
+                                <th>
+
+                                </th>
+                              <tbody>
+                                <tr *ngFor="let place of places"
+                                class="list-group-item-action">
+                                    <td>{{place.name}}</td>
+                                    <td>{{place.description}}</td>
+                                    <td>{{place.place_type_id.name | titlecase}}</td>
+                                    <td>
+                                        <a class="text-primary text-center"
+                                        (click)="openMapModal({
+                                                    name: place.name,
+                                                    lat: place.latitude,
+                                                    lng: place.longitude,
+                                                    type: place.place_type_id.name
+                                                    }, place.tours
+                                                )">
+                                            Mapa
+                                        </a>
+                                    </td>
+                                    <td> 
+                                        <ul *ngFor="let tour of place.tours" >
+                                            <li>
+                                                {{tour.name | titlecase}}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-danger" type ="button" (click)="deletePlace(place.id)"  >
+                                                <i class="text-white fa fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-info" type="button" (click)="openEditModal(place.id)">
+                                                <i class="fa fa-pencil text-white"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>    
+      </div>
+  </div>
+  </div>
+  

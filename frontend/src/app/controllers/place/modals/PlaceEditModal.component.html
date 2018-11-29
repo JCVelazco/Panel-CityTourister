@@ -1,0 +1,67 @@
+<div class="modal-header">
+        <h4 class="modal-title">Agregar nuevo lugar</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+        </button>
+</div>
+        <div class="modal-boy">
+                <div class="container">
+                        <div class="form-group">
+                                <label for="name"  class="text-muted">Nombre del lugar:</label>
+                                <input [(ngModel)]='currentPlace.name' type="text" class="form-control" >
+                                <small class="form-text text-danger" *ngIf="currentPlace.nameIsNotValid">
+                                        Verfica el nombre
+                                </small> 
+                        </div>
+                        
+                        <div class="form-group">
+                                <label for="description" class="text-muted">Descripcion del lugar:</label>
+                                <textarea outline="1px solid blue" rows="3" [(ngModel)]='currentPlace.description' type="text" class="form-control" ></textarea>
+                                <small class="form-text text-danger" *ngIf="currentPlace.descriptionIsEmpty">
+                                        La descripción del lugar es requerida
+                                </small> 
+                        </div>
+
+                        <div class="form-group">
+                                <label for="image_url"  class="text-muted">Imagen (URL):</label>
+                                <input [(ngModel)]='currentPlace.image_url' type="text" class="form-control" >
+                        </div>  
+                        
+                        <div class="form-group">
+                                <label for="narrative_url"  class="text-muted">Narrativa del lugar (URL):</label>
+                                <input [(ngModel)]='currentPlace.narrative_url' type="text" class="form-control" >
+                        </div>  
+
+                        <p class="font-weight-bold text-danger">Nota: haz click sobre el mapa para mover el marcador</p>
+                        <agm-map style="height: 420px;" [latitude]="lat" [longitude]="lng" [zoom]="17" (mapClick)="changeMarkerOnMap($event)">
+                                <agm-marker [latitude]="lat" [longitude]="lng">
+                                        <agm-info-window style="height: 220px;" [isOpen]="true">
+                                                <h5 class="text-dark font-weight-bold">Tipo de lugar: </h5>
+                                                <mat-radio-group [(ngModel)]="currentPlace.place_type">
+                                                        <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item" *ngFor="let type of allTypeOfPlaces">
+                                                                        <mat-radio-button [value]="type.id" >
+                                                                                {{type.name}}
+                                                                        </mat-radio-button>
+                                                                </li>
+                                                        </ul>  
+                                                </mat-radio-group>
+                                        </agm-info-window>
+                                </agm-marker>
+                        </agm-map> 
+                        <small class="form-text text-danger" *ngIf="currentPlace.noPlaceTypeSelected">
+                                Seleccione tipo de lugar
+                        </small>
+                </div>
+        </div>
+        <div class="modal-footer">
+                <button type="button" 
+                        (click)="updatePlace(currentPlace)" 
+                        class="btn btn-success">
+                        Actualizar
+                </button> 
+        </div>
+
+
+
+

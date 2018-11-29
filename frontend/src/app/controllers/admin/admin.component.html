@@ -1,0 +1,56 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Administradores ({{arrayOfAdmins.length}})</h4>
+                      <button class="btn btn-success" (click)="openFormModal()">Agregar</button>
+                    </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Correo
+                                </th>
+                                <th>
+                                    Última Conexión
+                                </th>
+                                <th>
+
+                                </th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let admin of arrayOfAdmins" class="list-group-item-action">
+                                    <td> {{ admin.username | titlecase }} </td>
+                                    <td> {{ admin.email }} </td>
+                                    <td> {{ admin.connection_time?(admin.connection_time):"N/A"}} </td>
+                                    <td>
+                                        <div class="btn-group"
+                                            *ngIf="admin.id!=currentAdminId">
+                                            <button class="btn btn-danger" type="button" (click)="deleteAdmin(admin.id)">
+                                                <i class="fa fa-trash text-white"></i>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-info" type="button" (click)="openFormModalEdit(admin.id)">
+                                                <i class="fa fa-pencil text-white"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>  
+      </div>
+  </div>
+  </div>

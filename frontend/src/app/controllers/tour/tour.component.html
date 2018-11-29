@@ -1,0 +1,79 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Tours ({{arrayOfTours.length}})</h4>
+            <button class="btn btn-success" (click)="openFormModalAdd()">Agregar</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="">
+                  <th>
+                    Nombre
+                  </th>
+                  <th>
+                    Información
+                  </th>
+                  <th>
+                    Camiones
+                  </th>
+                  <th>
+                    Horarios
+                  </th>
+                  <th>
+                    Lugares
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tour of arrayOfTours" class="list-group-item-action">
+                    <td> {{ (tour.name) | titlecase }} </td>
+                    <td>
+                      <a class="text-primary text-center" (click)="displayTourInfo(tour.id)">
+                        ver información
+                      </a>
+                    </td>
+                    
+                    <td>
+                      <a class="text-primary text-center" (click)="displayBusInfo(tour)">
+                        ver autobuses
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-primary text-center" (click)="displayTimeInfo(tour)">
+                        ver horarios
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-primary text-center" (click)="displayPlaceInfo(tour)">
+                        ver lugares
+                      </a>
+                    </td>
+
+                    <td>
+                      <div class="btn-group">
+                          <button class="btn btn-danger" type="button" (click)="deleteTour(tour.id)">
+                              <i class="fa fa-trash text-white"></i>
+                          </button>
+                      </div>
+                      <div class="btn-group">
+                          <button class="btn btn-info" type="button" (click)="openFormModalEdit(tour.id)">
+                              <i class="fa fa-pencil text-white"></i>
+                          </button>
+                      </div>
+                  </td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
