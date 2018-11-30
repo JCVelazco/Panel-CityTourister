@@ -33,9 +33,10 @@ export class PlaceComponent implements OnInit {
     });
   }
 
-  openMapModal(info, toursFromPlace) {
+  openMapModal(info, image_url, toursFromPlace) {
     this.modalRef = this._modalService.open(GetMapModalComponent, {size: 'lg'});
     this.modalRef.componentInstance.placeInfo = info;
+    this.modalRef.componentInstance.imageUrl = image_url;
     this.modalRef.componentInstance.toursFromPlace = toursFromPlace;
   }
 

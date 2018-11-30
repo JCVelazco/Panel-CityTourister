@@ -12,8 +12,10 @@ export class GetMapModalComponent implements OnInit {
     @Input() placeInfo;
     @Input() coordinates;
     @Input() toursFromPlace;
+    @Input() imageUrl;
 
     name: string;
+    image_url: string;
     place_type: string;
     lat: number;
     lng: number;
@@ -28,6 +30,7 @@ export class GetMapModalComponent implements OnInit {
         this.place_type = this.placeInfo.type;
         this.lat = Number.parseFloat(this.placeInfo.lat);
         this.lng = Number.parseFloat(this.placeInfo.lng);
+        this.image_url = this.imageUrl;
         this.toursAssociated = this.toursFromPlace;
     }
 

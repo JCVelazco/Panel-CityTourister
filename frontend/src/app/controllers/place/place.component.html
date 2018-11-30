@@ -19,17 +19,14 @@
                                 <th>
                                     Lugar
                                 </th>
-                                <th>
+                                <th >
                                     Descripción
                                 </th>
                                 <th>
                                     Tipo de lugar
                                 </th>
                                 <th>
-                                    Mapa
-                                </th>
-                                <th>
-                                    Tours Asociado
+                                    Mapa y tours
                                 </th>
                                 <th>
 
@@ -38,26 +35,24 @@
                                 <tr *ngFor="let place of places"
                                 class="list-group-item-action">
                                     <td>{{place.name}}</td>
-                                    <td>{{place.description}}</td>
-                                    <td>{{place.place_type_id.name | titlecase}}</td>
                                     <td>
-                                        <a class="text-primary text-center"
-                                        (click)="openMapModal({
-                                                    name: place.name,
-                                                    lat: place.latitude,
-                                                    lng: place.longitude,
-                                                    type: place.place_type_id.name
-                                                    }, place.tours
-                                                )">
-                                            Mapa
-                                        </a>
+                                        <span class="paragraph">
+                                            {{place.description}}
+                                        </span>
                                     </td>
+                                    <td>{{place.place_type_id.name | titlecase}}</td>
                                     <td> 
-                                        <ul *ngFor="let tour of place.tours" >
-                                            <li>
-                                                {{tour.name | titlecase}}
-                                            </li>
-                                        </ul>
+                                        <button class="btn btn-primary text-white" 
+                                            (click)="openMapModal({
+                                                name: place.name,
+                                                lat: place.latitude,
+                                                lng: place.longitude,
+                                                type: place.place_type_id.name
+                                                }, place.image_url,
+                                                place.tours
+                                            )">
+                                            <i class="fa fa-map-marker"></i>
+                                        </button>
                                     </td>
                                     <td>
                                         <div class="btn-group">
