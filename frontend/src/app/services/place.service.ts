@@ -18,7 +18,7 @@ export class PlaceService {
   constructor(private http: HttpClient) { }
 
   getPlaces(): Observable<IPlace[]> {
-    return this.http.get<IPlace[]>(API_URL + '/place', AUTH);
+    return this.http.get<IPlace[]>(API_URL + '/place?limit=100', AUTH);
   }
 
   getPlaceType():Observable<IPlaceType[]>{

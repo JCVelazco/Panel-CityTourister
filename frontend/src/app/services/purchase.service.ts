@@ -13,7 +13,7 @@ export class PurchaseService {
   constructor(private http: HttpClient) { }
 
   getPurchases(): Observable<IPurchase[]>{
-    return this.http.get<IPurchase[]>(API_URL + '/purchase', AUTH);
+    return this.http.get<IPurchase[]>(API_URL + '/purchase?limit=1000', AUTH);
   }
 
   getPurchaseById(id): Observable<IPurchase>{

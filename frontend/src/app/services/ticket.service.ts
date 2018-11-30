@@ -15,6 +15,6 @@ export class TicketService {
   constructor(private http: HttpClient) { }
 
   getTickets(): Observable<ITicket[]> {
-    return this.http.get<ITicket[]>(API_URL + '/ticket', AUTH);
+    return this.http.get<ITicket[]>(API_URL + '/ticket?limit=500', AUTH);
   }
 }

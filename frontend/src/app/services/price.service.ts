@@ -13,7 +13,7 @@ export class PriceService {
 
 
   getPrices(): Observable<IPrice[]> {
-    return this.http.get<IPrice[]>(API_URL + '/price', AUTH);
+    return this.http.get<IPrice[]>(API_URL + '/price?limit=100', AUTH);
   }
  
   deletePrice(id): Observable<IPrice>{

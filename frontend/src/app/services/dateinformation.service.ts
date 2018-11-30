@@ -18,7 +18,7 @@ export class DateinformationService {
   constructor(private http: HttpClient) { }
 
   getInformation(): Observable<IDateInformation[]> {
-    return this.http.get<IDateInformation[]>(API_URL + '/dateinformation', AUTH);
+    return this.http.get<IDateInformation[]>(API_URL + '/dateinformation?limit=100', AUTH);
   }
 
   getDates(): Observable<IDate[]> {

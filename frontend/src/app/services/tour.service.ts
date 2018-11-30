@@ -13,7 +13,7 @@ export class TourService {
 
 
   getTours(): Observable<ITour[]> {
-    return this.http.get<ITour[]>(API_URL + '/tour', AUTH);
+    return this.http.get<ITour[]>(API_URL + '/tour?limit=100', AUTH);
   }
  
   deleteTour(id): Observable<ITour>{

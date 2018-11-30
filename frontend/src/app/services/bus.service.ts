@@ -13,7 +13,7 @@ export class BusService {
   constructor(private http: HttpClient) { }
 
   getBuses(): Observable<IBus[]> {
-    return this.http.get<IBus[]>(API_URL + '/bus', AUTH);
+    return this.http.get<IBus[]>(API_URL + '/bus?limit=100', AUTH);
   }
   
   deleteBus(id: number): Observable<IBus> {

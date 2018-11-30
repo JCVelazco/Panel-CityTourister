@@ -17,7 +17,7 @@ export class UserService {
 
   getUsuarios(): Observable<IUser[]> {
     console.log(AUTH);
-    return this.http.get<IUser[]>(API_URL + '/user', AUTH);
+    return this.http.get<IUser[]>(API_URL + '/user?limit=1000', AUTH);
   }
   
   deleteUsuarios(id: number): Observable<IUser> {

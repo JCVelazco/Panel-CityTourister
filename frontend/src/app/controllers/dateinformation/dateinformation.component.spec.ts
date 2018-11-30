@@ -1,4 +1,4 @@
-/*import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DateinformationComponent } from './dateinformation.component';
 
@@ -23,4 +23,3 @@ describe('DateinformationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-*/
