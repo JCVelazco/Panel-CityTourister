@@ -38,17 +38,13 @@ export class DateInfoEditModalComponent implements OnInit {
 
   constructor(
     private service: DateinformationService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private fb: FormBuilder,
-    public activeModal: NgbActiveModal) {
-      this.start_date = new Date();
-      this.end_date = new Date();
-    }
+    private activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     if (isString(this.id)) {
       this.switchToAddModal = true;
+      this.start_date = new Date();
+      this.end_date = new Date();
       this.getHoursAndMinutes(this.start_date, this.end_date);
     } else {
       this.populateById(this.id);
@@ -60,7 +56,10 @@ export class DateInfoEditModalComponent implements OnInit {
     console.log('Date por agregar: ');
     console.log(this.dateInterval.start_date);
     console.log(this.dateInterval.end_date);
-    this.service.addDate(this.dateInterval.start_date, this.dateInterval.end_date, this.dateInterval.service)
+    this.service.addDate(
+      this.dateInterval.start_date,
+      this.dateInterval.end_date,
+      this.dateInterval.service)
     .subscribe(res => {
       date_id = res.id;
       this.addHour(date_id);
@@ -94,6 +93,7 @@ export class DateInfoEditModalComponent implements OnInit {
     ).subscribe( res => {
       hour_id = res.id;
       this.addDateInfo(date_id, hour_id);
+      this.activeModal.close();
     }, err => {
       console.log('Error adding Hour Interval');
       console.log(err);
@@ -124,29 +124,27 @@ export class DateInfoEditModalComponent implements OnInit {
   updateDateInfo() {
     this.updateDateInterval();
     this.updateHourInterval();
-    this.activeModal.close();
+    this.activeModal.dismiss();
   }
 
   updateHourInterval() {
     const temp = {
-      start: new Date(),
-      end: new Date()
+      start: new Date(this.dateInterval.start_date * 1000.0),
+      end: new Date(this.dateInterval.end_date * 1000.0)
     };
-    temp.start.setHours(this.start_hour.hour);
-    temp.start.setMinutes(this.start_hour.minute);
-    temp.start.setSeconds(0);
-    this.hourInterval.start_time = Math.trunc(temp.start.getTime() / 1000);
-    temp.end.setHours(this.end_hour.hour);
-    temp.end.setMinutes(this.end_hour.minute);
-    temp.end.setSeconds(0);
-    this.hourInterval.end_time = Math.trunc(temp.end.getTime() / 1000);
+    temp.start.setHours(this.start_hour.hour, this.start_hour.minute, 0);
+    this.hourInterval.start_time = Math.floor(temp.start.getTime() / 1000);
+    console.log("AFTER");
+    console.log(this.hourInterval);
+    temp.end.setHours(this.end_hour.hour, this.end_hour.minute, 0);
+    this.hourInterval.end_time = Math.floor(temp.end.getTime() / 1000);
     this.service.updateHour(
       this.hourInterval.id,
       this.hourInterval.start_time,
       this.hourInterval.end_time,
       this.hourInterval.frequency
     ).subscribe(res => {
-      console.log(res);
+      this.activeModal.close();
     });
   }
 
@@ -169,17 +167,18 @@ export class DateInfoEditModalComponent implements OnInit {
       this.dateInterval.end_date,
       this.dateInterval.service)
     .subscribe(res => {
-      console.log(res);
     })
   }
 
   updateStartDate(event: MatDatepickerInputEvent<Date>) {
     this.start_date = new Date(event.value);
+    this.start_date.setHours(13, 0);
     this.dateInterval.start_date = this.start_date.getTime() / 1000.0;
   }
 
   updateEndDate(event: MatDatepickerInputEvent<Date>) {
     this.end_date = new Date(event.value);
+    this.end_date.setHours(13, 0);
     this.dateInterval.end_date = this.end_date.getTime() / 1000.0;
   }
 

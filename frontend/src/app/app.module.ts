@@ -13,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -75,6 +76,7 @@ import { GetMapModalComponent } from './controllers/place/modals/GetMapModalComp
     MatFormFieldModule,
     MaterialFileInputModule,
     MatCheckboxModule,
+    MatSlideToggleModule,
     MatRadioModule,
     MatInputModule,
     MatDialogModule,

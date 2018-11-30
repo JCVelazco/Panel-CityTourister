@@ -22,9 +22,7 @@ export class BusComponent implements OnInit {
     
     modalRef.result.then((result) => {
       this.getBuses();
-      console.log(result);
     }).catch((error) => {
-      console.log(error);
     });
   }
 
@@ -35,7 +33,6 @@ export class BusComponent implements OnInit {
     modalRef.result.then((result) => {
       this.getBuses();
     }).catch((error) => {
-      console.log(error);
     });
   }
 
@@ -44,7 +41,6 @@ export class BusComponent implements OnInit {
     this.service.getBuses()
     .subscribe(res => {
       this.arrayOfBuses = res;
-      console.log(res); 
       
     });
    
@@ -52,10 +48,6 @@ export class BusComponent implements OnInit {
 
   ngOnInit() {
     this.getBuses();
-  }
-  
-  ngOnChanges(){
-   this.getBuses();
   }
   deleteBus(id) {
     if(confirm("Desea eliminar el autobus?")){

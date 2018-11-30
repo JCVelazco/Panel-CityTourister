@@ -44,7 +44,6 @@ export class NgbdModalEditPlace implements OnInit {
             this.currentPlace.image_url = res.image_url;
             this.lat = res.latitude;
             this.lng = res.longitude;
-            console.log(res);
         });
     }
 

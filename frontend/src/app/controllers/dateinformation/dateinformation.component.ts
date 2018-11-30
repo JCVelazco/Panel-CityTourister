@@ -27,10 +27,8 @@ export class DateinformationComponent implements OnInit {
     this._dateInfoService.getInformation()
     .subscribe(data => {
       this.dates = data;
-      console.log('Datesss');
       this.convertToDates(this.dates);
       this.convertToHours(this.dates);
-      console.log(this.dates);
     });
   }
 

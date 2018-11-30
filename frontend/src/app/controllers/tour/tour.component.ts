@@ -47,8 +47,6 @@ export class TourComponent implements OnInit {
     this._placeSerice.getPlaces()
     .subscribe( res => {
       this.arrayOfPlaces = res;
-      console.log('PLACES');
-      console.log(this.arrayOfPlaces);
     });
   }
 
@@ -56,8 +54,6 @@ export class TourComponent implements OnInit {
     this._tourService.getTours()
     .subscribe(res => {
       this.arrayOfTours = res;
-      console.log('TOURS');
-      console.log(this.arrayOfTours);
     });
   }
 
@@ -65,8 +61,6 @@ export class TourComponent implements OnInit {
     this._busService.getBuses()
     .subscribe(res => {
       this.arrayOfBuses = res;
-      console.log('BUSES');
-      console.log(this.arrayOfBuses);
     });
   }
 
@@ -74,8 +68,6 @@ export class TourComponent implements OnInit {
     this._dateInfoService.getInformation()
     .subscribe(res => {
       this.arrayOfDateInfos = res;
-      console.log('DATES');
-      console.log(this.arrayOfDateInfos);
     }, err => {
       // console.log('Error getting DateInfos');
     });

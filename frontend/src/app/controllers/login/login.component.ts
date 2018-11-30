@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this._loginService.login(email, password).subscribe(res => {
       this._loginService.setToken(res.token, '' + res.id);
       this.showNotification(res, 'top', 'right');
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/');
     }, err => {
       this.showNotification(err.error, 'top', 'right');
     });
