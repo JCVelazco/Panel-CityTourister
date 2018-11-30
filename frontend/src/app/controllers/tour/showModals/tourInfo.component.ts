@@ -14,7 +14,7 @@ import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   
     constructor(
       private _TourService: TourService,
-      private activeModal: NgbActiveModal){ }
+      public activeModal: NgbActiveModal){ }
   
     ngOnInit(){
       this.getByIdTour();

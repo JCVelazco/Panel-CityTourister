@@ -13,8 +13,8 @@ export class PurchaseComponent implements OnInit {
   arrayOfPurchases = [];
 
   constructor(
-    private _purchaseService: PurchaseService,
-    private _modalService: NgbModal) { }
+    public _purchaseService: PurchaseService,
+    public _modalService: NgbModal) { }
 
   ngOnInit() {
     this.getPurchases();
@@ -58,7 +58,7 @@ export class PurchaseInfoComponent implements OnInit {
 
   constructor(
     private _purchaseService: PurchaseService,
-    private activeModal: NgbActiveModal){ }
+    public activeModal: NgbActiveModal){ }
 
   ngOnInit(){
     this.getTotals(this.purchaseId);

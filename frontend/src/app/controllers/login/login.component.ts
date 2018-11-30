@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   admins: any;
+  public email;
+  public password;
   constructor(
     private http: HttpClient,
     private service: AdminService,

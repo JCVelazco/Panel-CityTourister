@@ -10,7 +10,7 @@
                                 <label for="name"  class="text-muted">Nombre del lugar:</label>
                                 <input [(ngModel)]='currentPlace.name' type="text" class="form-control" >
                                 <small class="form-text text-danger" *ngIf="currentPlace.nameIsNotValid">
-                                        Verfica el nombre
+                                        Verifica el nombre
                                 </small> 
                         </div>
                         
@@ -56,7 +56,7 @@
         </div>
         <div class="modal-footer">
                 <button type="button" 
-                        (click)="addPlace(currentPlace)" 
+                        (click)="addPlace()" 
                         class="btn btn-success">
                         Agregar
                 </button> 

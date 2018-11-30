@@ -17,7 +17,6 @@ import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
 import {CreateComponent} from '../../controllers/dateinformation/create/create.component';
 import {SelectdateComponent} from '../../controllers/dateinformation/selectdate/selectdate.component';
-import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
 import {TicketComponent} from '../../controllers/ticket/ticket.component';
 
 import {NeedAuthGuard} from '../../NeedAuthGuard.component';
@@ -83,7 +82,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tour',          component: TourComponent},
     { path: 'create',          component: CreateComponent},
     { path: 'selectdate',          component: SelectdateComponent},
-    { path: 'createplace',          component: CreatePlaceComponent},
     { path: 'ticket',        component: TicketComponent},
 
 ];

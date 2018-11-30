@@ -20,7 +20,7 @@ export class TimeInfoComponent implements OnInit{
     
     constructor(
         private _tourService: TourService,
-        private activeModal: NgbActiveModal){ }
+        public activeModal: NgbActiveModal){ }
         
     ngOnInit() {
         this.arrayOfAllDateInfos = this.dateInfo;

@@ -1,4 +1,12 @@
+
+import { HttpHeaders } from '@angular/common/http';
+
 export const environment = {
-  production: true,
-  apiUrl: 'https://ertourister.appspot.com'
+  production: false,
+  apiUrl: 'https://er-citytourister.appspot.com',
+  token: {
+    headers: new HttpHeaders({
+      'auth': localStorage.getItem('TOKEN'),
+    })
+  }
 };

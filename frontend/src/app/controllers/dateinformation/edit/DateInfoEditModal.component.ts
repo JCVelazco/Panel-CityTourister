@@ -41,7 +41,7 @@ export class DateInfoEditModalComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private activeModal: NgbActiveModal) {
+    public activeModal: NgbActiveModal) {
       this.start_date = new Date();
       this.end_date = new Date();
     }

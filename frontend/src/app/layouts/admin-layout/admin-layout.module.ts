@@ -22,7 +22,6 @@ import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
 import { CreateComponent } from '../../controllers/dateinformation/create/create.component';
 import { SelectdateComponent } from '../../controllers/dateinformation/selectdate/selectdate.component';
-import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
 import {TicketComponent} from '../../controllers/ticket/ticket.component';
 import {LoginComponent} from '../../controllers/login/login.component';
 // para el datepicker y timepicker
@@ -88,7 +87,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     TourComponent,
     CreateComponent,
     SelectdateComponent,
-    CreatePlaceComponent,
     TicketComponent,
   ]
 })

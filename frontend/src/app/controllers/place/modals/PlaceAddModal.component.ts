@@ -27,7 +27,7 @@ export class NgbdModalAddPlaceComponent implements OnInit {
     lng = -98.20193;
 
     constructor(
-        private _PlaceService: PlaceService,
+        public _PlaceService: PlaceService,
         public activeModal: NgbActiveModal) {}
 
     ngOnInit() {
@@ -87,7 +87,7 @@ export class NgbdModalAddPlaceComponent implements OnInit {
         }
     }
 
-    fieldsAreGoodToGo() {
+    fieldsAreGoodToGo(): boolean {
         if (this.currentPlace.name.length > 5) {
             this.currentPlace.nameIsNotValid = false;
         } else { this.currentPlace.nameIsNotValid = true; return false; }

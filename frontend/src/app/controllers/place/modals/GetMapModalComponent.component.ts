@@ -20,7 +20,7 @@ export class GetMapModalComponent implements OnInit {
     toursAssociated = [];
 
     constructor(
-        private activeModal: NgbActiveModal,
+        public activeModal: NgbActiveModal,
     ) {}
 
     ngOnInit() {
