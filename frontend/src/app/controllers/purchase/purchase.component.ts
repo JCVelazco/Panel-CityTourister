@@ -20,11 +20,19 @@ export class PurchaseComponent implements OnInit {
     this.getPurchases();
   }
 
+  //this can be better
   getPurchases() {
     this._purchaseService.getPurchases()
     .subscribe(res => {
       this.arrayOfPurchases = res;
+      this.getTotals(this.arrayOfPurchases);
     });
+  }
+
+  getTotals(arrayOfPurchases){
+    for(let purchase of arrayOfPurchases){
+    this._purchaseService.getTotal(purchase.id).subscribe();
+    }
   }
 
   displayTicketsInfo(id) {
