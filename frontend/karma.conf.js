@@ -1,6 +1,8 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
+//RIGHT NOW THERE ARE TESTS THAT DOESNT WORK, BECAUSE THERE HAVE BEEM CHANGES IN THE COMPONENTS.
+
 module.exports = function (config) {
   config.set({
     basePath: '',
