@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h4 class="modal-title">Editar autobús: {{id}}</h4>
+    <button type="button" class="close" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+    </button>
+</div>
+<div class="modal-body">
+    <div class="container">
+        
+        <div class="form-group">
+            <label for="numBus">Número de autobús:</label>
+            <input id="numBus" [(ngModel)]="currentBus[0]" class="form-control" >
+            <small class="text-danger" *ngIf="currentBus.numIsEmpty">
+                    ¡El Número de autobús es Requerido! Debe de estar compuesto por lo menos por tres dígitos.
+            </small>
+            
+        </div>
+        
+        <div class="form-group">
+            <mat-slide-toggle
+                class="example-margin"
+                [color]="success"
+                [(ngModel)]="currentBus[1]">
+                Disponibilidad
+            </mat-slide-toggle>
+        </div>
+
+        <div class="form-group">
+            <label for="tour_id">Tour (opcional):</label>
+            <mat-form-field>
+              <mat-select [(value)]="currentBus[2]">
+                <mat-option></mat-option>
+                <mat-option 
+                    *ngFor="let tour of allTours" 
+                    [value]="tour"
+                    (click)="setTour(tour)">
+                  {{tour.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+         
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button"  (click)="updateBus()" class="btn btn-success">Actualizar</button> 
+</div>

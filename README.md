@@ -1,2 +1,2 @@
 # Semestrei
-Proyecto del Semestre i, en dicho repositorio se trabajara la parte de la implementación de la API.
+Panel de Administracion creado para el servcio de CityTourister de Estrella Roja.

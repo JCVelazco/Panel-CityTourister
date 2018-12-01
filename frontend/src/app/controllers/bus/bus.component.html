@@ -1,0 +1,59 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title text-white">Autobuses ({{arrayOfBuses.length}})</h4>
+                        <button type="button" class="btn btn-success" (click)="openFormModal()">
+                          Agregar
+                        </button>
+                      </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                  <th>
+                                      Numero de autobús
+                                  </th>
+                                  <th>
+                                      Disponibilidad
+                                  </th>
+                                  <th>
+                                      Tour asociado
+                                  </th>
+                                  <th>
+                                  </th>
+                                <tbody>
+                                  <tr *ngFor="let bus of arrayOfBuses"
+                                  class="list-group-item-action">
+                                      <td>{{bus.numBus}}</td>
+                                      <td>
+                                          <span class="text-success" *ngIf="bus.availability">Disponible</span>
+                                          <span class="text-danger" *ngIf="!bus.availability">No disponible</span>
+                                      </td>
+                                      <td>{{bus.tour_id?(bus.tour_id.name):"N/A"}}</td>
+                                      <td>
+                                          <div class="btn-group">
+                                              <button class="btn btn-danger" type ="button" (click)="deleteBus(bus.id)">
+                                                  <i class="text-white fa fa-trash"></i>
+                                              </button>
+                                          </div>
+                                          <div class="btn-group">
+                                            <button class="btn btn-info" type="button" (click)="openFormModalEdit(bus.id)">
+                                                 <i class="fa fa-pencil text-white"></i>
+                                            </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    </div>
+    
