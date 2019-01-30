@@ -1,3 +1,5 @@
+//not used
+
 var passport = require('passport'),
     LocalStrategy = require ('passport-local'),
     JwtStrategy = require('passport-jwt').Strategy,
